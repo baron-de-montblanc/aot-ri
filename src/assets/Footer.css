@@ -1,0 +1,12 @@
+.footer-container {
+    margin: 10px 0px;
+}
+
+.email-href {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.email-href:hover {
+    color:white;
+}

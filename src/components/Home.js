@@ -4,11 +4,11 @@ import Footer from "./Footer";
 
 function Home () {
     return (
-        <div className="container content-container">
+        <div className="content-container">
 
             <NavBar />
 
-            <div className="home-title">
+            <div id="top-of-home" className="home-title">
                 <h1>Astronomy on Tap</h1>
                 <h2>Rhode Island</h2>
             </div>
