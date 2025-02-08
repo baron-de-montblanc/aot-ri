@@ -1,0 +1,30 @@
+.home-title h1,h2{
+    font-family: "Orbitron";
+    text-align: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.home-title h1{
+    font-size: 2.5em;
+}
+
+.home-title h2{
+    font-size: 1.2em;
+}
+
+.home-title{
+    margin-top: 20px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Takes full viewport height */
+  }
+
+  .home-content {
+    flex: 1; /* Pushes the footer down */
+    text-align: center;
+    margin-top: 20px;
+  }

@@ -1,0 +1,46 @@
+.welcome-div {
+    text-align: center;
+    font-family: 'Orbitron';
+}
+
+.astro-title{
+    font-size: 2.5em;
+    font-weight: normal;
+}
+
+.rhode-island-title{
+    font-size: 1.2em;
+    font-weight: normal;
+}
+  
+.galaxy {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .galaxy {
+        animation: galaxy-spin 10s linear infinite alternate;
+    }
+}
+
+.welcome-header {
+    min-height: 100vh;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+@keyframes galaxy-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

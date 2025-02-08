@@ -1,0 +1,34 @@
+.custom-toggler {
+    border: none;
+}
+
+.custom-toggler:focus,
+.custom-toggler:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+  
+.custom-toggler .navbar-toggler-icon {
+    filter: invert(86%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(94%) contrast(91%);
+}
+
+.custom-toggler .navbar-toggler-icon:hover {
+    filter: invert(1);
+}
+  
+.custom-toggler .navbar-toggler-icon:active {
+    filter: invert(1);
+    border: none;
+}
+
+.nav-logo {
+    height: 4em;
+}
+
+.nav-item a {
+    color: #dfdfdf;
+}
+
+.nav-item a:hover {
+    color: white;
+}

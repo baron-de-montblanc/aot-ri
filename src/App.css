@@ -1,0 +1,22 @@
+.app-container {
+    min-height: 100vh;
+}
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+.navbar-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar-container.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+}
