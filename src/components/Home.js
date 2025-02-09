@@ -1,6 +1,7 @@
 import "../assets/Home.css";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
+import Events from "./Events";
 
 function Home () {
     return (
@@ -8,12 +9,13 @@ function Home () {
 
             <NavBar />
 
-            <div id="top-of-home" className="home-title">
+            <div id="top" className="home-title">
                 <h1>Astronomy on Tap</h1>
                 <h2>Rhode Island</h2>
             </div>
+            
             <div className="home-content">
-                Content goes here
+                <Events />
             </div>
 
             <Footer />

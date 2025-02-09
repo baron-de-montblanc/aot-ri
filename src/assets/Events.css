@@ -1,0 +1,4 @@
+.event-div{
+    background-color: var(--bg-color-light);
+    border: 2px solid var(--bg-color-dark);
+}

@@ -21,6 +21,7 @@ function Welcome () {
             <div className='social-container'>
               <a href='https://www.facebook.com/profile.php?id=61564387694241' 
                 target='_blank'
+                rel="noreferrer"
                 className='social-icons'
               >
                 <FontAwesomeIcon 
@@ -30,6 +31,7 @@ function Welcome () {
               </a>
               <a href='https://www.instagram.com/aotri24/'
                 target="_blank"
+                rel="noreferrer"
                 className='social-icons'
               >
                 <FontAwesomeIcon 
@@ -39,7 +41,7 @@ function Welcome () {
               </a>
             </div>
             <div className='arrow-div'>
-              <a href='#top-of-home' className='arrow-href'>
+              <a href='#top' className='arrow-href'>
                 <FontAwesomeIcon 
                   icon={faCircleDown} 
                   className='arrow-icon'

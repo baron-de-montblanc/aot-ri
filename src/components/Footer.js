@@ -10,7 +10,7 @@ function Footer () {
                 <div className="row text-center">
                     <div className="col-4">
                         <div>Astronomy on Tap</div>
-                        <div style={{fontSize: "0.75em"}}>Rhode island</div>
+                        <div style={{fontSize: "0.75em", fontStyle: "italic"}}>Rhode island</div>
                     </div>
                     <div className="col-4">
                         Follow us on social media!
@@ -18,6 +18,7 @@ function Footer () {
 
                         <a href='https://www.facebook.com/profile.php?id=61564387694241' 
                             target='_blank'
+                            rel="noreferrer"
                             className='social-icons'
                             style={{margin:5}}
                         >
@@ -30,6 +31,7 @@ function Footer () {
 
                         <a href='https://www.instagram.com/aotri24/'
                             target="_blank"
+                            rel="noreferrer"
                             className='social-icons'
                             style={{margin:5}}
                         >

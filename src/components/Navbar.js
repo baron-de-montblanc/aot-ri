@@ -2,12 +2,16 @@ import "../assets/Navbar.css";
 
 function NavBar () {
     return (
-        <div style={{ backgroundColor: "var(--bg-color-dark)"}}>
+        <div>
             <div className="container">
                 <nav className="navbar navbar-expand-lg">
 
                     <a className="navbar-brand" href="/">
-                        <img className="nav-logo" src="/images/logo.png"/>
+                        <img 
+                            className="nav-logo" 
+                            src="/images/logo.png"
+                            alt="Site logo"
+                            />
                     </a>
                     <button className="navbar-toggler custom-toggler" 
                             type="button" 
