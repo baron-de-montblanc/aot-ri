@@ -2,6 +2,7 @@ import "../assets/Home.css";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
 import Events from "./Events";
+import About from "./About";
 
 function Home () {
     return (
@@ -13,10 +14,20 @@ function Home () {
                 <h1>Astronomy on Tap</h1>
                 <h2>Rhode Island</h2>
             </div>
+
+            <div className="container home-intro text-center">
+                <p>
+                    Join us for engaging talks, cosmic trivia, and a fun atmosphere! 
+                    We meet bi-semesterly, and our events are free and open to all ages. 
+                    Come grab a drink, test your space knowledge, and explore the universe with us!
+                </p>
+            </div>
             
             <div className="home-content">
                 <Events />
             </div>
+
+            <About />
 
             <Footer />
 

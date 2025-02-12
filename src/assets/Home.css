@@ -22,8 +22,12 @@
     flex-direction: column;
   }
 
-  .home-content {
+.home-content {
     flex: 1; /* Pushes the footer down */
     text-align: center;
     margin-top: 20px;
-  }
+}
+
+.home-intro {
+    margin-top: 30px;
+}
