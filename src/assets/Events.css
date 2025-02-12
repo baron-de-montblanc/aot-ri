@@ -1,7 +1,6 @@
 .event-div {
-    background-color: var(--bg-color-light);
-    border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* background-color: var(--bg-color-light);
+    border-radius: 30px; */
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
@@ -33,10 +32,11 @@
 }
 
 .event-title {
-    margin-top: 16px;
+    margin-top: 24px;
+    font-family: 'Orbitron';
     font-size: 1.8em;
-    font-weight: bold;
-    margin-bottom: 0px;
+    /* font-weight: bold; */
+    margin-bottom: 10px;
 }
 
 .event-date {
