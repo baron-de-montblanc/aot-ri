@@ -31,10 +31,13 @@ function NavBar () {
                                 <a className="nav-link" href="#events">Events</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">About</a>
+                                <a className="nav-link" href="#trivia">Trivia</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Trivia</a>
+                                <a className="nav-link" href="#gallery">Gallery</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#about">About</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/">Contact</a>

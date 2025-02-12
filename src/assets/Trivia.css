@@ -1,0 +1,12 @@
+.quiz-box {
+    background-color: var(--light-violet);
+    color: var(--bg-color);
+}
+
+.form-div {
+    width: 50%;
+}
+
+.quiz-question-h4 {
+    margin: 10px;
+}

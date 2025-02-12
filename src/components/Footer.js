@@ -7,10 +7,10 @@ function Footer () {
     return(
         <div style={{ backgroundColor: "var(--bg-color-dark)"}}>
             <div className="container justify-content-center align-items-center footer-container">
-                <div className="row text-center">
+                <div className="row text-center justify-content-center align-items-center">
                     <div className="col-4">
                         <div>Astronomy on Tap</div>
-                        <div style={{fontSize: "0.75em", fontStyle: "italic"}}>Rhode island</div>
+                        <div style={{fontSize: "0.75em", fontStyle: "italic"}}>Rhode Island</div>
                     </div>
                     <div className="col-4">
                         Follow us on social media!

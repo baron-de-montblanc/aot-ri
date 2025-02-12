@@ -6,7 +6,12 @@ import { Carousel } from "react-bootstrap";
 
 const NextEvent = ( {event} ) => {
     return (
-        <div className="event-div">
+        <div className="event-div" style={{position:'relative'}}>
+
+            <div className="upcoming-event-div">
+                UPCOMING EVENT!
+            </div>
+
             <div className="row">
                 <div className="col-12">
                     <h1 className="event-title">{event.title}</h1>
@@ -218,8 +223,7 @@ const EventsList = () => {
   return (
     <div className="container">
 
-        {/* <h2 id="events" style={{ marginBottom: "30px", fontFamily:"Montserrat"}}>Upcoming Event</h2> */}
-        <hr/>
+        <hr id="events"/>
         {events
         .filter(event => new Date(event.date) > new Date()) // Filter future events
         .map(event => (
@@ -228,18 +232,25 @@ const EventsList = () => {
 
         {/* <h2 style={{ marginBottom: "30px" }}>Past events</h2> */}
         <hr/>
-        <Carousel>
-            {events
-            .filter(event => new Date(event.date) < new Date()) // Filter past events
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map(event => (
-                <Carousel.Item key={event.id}>
-                <div style={{padding:"10px 120px"}}>
-                    <PrevEvent event={event} />
-                </div>
-                </Carousel.Item>
-            ))}
-        </Carousel>
+        <div style={{position:"relative"}}>
+
+            <div className="past-events-div">
+                PAST EVENTS
+            </div>
+
+            <Carousel>
+                {events
+                .filter(event => new Date(event.date) < new Date()) // Filter past events
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .map(event => (
+                    <Carousel.Item key={event.id}>
+                    <div style={{padding:"10px 120px"}}>
+                        <PrevEvent event={event} />
+                    </div>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        </div>
     </div>
   );
 };
