@@ -3,7 +3,7 @@ import "../assets/Navbar.css";
 function NavBar () {
     return (
         <div>
-            <div className="container">
+            <div id="top" className="container">
                 <nav className="navbar navbar-expand-lg">
 
                     <a className="navbar-brand" href="/">
@@ -28,7 +28,7 @@ function NavBar () {
 
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Events</a>
+                                <a className="nav-link" href="#events">Events</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/">About</a>

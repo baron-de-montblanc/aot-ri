@@ -1,4 +1,78 @@
-.event-div{
+.event-div {
     background-color: var(--bg-color-light);
-    border: 2px solid var(--bg-color-dark);
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.speaker-div {
+    background-color: var(--light-violet);
+    border-radius: 10px;
+    color: var(--bg-color);
+    padding: 20px 0px;
+    border: 1px solid var(--bg-color-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.speaker-name {
+    font-size: 1.6em;
+    margin-bottom: 0px;
+}
+
+.speaker-department {
+    margin-top: 0px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.speaker-photo{
+    width: 70%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.event-title {
+    margin-top: 16px;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.event-date {
+    margin-top: 0;
+    font-size: 1em;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.location-map {
+    width: 75%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.location-name {
+    margin-top: 8px;
+    font-family: "Montserrat";
+    font-size: 1.4em;
+}
+
+.location-address {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0px;
+}
+
+.talk-title {
+    font-size: 1.4em;
+}
+
+.talk-title.talk-title-left{
+    padding-right: 20px;
+}
+
+.talk-title.talk-title-right{
+    padding-left: 20px;
 }

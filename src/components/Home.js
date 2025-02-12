@@ -7,9 +7,9 @@ function Home () {
     return (
         <div className="content-container">
 
-            <NavBar />
+            <NavBar/>
 
-            <div id="top" className="home-title">
+            <div className="home-title">
                 <h1>Astronomy on Tap</h1>
                 <h2>Rhode Island</h2>
             </div>

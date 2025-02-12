@@ -4,8 +4,9 @@
 :root {
   --bg-color: #29243eff;
   --bg-color-dark: #201c30;
-  --text-color: #dfdfdf;
+  --light-violet: #D3CFE3;
   --bg-color-light:#4b4271;
+  --text-color: #f0eff6;
 }
 
 html, body {
