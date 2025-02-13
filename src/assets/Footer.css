@@ -10,3 +10,8 @@
 .email-href:hover {
     color:white;
 }
+
+.copyright-message {
+    font-size: 0.75em;
+    color: rgba(240,239,246,0.5);
+}

@@ -3,30 +3,38 @@
     color: var(--bg-color);
     border-radius: 10px;
     width: 75%;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-div {
-    width: 50%;
+.form-inner-div {
+    width: 85%;
+    margin: 0px auto;
+    height: 200px;
+}
+
+.quiz-over-div {
+    height: 200px;
 }
 
 .trivia-title {
-    margin: 16px 0px;
+    margin: 30px 0px;
 }
 
 .trivia-description {
-    margin: 20px 0px;
+    margin: 30px 0px;
 }
 
 .trivia-event-name {
-    font-size: 1.6em;
-    margin-bottom: 20px;
+    font-size: 1.8em;
+    margin-bottom: 24px;
+    font-weight: bold;
 }
 
 .quiz-question-h4 {
     font-weight: bold;
-    margin: 16px 0px;
+    margin: 20px 0px;
 }
-
 
 
 .custom-radio-button {
@@ -35,6 +43,7 @@
     gap: 10px;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 12px;
 }
 
 /* Hide the default radio input */
@@ -81,7 +90,7 @@
 
 
 .form-button {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 6px 10px;
     border-radius: 10px;
     background-color: var(--light-violet);
@@ -116,8 +125,9 @@
 
 .answer-feedback {
     position: absolute;
-    right:120px;
-    top:4px;
+    left:50%;
+    transform: translateX(84px);
+    bottom:24px;
     text-align: center;
 }
 

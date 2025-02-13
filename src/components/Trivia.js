@@ -71,22 +71,24 @@ function TriviaQuiz ({qna = [], title}) {
     return (
         <div className="d-flex flex-column justify-content-center align-items-center">
             <h2 className="trivia-event-name">{title}</h2>
-            <div className="quiz-box d-flex flex-column text-center justify-content-center align-items-center">
+            <div className="quiz-box">
 
                 {isCompleted ? (
-                    <div>
-                        <h4 className="quiz-question-h4">Quiz completed!</h4>
-                        <p>Final score: {score}/{qna.length}</p>
-                        <button className="form-button start-over-button" onClick={handleStartOver}>
+                    <Form>
+                        <div className="quiz-over-div">
+                            <h4 className="quiz-question-h4">Quiz completed!</h4>
+                            <p>Final score: {score}/{qna.length}</p>
+                        </div>
+                        <button className="form-button" onClick={handleStartOver}>
                             Start Over
                         </button>
-                    </div>
+                    </Form>
                 ):(
                     <div>
                         <h4 className="quiz-question-h4">Question {currentQuestion+1}/{qna.length}: {qna[currentQuestion].name}</h4>
 
-                        <Form onSubmit={handleSubmit} className="d-flex flex-column align-items-center justify-content-center w-100">
-                        <div className="mb-3 form-div">
+                        <Form onSubmit={handleSubmit}>
+                        <div className="form-inner-div">
                             {qna[currentQuestion].type === "multiple-choice" ? (
 
                                 Object.values(qna[currentQuestion].options).map((option, i) => (
@@ -172,7 +174,8 @@ function Trivia () {
             <h2 id="trivia" className="trivia-title">Trivia</h2>
             <p className="trivia-description">
                 Each week, attendees test their astronomy knowledge in a fun trivia game.  
-                It's a chance to learn something new—and maybe even win a prize!
+                It's a chance to learn something new—and maybe even win a prize! Test your space 
+                knowledge by trying out our previous trivia quizzes below!
             </p>
 
             <Carousel interval={null} controls={true} indicators={true} keyboard={false}>

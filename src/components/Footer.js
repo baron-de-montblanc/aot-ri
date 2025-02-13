@@ -6,7 +6,7 @@ import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 function Footer () {
     return(
         <div style={{ backgroundColor: "var(--bg-color-dark)"}}>
-            <div className="container justify-content-center align-items-center footer-container">
+            <div className="footer-container">
                 <div className="row text-center justify-content-center align-items-center">
                     <div className="col-4">
                         <div>Astronomy on Tap</div>
@@ -53,6 +53,9 @@ function Footer () {
                             </a>
                         </div>
                     </div>
+                </div>
+                <div className="text-center mt-3 copyright-message">
+                    &copy; {new Date().getFullYear()} Astronomy on Tap Rhode Island. All rights reserved.
                 </div>
             </div>
         </div>

@@ -8,8 +8,8 @@ const NextEvent = ( {event} ) => {
     return (
         <div className="event-div" style={{position:'relative'}}>
 
-            <div className="upcoming-event-div">
-                UPCOMING EVENT!
+            <div>
+                <h2 className="upcoming-event-h2">UPCOMING EVENT!</h2>
             </div>
 
             <div className="row">
@@ -34,6 +34,7 @@ const NextEvent = ( {event} ) => {
                 <div className={`col-${event.speaker.speaker2 ? "2" : "6"}`}>
                     <iframe 
                         src={event.iframesrc}
+                        title={event.location}
                         allowFullScreen="" 
                         loading="lazy" 
                         referrerPolicy="no-referrer-when-downgrade"
@@ -233,7 +234,7 @@ const EventsList = () => {
         <div style={{position:"relative"}}>
 
             <div className="past-events-div">
-                PAST EVENTS
+                <h2 className="past-events-h2">PAST EVENTS</h2>
             </div>
 
             <Carousel>
