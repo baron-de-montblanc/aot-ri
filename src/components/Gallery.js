@@ -17,7 +17,7 @@ function Gallery () {
             <Carousel className="carousel-container">
                 {images.map((image, index) => (
                     <Carousel.Item key={index} className="gallery-carousel">
-                        <img src={image} alt={`Gallery image ${index + 1}`} />
+                        <img src={image} alt={`Gallery ${index + 1}`} />
                     </Carousel.Item>
                 ))}
             </Carousel>
