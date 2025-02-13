@@ -34,9 +34,9 @@ const NextEvent = ( {event} ) => {
                 <div className={`col-${event.speaker.speaker2 ? "2" : "6"}`}>
                     <iframe 
                         src={event.iframesrc}
-                        allowfullscreen="" 
+                        allowFullScreen="" 
                         loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
+                        referrerPolicy="no-referrer-when-downgrade"
                         className="location-map"
                     >
                     </iframe>
@@ -217,8 +217,6 @@ const EventsList = () => {
     };
     fetchEvents();
   }, []);
-
-  console.log(events);
 
   return (
     <div className="container">

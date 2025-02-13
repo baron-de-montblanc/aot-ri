@@ -1,12 +1,130 @@
 .quiz-box {
     background-color: var(--light-violet);
     color: var(--bg-color);
+    border-radius: 10px;
+    width: 75%;
 }
 
 .form-div {
     width: 50%;
 }
 
+.trivia-title {
+    margin: 16px 0px;
+}
+
+.trivia-description {
+    margin: 20px 0px;
+}
+
+.trivia-event-name {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+}
+
 .quiz-question-h4 {
-    margin: 10px;
+    font-weight: bold;
+    margin: 16px 0px;
+}
+
+
+
+.custom-radio-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Hide the default radio input */
+.custom-radio-button input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.custom-radio-button .form-check-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-size: 1.1em;
+}
+
+/* The custom radio circle */
+.custom-radio-button .form-check-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-color-light); /* Bootstrap primary blue */
+    background-color: var(--light-violet);
+    transition: all 0.3s ease;
+}
+
+/* The checked state */
+.custom-radio-button input[type="radio"]:checked + .form-check-label::before {
+    background-color: var(--highlight);
+    border-color: var(--highlight);
+}
+
+/* Hover effect */
+.custom-radio-button:hover .form-check-label::before {
+    border-color: var(--bg-color);
+}
+
+
+.form-button {
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background-color: var(--light-violet);
+    color: var(--bg-color);
+    border: 1px solid var(--bg-color);
+}
+
+.form-button:hover, 
+.form-button:active, 
+.form-button:focus {
+    background-color: var(--bg-color);
+    color: var(--light-violet);
+    border: 1px solid var(--light-violet);
+}
+
+.form-button:disabled {
+    background-color: grey;
+    color: var(--light-violet);
+    border: 1px solid rgba(var(--light-violet), 0.5);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-button.correct:hover {
+    background-color: green;
+}
+
+.form-button.incorrect:hover {
+    background-color: red;
+}
+
+
+.answer-feedback {
+    position: absolute;
+    right:120px;
+    top:4px;
+    text-align: center;
+}
+
+.answer-feedback.correct {
+    color:green;
+}
+
+.answer-feedback.incorrect {
+    color:red;
 }

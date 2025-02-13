@@ -1,0 +1,17 @@
+.carousel-container {
+    text-align: center; /* Centers inline-block elements inside */
+    margin-bottom: 24px;
+}
+
+.gallery-carousel img {
+    display: block; /* Ensures margin auto works */
+    margin: 0 auto; /* Centers horizontally */
+    max-height: 400px; /* Adjust height */
+    width: 75%; /* Maintain aspect ratio */
+    object-fit: cover; /* Prevents stretching */
+}
+
+
+.gallery-title {
+    margin-bottom: 24px;
+}
