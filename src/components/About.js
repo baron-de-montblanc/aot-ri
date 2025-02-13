@@ -22,7 +22,7 @@ function Organizer () {
                     <div className="col-2" key={organizer.id}>
                         <img 
                             src={organizer.image}
-                            alt="organizer photo"
+                            alt="organizer"
                             className="organizer-photo"
                         >
                         </img>

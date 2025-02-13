@@ -7,7 +7,6 @@ import Trivia from "./Trivia";
 import Gallery from "./Gallery";
 import Contact from "./Contact";
 import Faq from "./Faq";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Home () {
     return (
