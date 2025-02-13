@@ -1,0 +1,27 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-inner-div {
+    width: 70%;
+}
+
+.send-button {
+    margin: 20px 0px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background-color: var(--light-violet);
+    color: var(--bg-color);
+    border: 1px solid var(--bg-color);
+}
+
+.send-button:hover, 
+.send-button:active, 
+.send-button:focus {
+    background-color: var(--bg-color);
+    color: var(--light-violet);
+    border: 1px solid var(--light-violet);
+}

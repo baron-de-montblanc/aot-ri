@@ -83,33 +83,23 @@
     100% { border-color: var(--text-color); }
 }
 
-.upcoming-event-div {
+.upcoming-event-h2 {
     font-weight: bold;
-    color: var(--text-color);
-    font-size: 1em;
     position: absolute;
     top:12px;
-    left:20px;
-    background-color: var(--highlight);
-    padding: 6px;
-    border: 2px dashed var(--light-violet);
-    box-shadow: 0 0 8px var(--light-violet);
+    left:0px;
+    font-family: "Fascinate Inline";
+    font-size: 1.8em;
+    color:var(--highlight);
 }
 
-.past-events-div {
-    color: var(--text-color);
-    font-size: 1em;
+.past-events-h2 {
+    font-weight: bold;
     position: absolute;
     top:12px;
-    right:20px;
-    background-color: var(--highlight2);
-    padding: 6px;
-    border: 1px dashed var(--light-violet);
-    box-shadow: 0 0 4px var(--light-violet);
+    right:0px;
+    font-family: "Fascinate Inline";
+    font-size: 1.8em;
+    color:var(--highlight2);
 }
 
-.upcoming-event-div, .past-events-div {
-    min-width: 200px; /* Adjust as needed */
-    max-width: 250px;
-    display: inline-block; /* Ensure it respects content size */
-}
