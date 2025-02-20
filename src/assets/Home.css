@@ -6,21 +6,21 @@
 }
 
 .home-title h1{
-    font-size: 2.5em;
+    font-size: 3em;
+    font-family: 'Orbitron';
+    margin-top: 2em;
+    margin-bottom: 0.2em;
 }
 
 .home-title h2{
-    font-size: 1.2em;
+    font-size: 2em;
+    margin-bottom: 1.2em;
 }
 
 .home-title{
     margin-top: 20px;
 }
 
-.content-container {
-    display: flex;
-    flex-direction: column;
-  }
 
 .home-content {
     flex: 1; /* Pushes the footer down */
@@ -31,3 +31,21 @@
 .home-intro {
     margin-top: 30px;
 }
+
+.promo-image {
+    width: 90%;
+    border-radius: 10px;
+    margin: 2em 0px;
+}
+
+.intro-content {
+    height: 85vh;
+}
+
+.intro-text p {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 1em;
+    font-size: 1.4em;
+}
+
