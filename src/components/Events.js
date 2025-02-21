@@ -2,6 +2,121 @@ import React, { useEffect, useState } from "react";
 import { db, collection, getDocs } from "../firebase";
 import "../assets/Events.css";
 import { Carousel } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+
+
+
+function NoNextEvent() {
+    return (
+        <>
+
+            <div className="d-flex d-lg-none no-next-event">
+                <div className="container">
+
+                    <div className="row text-center">
+
+                        <div className="col-12">
+                            <h2>Upcoming Event</h2>
+                        </div>
+
+                        <div>
+                            <img 
+                                src="/images/rocket.png"
+                                className="rocket-image"
+                            />
+                        </div>
+
+                        <div className="col-12">
+                            <p>
+                                No upcoming events yet—but stay tuned! Follow us on social media to be 
+                                the first to know when the next Astronomy on Tap Rhode Island 
+                                event is announced. 
+                            </p>
+
+                            <div className='social-container'>
+                                <a href='https://www.facebook.com/profile.php?id=61564387694241' 
+                                    target='_blank'
+                                    rel="noreferrer"
+                                    className='social-icons'
+                                >
+                                    <FontAwesomeIcon 
+                                    icon={faFacebook} 
+                                    className='fa-icon'
+                                    />
+                                </a>
+                                <a href='https://www.instagram.com/aotri24/'
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className='social-icons'
+                                >
+                                    <FontAwesomeIcon 
+                                    icon={faInstagram} 
+                                    className='fa-icon'
+                                    />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div className="d-none d-lg-flex no-next-event">
+                <div className="container">
+
+                    <div className="row text-center">
+
+                        <div className="col-6">
+                            <img 
+                                src="/images/rocket.png"
+                                className="rocket-image"
+                            />
+                        </div>
+
+                        <div className="col-6">
+
+                            <h2>Upcoming Event</h2>
+
+                            <p>
+                            No upcoming events yet—but stay tuned! Follow us on social media to be 
+                            the first to know when the next Astronomy on Tap Rhode Island 
+                            event is announced. 
+                            </p>
+
+                            <div className='social-container'>
+                                <a href='https://www.facebook.com/profile.php?id=61564387694241' 
+                                    target='_blank'
+                                    rel="noreferrer"
+                                    className='social-icons'
+                                >
+                                    <FontAwesomeIcon 
+                                    icon={faFacebook} 
+                                    className='fa-icon'
+                                    />
+                                </a>
+                                <a href='https://www.instagram.com/aotri24/'
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className='social-icons'
+                                >
+                                    <FontAwesomeIcon 
+                                    icon={faInstagram} 
+                                    className='fa-icon'
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+
+    );
+}
+
 
 
 const NextEvent = ( {event} ) => {
@@ -105,7 +220,7 @@ const NextEvent = ( {event} ) => {
 
 const PrevEvent = ( {event} ) => {
     return (
-        <div className="event-div">
+        <div className="container event-div">
             <div className="row">
                 <div className="col-12">
                     <h1 className="event-title">{event.title}</h1>
@@ -220,17 +335,18 @@ const EventsList = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>
 
-        <hr id="events"/>
-        {events
-        .filter(event => new Date(event.date) > new Date()) // Filter future events
-        .map(event => (
-            <NextEvent key={event.id} event={event} />
-        ))}
+        <div id="events"></div>
+        {events.filter(event => new Date(event.date) > new Date()).length > 0 ? (
+            events
+                .filter(event => new Date(event.date) > new Date()) // Filter future events
+                .map(event => <NextEvent key={event.id} event={event} />)
+        ) : (
+            <NoNextEvent />
+        )}
 
         {/* <h2 style={{ marginBottom: "30px" }}>Past events</h2> */}
-        <hr/>
         <div style={{position:"relative"}}>
 
             <div className="past-events-div">
@@ -250,7 +366,7 @@ const EventsList = () => {
                 ))}
             </Carousel>
         </div>
-    </div>
+    </>
   );
 };
 
