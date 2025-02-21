@@ -14,38 +14,44 @@
 
 .home-title h2{
     font-size: 2em;
-    margin-bottom: 1.2em;
-}
-
-.home-title{
-    margin-top: 20px;
-}
-
-
-.home-content {
-    flex: 1; /* Pushes the footer down */
-    text-align: center;
-    margin-top: 20px;
-}
-
-.home-intro {
-    margin-top: 30px;
+    margin-bottom: 2vh;
 }
 
 .promo-image {
     width: 90%;
     border-radius: 10px;
-    margin: 2em 0px;
+    margin: 6vh 0px;
+}
+
+@media (max-width: 768px) { /* Applies to md screens and smaller */
+    .home-title h1 {
+        font-size: 2.5em; /* Slightly smaller */
+        margin-top:0.5em;
+    }
+
+    .home-title h2 {
+        font-size: 1.75em;
+        margin-bottom: 0;
+    }
+
+    .promo-image {
+        width: 100%;
+        margin: 2.5em 0;
+    }
 }
 
 .intro-content {
-    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
 }
+
 
 .intro-text p {
     width: 85%;
     margin: 0 auto;
-    margin-top: 1em;
+    margin-top: 2vh;
     font-size: 1.4em;
 }
 
