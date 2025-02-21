@@ -11,8 +11,43 @@ import Faq from "./Faq";
 
 function Intro () {
     return (
-        <div className="container">
-            <div className="row text-center mt-4 intro-content">
+        <>
+
+        <div className="d-flex d-lg-none container">
+
+            <div className="row text-center">
+
+                <div className="col-12">
+                    <div className="home-title">
+                        <h1>Astronomy on Tap</h1>
+                        <h2>Rhode Island</h2>
+                    </div>
+                </div>
+
+                <div className="col-12">
+                    <div>
+                        <img 
+                            src="/images/promo/promo1.JPG"
+                            alt="Astronomy on Tap Rhode Island Promo 2"
+                            className="promo-image"
+                        />
+                    </div>
+
+                    <div className="col-12">
+                        <p>
+                            Join Astronomy on Tap Rhode Island for drinks, cosmic trivia, and engaging talks!
+                            We meet at least twice per semester, and events are free and open to all 
+                            ages. Grab a drink, test your space knowledge, and explore the universe with us! 
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div className="d-none d-lg-flex container intro-content">
+            <div className="row text-center">
 
                 <div className="col-6">
                     <div className="home-title">
@@ -50,6 +85,8 @@ function Intro () {
 
             </div>
         </div>
+
+        </>
     );
 }
 
