@@ -241,7 +241,7 @@ const PrevEvent = ( {event} ) => {
                     {event.speaker.speaker2 ? (
                         <div className="row text-center align-items-center">
 
-                            <div className="col-6">
+                            <div className="col-6 d-flex flex-column align-items-center text-center">
                                 <img 
                                     src={event.photoPath.photo1}
                                     alt={event.speaker.speaker1}
@@ -249,36 +249,30 @@ const PrevEvent = ( {event} ) => {
                                 />
                             </div>
 
-                            <div className="col-6 text-center">
-                                <div className="speaker-name-div">
-                                    <h2 className="speaker-name speaker-name-small left">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
+                            <div className="col-6 d-flex flex-column align-items-center text-center">
+                                <div className="speaker-name-div left">
+                                    <h2 className="speaker-name speaker-name-small">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
+                                    <p className="speaker-department speaker-department-small">{event.institution.ins1}</p>
                                 </div>
-                            </div>
-
-                            <div className="col-12">
-                                <p className="speaker-department speaker-department-small">{event.department.dep1}, {event.institution.ins1}</p>
                             </div>
 
                             <div className="col-12 text-center">
                                 <h3 className="talk-title talk-title-small top">{event.talkTitle.title1}</h3>
                             </div>
 
-                            <div className="col-6 text-center">
-                                <div className="speaker-name-div">
-                                    <h2 className="speaker-name speaker-name-small right">{event.speakerTitle.title2} {event.speaker.speaker2}</h2>
+                            <div className="col-6 d-flex flex-column align-items-center text-center">
+                                <div className="speaker-name-div right">
+                                    <h2 className="speaker-name speaker-name-small">{event.speakerTitle.title2} {event.speaker.speaker2}</h2>
+                                    <p className="speaker-department speaker-department-small">{event.institution.ins2}</p>
                                 </div>
                             </div>
 
-                            <div className="col-6">
+                            <div className="col-6 d-flex flex-column align-items-center text-center">
                                 <img 
                                     src={event.photoPath.photo2}
                                     alt={event.speaker.speaker2}
                                     className="speaker-photo photo-small"
                                 />
-                            </div>
-
-                            <div className="col-12">   
-                                <p className="speaker-department speaker-department-small">{event.department.dep2}, {event.institution.ins2}</p>
                             </div>
 
                             <div className="col-12 text-center">
@@ -298,7 +292,7 @@ const PrevEvent = ( {event} ) => {
                         <div className="col-12 text-center">
                             <div className="speaker-name-div">
                                 <h2 className="speaker-name">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
-                                <p className="speaker-department">{event.department.dep1}, {event.institution.ins1}</p>
+                                <p className="speaker-department">{event.institution.ins1}</p>
                             </div>
                         </div>
 
