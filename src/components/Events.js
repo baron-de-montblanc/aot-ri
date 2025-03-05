@@ -218,97 +218,176 @@ const NextEvent = ( {event} ) => {
 };
 
 
+
 const PrevEvent = ( {event} ) => {
     return (
-        <div className="container event-div">
-            <div className="row">
-                <div className="col-12">
-                    <h1 className="event-title">{event.title}</h1>
-                    <h3 className="event-date">
-                        {event.date.toLocaleString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: true, // Set to false for 24-hour format
-                        })}
-                    </h3>
-                </div>
-            </div>
+        <>
 
-            <div className="row">
-
-                {event.speaker.speaker2 ? (
-                    <></>
-                ):(
-                    <div className="col-3">
+            <div className="d-flex d-lg-none past-event-container">
+                <div>
+                    <div className="row">
+                        <div className="col-12">
+                            <h2 className="event-title">{event.title}</h2>
+                            <h3 className="event-date">
+                                {event.date.toLocaleString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}
+                            </h3>
+                        </div>
                     </div>
-                )}
 
-                {/* First speaker section */}
-                <div className="col-6" style={{paddingRight: "10px"}}>
-                    <div className="speaker-div">
-                        <div className="row">
+                    {event.speaker.speaker2 ? (
+                        <div className="row text-center align-items-center">
+
+                            <div className="col-6">
+                                <img 
+                                    src={event.photoPath.photo1}
+                                    alt={event.speaker.speaker1}
+                                    className="speaker-photo photo-small"
+                                />
+                            </div>
+
+                            <div className="col-6 text-center">
+                                <div className="speaker-name-div">
+                                    <h2 className="speaker-name speaker-name-small left">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
+                                </div>
+                            </div>
+
                             <div className="col-12">
-                                <h1 className="speaker-name">{event.speakerTitle.title1} {event.speaker.speaker1}</h1>
+                                <p className="speaker-department speaker-department-small">{event.department.dep1}, {event.institution.ins1}</p>
+                            </div>
+
+                            <div className="col-12 text-center">
+                                <h3 className="talk-title talk-title-small top">{event.talkTitle.title1}</h3>
+                            </div>
+
+                            <div className="col-6 text-center">
+                                <div className="speaker-name-div">
+                                    <h2 className="speaker-name speaker-name-small right">{event.speakerTitle.title2} {event.speaker.speaker2}</h2>
+                                </div>
+                            </div>
+
+                            <div className="col-6">
+                                <img 
+                                    src={event.photoPath.photo2}
+                                    alt={event.speaker.speaker2}
+                                    className="speaker-photo photo-small"
+                                />
+                            </div>
+
+                            <div className="col-12">   
+                                <p className="speaker-department speaker-department-small">{event.department.dep2}, {event.institution.ins2}</p>
+                            </div>
+
+                            <div className="col-12 text-center">
+                                <h3 className="talk-title talk-title-small">{event.talkTitle.title2}</h3>
+                            </div>
+                        </div>
+                    ):(
+                        <div className="row">
+                        <div className="col-12">
+                            <img 
+                                src={event.photoPath.photo1}
+                                alt={event.speaker.speaker1}
+                                className="speaker-photo"
+                            />
+                        </div>
+
+                        <div className="col-12 text-center">
+                            <div className="speaker-name-div">
+                                <h2 className="speaker-name">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
                                 <p className="speaker-department">{event.department.dep1}, {event.institution.ins1}</p>
                             </div>
                         </div>
-                        <div className="row justify-content-center align-items-center">
-                            <div className="col-6">
+
+                        <div className="col-12 text-center">
+                            <h3 className="talk-title">{event.talkTitle.title1}</h3>
+                        </div>
+                    </div>
+                    )}
+
+                </div>
+            </div>
+
+
+            <div className="d-none d-lg-flex past-event-container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <h2 className="event-title">{event.title}</h2>
+                            <h3 className="event-date">
+                                {event.date.toLocaleString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}
+                            </h3>
+                        </div>
+                    </div>
+
+                    {!event.speaker.speaker2 ? (
+                        <div className="row align-items-center single-speaker-div">
+
+
+                            <div className="col-5">
+                                <img 
+                                    src={event.photoPath.photo1}
+                                    alt={event.speaker.speaker1}
+                                    className="speaker-photo"
+                                />
+                            </div>
+
+                            <div className="col-7 text-center">
+                                <div className="speaker-name-div">
+                                    <h2 className="speaker-name">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
+                                    <p className="speaker-department">{event.department.dep1}, {event.institution.ins1}</p>
+                                </div>
+                                <h3 className="talk-title">{event.talkTitle.title1}</h3>
+                            </div>
+
+                        </div>
+
+                    ):(
+
+                        <div className="row align-items-center">
+                            <div className="col-4 text-center">
+                                <h3 className="talk-title top">{event.talkTitle.title1}</h3>
                                 <img
                                     src={event.photoPath.photo1}
                                     alt={event.speaker.speaker1}
                                     className="speaker-photo"
                                 />
                             </div>
-                            <div className="col-6">
-                                <h2 className="talk-title talk-title-left">{event.talkTitle.title1}</h2>
+
+                            <div className="col-4">
+                                <div className="speaker-name-div top">
+                                    <h2 className="speaker-name text-end">{event.speakerTitle.title2} {event.speaker.speaker2}</h2>
+                                    <p className="speaker-department text-end">{event.department.dep2}, {event.institution.ins2}</p>
+                                </div>
+
+                                <div className="speaker-name-div bottom">
+                                    <h2 className="speaker-name text-start">{event.speakerTitle.title1} {event.speaker.speaker1}</h2>
+                                    <p className="speaker-department text-start">{event.department.dep1}, {event.institution.ins1}</p>
+                                </div>
+                            </div>
+
+                            <div className="col-4 text-center">
+                                <img
+                                    src={event.photoPath.photo2}
+                                    alt={event.speaker.speaker2}
+                                    className="speaker-photo"
+                                />
+                                <h3 className="talk-title bottom">{event.talkTitle.title2}</h3>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
-
-                {/* Second speaker section (if exists) */}
-                {event.speaker.speaker2 && (
-                    <div className="col-6" style={{paddingRight: "10px"}}>
-                        <div className="speaker-div">
-                            <div className="row">
-                                <div className="col-12">
-                                    <h1 className="speaker-name">{event.speakerTitle.title2} {event.speaker.speaker2}</h1>
-                                    <p className="speaker-department">{event.department.dep2}, {event.institution.ins2}</p>
-                                </div>
-                            </div>
-                            <div className="row justify-content-center align-items-center">
-                                <div className="col-6">
-                                    <h2 className="talk-title talk-title-right">{event.talkTitle.title2}</h2>
-                                </div>
-                                <div className="col-6">
-                                    <img
-                                        src={event.photoPath.photo2}
-                                        alt={event.speaker.speaker2}
-                                        className="speaker-photo"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {event.speaker.speaker2 ? (
-                    <></>
-                ):(
-                    <div className="col-3">
-                    </div>
-                )}
-
             </div>
-
-        </div>
-    )
+        </>
+    );
 };
-
 
 
 const EventsList = () => {
@@ -346,14 +425,13 @@ const EventsList = () => {
             <NoNextEvent />
         )}
 
-        {/* <h2 style={{ marginBottom: "30px" }}>Past events</h2> */}
-        <div style={{position:"relative"}}>
+        <div>
 
-            <div className="past-events-div">
-                <h2 className="past-events-h2">PAST EVENTS</h2>
+            <div className="container">
+                <h2 className="past-events-floating text-start">Past Events</h2>
             </div>
 
-            <Carousel>
+            <Carousel interval={null}>
                 {events
                 .filter(event => new Date(event.date) < new Date()) // Filter past events
                 .sort((a, b) => new Date(b.date) - new Date(a.date))
