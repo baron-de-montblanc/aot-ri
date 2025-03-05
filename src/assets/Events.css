@@ -19,6 +19,15 @@
     font-size: 1.2em;
 }
 
+.speaker-name-div.left {
+    margin-right: -1.5em;
+}
+
+
+.speaker-name-div.right {
+    margin-left: -1.5em;
+}
+
 .speaker-department {
     font-size: 1.4em;
     font-style: italic;
@@ -26,7 +35,7 @@
 
 .speaker-department.speaker-department-small {
     font-size: 0.6em;
-    margin-bottom: 2px;
+    margin-top: 0;
 }
 
 .speaker-photo{
@@ -36,6 +45,7 @@
 
 .speaker-photo.photo-small {
     width: 120%;
+    margin: 0;
 }
 
 .event-title {
@@ -85,6 +95,7 @@
 
 .talk-title.talk-title-small {
     font-size: 1.4em;
+    margin-top: 0.5em;
 }
 
 .speaker-name-div.top {
