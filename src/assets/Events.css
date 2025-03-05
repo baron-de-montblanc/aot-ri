@@ -9,7 +9,6 @@
     margin-bottom: -8vh;
 }
 
-
 .speaker-name {
     font-size: 2em;
     font-family: 'Montserrat';
@@ -22,7 +21,6 @@
 .speaker-name-div.left {
     margin-right: -1.5em;
 }
-
 
 .speaker-name-div.right {
     margin-left: -1.5em;
@@ -94,8 +92,8 @@
 }
 
 .talk-title.talk-title-small {
-    font-size: 1.4em;
-    margin-top: 0.5em;
+    font-size: 1.2em;
+    margin-top: 0px;
 }
 
 .speaker-name-div.top {
