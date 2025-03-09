@@ -1,3 +1,9 @@
+.about-content {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
 .organizer-div {
     width: 85%;
 }
@@ -8,5 +14,26 @@
 }
 
 .about-h2 {
-    margin: 20px 0px;
+    font-size: 3em;
+    padding-top: 6vh;
+    padding-bottom: 4vh;
+}
+
+.about-p {
+    text-align: center;
+    font-size: 1.4em;
+    padding-bottom: 4vh;
+}
+
+
+@media (max-width: 768px) {
+
+    .about-h2 {
+        font-size: 2.5em;
+    }
+
+    .about-p {
+        font-size: 1.2em;
+    }
+
 }

@@ -112,6 +112,11 @@
     color:var(--highlight);
 }
 
+
+
+/********* No next event CSS handling *********/
+
+
 .no-next-event {
     background-color: var(--bg-color-med);
     min-height: 100vh;
@@ -191,5 +196,9 @@
 
     .event-title {
         font-size: 1.6em;
+    }
+
+    .no-next-event p {
+        font-size: 1.2em;
     }
 }

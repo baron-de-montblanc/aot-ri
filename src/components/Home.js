@@ -34,7 +34,7 @@ function Intro () {
                     </div>
 
                     <div className="col-12">
-                        <p>
+                        <p className="intro-p">
                             Join Astronomy on Tap Rhode Island for drinks, cosmic trivia, and engaging talks!
                             We meet at least twice per semester, and events are free and open to all 
                             ages. Grab a drink, test your space knowledge, and explore the universe with us! 
@@ -72,9 +72,9 @@ function Intro () {
                         />
                     </div>
 
-                    <div className="row intro-text">
+                    <div className="row">
                         <div className="col-12">
-                            <p>
+                            <p className="intro-p">
                                 Join Astronomy on Tap Rhode Island for drinks, cosmic trivia, and engaging talks!
                                 We meet at least twice per semester, and events are free and open to all 
                                 ages. Grab a drink, test your space knowledge, and explore the universe with us! 

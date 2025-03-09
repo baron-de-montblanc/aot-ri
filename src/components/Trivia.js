@@ -1,200 +1,176 @@
 import React, {useState, useEffect} from "react";
-import { db, collection, getDocs } from "../firebase";
 import "../assets/Trivia.css";
 import { Form } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
 
-function TriviaQuiz ({qna = [], title}) {
 
+function TriviaQuiz({ qna = [], title }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isCompleted, setIsCompleted] = useState(false);
     const [score, setScore] = useState(0);
-    const [userAnswer, setUserAnswer] = useState("");
+
+    // Ensure questions exist before accessing them
+    const totalQuestions = qna.length;
+    const currentQ = qna[currentQuestion] || {};
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
-        setUserAnswer("");
-    };
-
-    const handleShortAnswerChange = (event) => {
-        setUserAnswer(event.target.value);
-        setSelectedOption(null);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!currentQ || !currentQ.answer) return;
 
-        const currentQ = qna[currentQuestion];
-
-        let isCorrectAnswer = false;
-        if (currentQ.type === "multiple-choice") {
-            if (selectedOption === currentQ.answer) isCorrectAnswer = true;
-        } else if (currentQ.type === "short-answer") {
-            if (userAnswer.trim().toLowerCase() === currentQ.answer.toLowerCase()) {
-                isCorrectAnswer = true;
-            }
-        }
-
+        const isCorrectAnswer = selectedOption === currentQ.answer;
         setIsCorrect(isCorrectAnswer);
         if (isCorrectAnswer) setScore((prevScore) => prevScore + 1);
         setIsAnswered(true);
     };
 
-    const handleContinue = (event) => {
-
-        // Move to next question if there are more questions
-        if (currentQuestion < qna.length - 1) {
-            setCurrentQuestion(currentQuestion + 1);
+    const handleContinue = () => {
+        if (currentQuestion < totalQuestions - 1) {
+            setCurrentQuestion((prev) => prev + 1);
             setIsAnswered(false);
             setSelectedOption(null);
-            setUserAnswer("");
         } else {
             setIsCompleted(true);
         }
+    };
 
-    }
-
-    const handleStartOver = (event) => {
+    const handleStartOver = () => {
         setCurrentQuestion(0);
         setSelectedOption(null);
         setIsAnswered(false);
         setIsCorrect(null);
         setIsCompleted(false);
         setScore(0);
-        setUserAnswer("");
-    }
+    };
 
     return (
-        <div className="d-flex flex-column justify-content-center align-items-center">
+        <div className="d-flex flex-column align-items-center justify-content-center trivia-container">
             <h2 className="trivia-event-name">{title}</h2>
             <div className="quiz-box">
-
                 {isCompleted ? (
                     <Form>
                         <div className="quiz-over-div">
                             <h4 className="quiz-question-h4">Quiz completed!</h4>
-                            <p>Final score: {score}/{qna.length}</p>
+                            <p>Final score: {score}/{totalQuestions}</p>
                         </div>
                         <button className="form-button" onClick={handleStartOver}>
                             Start Over
                         </button>
                     </Form>
-                ):(
-                    <div>
-                        <h4 className="quiz-question-h4">Question {currentQuestion+1}/{qna.length}: {qna[currentQuestion].name}</h4>
+                ) : (
+                    currentQ.name ? (
+                        <div>
+                            <h4 className="quiz-question-h4">
+                                Question {currentQuestion + 1}/{totalQuestions}: {currentQ.name}
+                            </h4>
 
-                        <Form onSubmit={handleSubmit}>
-                        <div className="form-inner-div">
-                            {qna[currentQuestion].type === "multiple-choice" ? (
-
-                                Object.values(qna[currentQuestion].options).map((option, i) => (
-                                    <Form.Check
-                                        key={`${currentQuestion}-${i}`}
-                                        type="radio"
-                                        id={`question-${currentQuestion}-option-${i}`}
-                                        label={option}
-                                        name={`question-${currentQuestion}`}
-                                        value={option}
-                                        onChange={handleOptionChange}
-                                        checked={selectedOption === option}
-                                        className="custom-radio-button"
-                                    />
-                                ))
-                            ) : (
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Type your answer..."
-                                    value={userAnswer}
-                                    onChange={handleShortAnswerChange}
-                                    className="short-answer-input"
-                                />
-                            )}
-                        </div>
-
-
-                            {isAnswered ? (
-                                <div style={{position:"relative"}}>
-                                    <div className={`answer-feedback ${isCorrect ? "correct" : "incorrect"}`}>
-                                            {isCorrect ? "Correct!" : "Incorrect"}
-                                    </div>
-                                    <button className={`form-button ${isCorrect ? "correct" : "incorrect"}`} onClick={handleContinue}>
-                                        Continue
-                                    </button>
+                            <Form onSubmit={handleSubmit}>
+                                <div className="form-inner-div">
+                                    {Array.isArray(currentQ.options) &&
+                                        currentQ.options.map((option, i) => (
+                                            <Form.Check
+                                                key={`${currentQuestion}-${i}`}
+                                                type="radio"
+                                                id={`question-${currentQuestion}-option-${i}`}
+                                                label={option}
+                                                name={`question-${currentQuestion}`}
+                                                value={option}
+                                                onChange={handleOptionChange}
+                                                checked={selectedOption === option}
+                                                className="custom-radio-button"
+                                            />
+                                        ))}
                                 </div>
-                            ):(
-                                <button 
-                                    className="form-button submit-button" 
-                                    disabled={qna[currentQuestion].type === "multiple-choice" ? !selectedOption : !userAnswer.trim()}
-                                >
-                                    Submit
-                                </button>
-                            )}
-                        </Form>
-                    </div>
+
+                                {isAnswered ? (
+                                    <div style={{ position: "relative" }}>
+                                        <div className={`answer-feedback ${isCorrect ? "correct" : "incorrect"}`}>
+                                            {isCorrect ? "Correct!" : "Incorrect"}
+                                        </div>
+                                        <button
+                                            className={`form-button ${isCorrect ? "correct" : "incorrect"}`}
+                                            onClick={handleContinue}
+                                        >
+                                            Continue
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <button className="form-button submit-button" disabled={!selectedOption}>
+                                        Submit
+                                    </button>
+                                )}
+                            </Form>
+                        </div>
+                    ) : (
+                        <p>Loading question...</p>
+                    )
                 )}
-
-
-
             </div>
         </div>
-    )
+    );
 }
 
-
 function Trivia () {
-
-    const [events, setEvents] = useState([]);
+    const [trivia, setTrivia] = useState([]);
+    const [showControls, setShowControls] = useState(window.innerWidth >= 992);
+    
+    useEffect(() => {
+        const handleResize = () => setShowControls(window.innerWidth >= 992);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
     
       useEffect(() => {
-        const fetchEvents = async () => {
-            const eventsCollectionRef = collection(db, "aot-ri-trivia");
-            const querySnapshot = await getDocs(eventsCollectionRef);
-        
-            const eventsList = querySnapshot.docs.map(doc => {
-                const data = doc.data();
-        
-                return {
-                    ...data,
-                    date: data.date.toDate()
-                };
-            });
-        
-            setEvents(eventsList);
-        };
-        fetchEvents();
-      }, []);
+          fetch("/data/trivia.json")  // Fetch from public/
+            .then((response) => response.json())
+            .then((json) => {
+              setTrivia(json.trivia);
+            })
+            .catch((error) => console.error("Error fetching JSON:", error));
+        }, []);
 
     return (
-        <div className="container text-center">
-            <hr/>
-            <h2 id="trivia" className="trivia-title">Trivia</h2>
-            <p className="trivia-description">
-                Each week, attendees test their astronomy knowledge in a fun trivia game.  
-                It's a chance to learn something new—and maybe even win a prize! Test your space 
-                knowledge by trying out our previous trivia quizzes below!
-            </p>
+        <div className="trivia-content">
+            <div className="container text-center">
+                <hr/>
+                <h2 id="trivia" className="trivia-title-h2">Trivia</h2>
+                <p className="trivia-description">
+                    Each week, attendees test their astronomy knowledge in a fun trivia game.  
+                    It's a chance to learn something new—and maybe even win a prize! Test your space 
+                    knowledge by trying out our previous trivia quizzes below!
+                </p>
 
-            <Carousel interval={null} controls={true} indicators={true} keyboard={false}>
-                {events
-                .filter(event => new Date(event.date) < new Date()) // Filter past events
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .map(event => {
-                        const { date,title, ...eventQuestions } = event;
-                        const questionsArray = Object.values(eventQuestions); // Convert object to array
+                <Carousel 
+                    interval={null} 
+                    controls={showControls} 
+                    indicators={true} 
+                    keyboard={false}
+                    touch={true}
+                >
+                    {trivia
+                    .filter(event => new Date(event.date) < new Date()) // Filter past events
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .map(event => {
+                            const { date,title, ...eventQuestions } = event;
+                            const questionsArray = Object.values(eventQuestions)[0]; // Convert object to array
 
-                        return (
-                            <Carousel.Item key={`trivia-${event.title}`}>
-                                <div style={{paddingBottom:"50px"}}>
-                                    <TriviaQuiz qna={questionsArray} title={event.title} />
-                                </div>
-                            </Carousel.Item>
-                        );
-                })}
-            </Carousel>
+                            return (
+                                <Carousel.Item key={`trivia-${event.title}`}>
+                                    <div style={{paddingBottom:"50px"}}>
+                                        <TriviaQuiz qna={questionsArray} title={event.title} />
+                                    </div>
+                                </Carousel.Item>
+                            );
+                    })}
+                </Carousel>
+            </div>
         </div>
     );
 }

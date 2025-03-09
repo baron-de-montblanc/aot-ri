@@ -10,7 +10,7 @@ import { format } from "date-fns";
 
 function NoNextEvent() {
     return (
-      <div className=" d-flex no-next-event">
+      <div className="d-flex no-next-event">
         <div className="container">
           <div className="row text-center">
             {/* Mobile layout */}
