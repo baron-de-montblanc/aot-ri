@@ -2,8 +2,7 @@ import React from "react";
 import '../assets/About.css';
 
 
-function Organizer () {
-
+function Organizer() {
     const organizers = [
         { id: 1, name: "Organizer 1", image: "/images/anon.jpg" },
         { id: 2, name: "Organizer 2", image: "/images/anon.jpg" },
@@ -14,45 +13,42 @@ function Organizer () {
     ];
 
     return (
+        <div className="container text-center">
+            <h2 className="mt-4 mb-4">Meet the Organizers</h2>
 
-        <div className="d-flex justify-content-center text-center align-items-center">
-            <div className="row organizer-div justify-content-center text-center align-items-center">
-
+            <div className="row justify-content-center">
                 {organizers.map((organizer) => (
-                    <div className="col-2" key={organizer.id}>
+                    <div className="col-6 col-sm-6 col-md-3 col-lg-2 mb-4" key={organizer.id}>
                         <img 
                             src={organizer.image}
-                            alt="organizer"
-                            className="organizer-photo"
-                        >
-                        </img>
-                        <p className="organizer-name">{organizer.name}</p>
+                            alt={organizer.name}
+                            className="organizer-photo img-fluid rounded-circle"
+                        />
+                        <h5 className="organizer-name mt-2">{organizer.name}</h5>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
                             labore et dolore magna aliqua.
                         </p>
                     </div>
                 ))}
-
-
             </div>
         </div>
+    );
+}
 
-
-    )
-};
 
 
 function About () {
     return (
-        <div className="container">
-            <hr/>
-            <h2 className="about-h2" id="about">About</h2>
-            <p className="text-center mb-4">
-                Astronomy on Tap Rhode Island is organized by a small team of 
-                graduate students at Brown University.  
-            </p>
-            <Organizer/>
+        <div className="about-content">
+            <div className="container">
+                <h2 className="about-h2" id="about">About</h2>
+                <p className="about-p">
+                    Astronomy on Tap Rhode Island is organized by a small team of 
+                    graduate students at Brown University.  
+                </p>
+                <Organizer/>
+            </div>
         </div>
     )
 }

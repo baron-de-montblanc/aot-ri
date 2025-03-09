@@ -5,9 +5,10 @@ import "../assets/Faq.css";
 
 function Faq () {
     return (
-        <div className="container">
-            <hr/>
-            <h2 id="faq">FAQ</h2>
+        <div className="faq-content">
+            <div className="container">
+                <h2 id="faq" className="faq-h2">FAQ</h2>
+            </div>
         </div>
     );
 };

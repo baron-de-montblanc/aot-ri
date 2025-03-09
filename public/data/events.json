@@ -1,0 +1,105 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "address": {
+                "line1": "432 W Fountain St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2024-10-28T19:00:00-04:00",
+            "department": {
+                "dep1": "Department of Earth, Environmental & Planetary Sciences",
+                "dep2": "Department of Physics"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4600204435114!2d-71.42650072365474!3d41.818391471248425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445bb817e2809%3A0x8805fa7edd21a7eb!2sMoniker%20Brewery!5e0!3m2!1sen!2sca!4v1739062423141!5m2!1sen!2sca",
+            "institution": {
+                "ins1": "Brown University",
+                "ins2": "Brown University"
+            },
+            "location": "Moniker Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/rajsic.jpg",
+                "photo2": "/images/speakers/pober.jpeg"
+            },
+            "speaker": {
+                "speaker1": "Andrea Rajšić",
+                "speaker2": "Jonathan Pober"
+            },
+            "speakerTitle": {
+                "title1": "Dr.",
+                "title2": "Prof."
+            },
+            "talkTitle": {
+                "title1": "Marsquakes: What did we learn?",
+                "title2": "Exploring Our Universe from the Far Side of the Moon"
+            },
+            "title": "Aot Rhode Island #1"
+        },
+    
+        {
+            "id": 2,
+            "address": {
+                "line1": "432 W Fountain St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2024-12-11T19:00:00-05:00",
+            "department": {
+                "dep1": "Department of Earth, Environmental & Planetary Sciences"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4600204435114!2d-71.42650072365474!3d41.818391471248425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445bb817e2809%3A0x8805fa7edd21a7eb!2sMoniker%20Brewery!5e0!3m2!1sen!2sca!4v1739062423141!5m2!1sen!2sca",
+            "institution": {
+                "ins1": "Brown University"
+            },
+            "location": "Moniker Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/rehm.png"
+            },
+            "speaker": {
+                "speaker1": "Tim Rehm"
+            },
+            "speakerTitle": {
+                "title1": ""
+            },
+            "talkTitle": {
+                "title1": "Observing Exoplanet Atmospheres with a Balloon-Borne Telescope"
+            },
+            "title": "Aot Rhode Island #2"
+        },
+    
+        {
+            "id": 3,
+            "address": {
+                "line1": "271 Tockwotton St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2025-02-18T18:30:00-05:00",
+            "department": {
+                "dep1": "Department of Earth, Environmental & Planetary Sciences",
+                "dep2": "Department of Physics"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4542722837077!2d-71.39299742315036!3d41.818515271248394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4436a524a4711%3A0x9eb07a381109d4d2!2sNarragansett%20Brewery!5e0!3m2!1sen!2sus!4v1739309699669!5m2!1sen!2sus",
+            "institution": {
+                "ins1": "Brown University",
+                "ins2": "Brown University"
+            },
+            "location": "Narragansett Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/jindal.jpeg",
+                "photo2": "/images/speakers/gilmer.png"
+            },
+            "speaker": {
+                "speaker1": "Abhinav Jindal",
+                "speaker2": "Humberto Gilmer"
+            },
+            "speakerTitle": {
+                "title1": "Dr.",
+                "title2": "Dr."
+            },
+            "talkTitle": {
+                "title1": "Comets: From Fiery Omens to Icy Worlds",
+                "title2": "Can a black hole be used as a battery?"
+            },
+            "title": "Aot Rhode Island #3"
+        }
+    ] 
+}

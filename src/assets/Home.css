@@ -23,6 +23,21 @@
     margin: 6vh 0px;
 }
 
+.intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+
+.intro-p {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 2vh;
+    font-size: 1.4em;
+}
+
 @media (max-width: 768px) { /* Applies to md screens and smaller */
     .home-title h1 {
         font-size: 2.5em; /* Slightly smaller */
@@ -38,20 +53,9 @@
         width: 100%;
         margin: 2.5em 0;
     }
+
+    .intro-p {
+        font-size: 1.2em;
+        margin-bottom: 2em;
+    }
 }
-
-.intro-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90vh;
-}
-
-
-.intro-text p {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 2vh;
-    font-size: 1.4em;
-}
-

@@ -1,0 +1,76 @@
+{
+    "trivia": [
+        {
+            "title": "AoT Rhode Island #1 Trivia",
+            "date": "2024-10-28T19:00:00-04:00",
+            "questions": [
+                {
+                    "answer": "90",
+                    "name": "Approximately what is the distance between the Earth and the Sun (in millions of miles)?",
+                    "options": [
+                        "9",
+                        "90",
+                        "900",
+                        "9000"
+                    ]
+                },
+                {
+                    "answer": "Saturn, Jupiter, Uranus, and Neptune",
+                    "name": "Which planets have rings around them?",
+                    "options": [
+                        "Saturn only",
+                        "Saturn, Jupiter, and Uranus",
+                        "Saturn and Jupiter",
+                        "Saturn, Jupiter, Uranus, and Neptune"
+                    ]
+                },
+                {
+                    "answer": "Radio",
+                    "name": "21 cm light, also known as a 1.42 Gigahertz frequency corresponds to what type of signal?",
+                    "options": [
+                        "Microwave",
+                        "Visible",
+                        "Radio",
+                        "X-Ray"
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "AoT Rhode Island #2 Trivia",
+            "date": "2024-12-11T19:00:00-05:00",
+            "questions": [
+                {
+                    "answer": "Moon",
+                    "name": "What is the name of this object within the Solar System?",
+                    "options": [
+                        "Moon",
+                        "Sun",
+                        "Earth",
+                        "Does Not Exist"
+                    ]
+                },
+                {
+                    "answer": "Mercury and Venus",
+                    "name": "Which planets do not have any (natural) satellites?",
+                    "options": [
+                        "Earth",
+                        "Mars and Jupiter",
+                        "Mercury and Venus",
+                        "Mercury only"
+                    ]
+                },
+                {
+                    "answer": "Vostok 1, Yuri Gagarin",
+                    "name": "What was the name of the first human spaceflight mission, and who was the cosmonaut aboard?",
+                    "options": [
+                        "Soyuz 1, Yuri Gagarin",
+                        "Vostok 1, Yuri Gagarin",
+                        "Apollo 11, Neil Armstrong",
+                        "Mercury-Redstone 3, Alan Shepard"
+                    ]
+                }
+            ]
+        }
+    ]
+}
