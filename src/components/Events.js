@@ -289,6 +289,8 @@ const PrevEvent = ({ event }) => {
 const EventsList = () => {
 
   const [events, setEvents] = useState([]);
+  const [showControls, setShowControls] = useState(window.innerWidth >= 992);
+
 
   useEffect(() => {
     fetch("/data/events.json")  // Fetch from public/
@@ -297,6 +299,12 @@ const EventsList = () => {
         setEvents(json.events);
       })
       .catch((error) => console.error("Error fetching JSON:", error));
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setShowControls(window.innerWidth >= 992);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -315,11 +323,10 @@ const EventsList = () => {
 
             <div className="container past-event-top">
               <h2 className="past-events-floating text-start">Past Events</h2>
-
               
               <Carousel 
                 interval={null}
-                controls={false}
+                controls={showControls}
                 touch={true}
               >
                   {events

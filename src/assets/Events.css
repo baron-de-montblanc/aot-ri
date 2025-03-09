@@ -101,11 +101,6 @@
     margin-top: 8vh;
 }
 
-@keyframes border-pulse {
-    0% { border-color: var(--text-color); }
-    50% { border-color: var(--highlight); }
-    100% { border-color: var(--text-color); }
-}
 
 .upcoming-event-h2 {
     font-weight: bold;
@@ -117,7 +112,6 @@
     color:var(--highlight);
 }
 
-
 .no-next-event {
     background-color: var(--bg-color-med);
     min-height: 100vh;
@@ -125,7 +119,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
 .no-next-event h2 {
     margin-bottom: 10vh;
@@ -144,10 +137,22 @@
     color: var(--bg-color-dark);
 }
 
-
 .rocket-image {
     width: 75%;
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    margin: -20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 2.5rem; 
+    height: 2.5rem;
+}
+
 
 
 @media (max-width: 768px) {
