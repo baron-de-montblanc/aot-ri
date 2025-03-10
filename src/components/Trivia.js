@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import "../assets/Trivia.css";
 import { Form } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExpand } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -12,6 +14,7 @@ function TriviaQuiz({ qna = [], title }) {
     const [isCorrect, setIsCorrect] = useState(null);
     const [isCompleted, setIsCompleted] = useState(false);
     const [score, setScore] = useState(0);
+    const quizContainerRef = useRef(null);
 
     // Ensure questions exist before accessing them
     const totalQuestions = qna.length;
@@ -50,10 +53,27 @@ function TriviaQuiz({ qna = [], title }) {
         setScore(0);
     };
 
+    const handleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            quizContainerRef.current.requestFullscreen().catch((err) => {
+                console.error("Error attempting to enable fullscreen mode:", err);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center trivia-container">
+        <div 
+            ref={quizContainerRef} 
+            className="d-flex flex-column align-items-center justify-content-center trivia-container"
+        >
             <h2 className="trivia-event-name">{title}</h2>
+
             <div className="quiz-box">
+                <button className="fullscreen-btn" onClick={handleFullscreen}>
+                    <FontAwesomeIcon icon={faExpand} size="xl"/>
+                </button>
                 {isCompleted ? (
                     <Form>
                         <div className="quiz-over-div">
@@ -74,39 +94,53 @@ function TriviaQuiz({ qna = [], title }) {
                             <Form onSubmit={handleSubmit}>
                                 <div className="form-inner-div">
                                     {Array.isArray(currentQ.options) &&
-                                        currentQ.options.map((option, i) => (
-                                            <Form.Check
-                                                key={`${currentQuestion}-${i}`}
-                                                type="radio"
-                                                id={`question-${currentQuestion}-option-${i}`}
-                                                label={option}
-                                                name={`question-${currentQuestion}`}
-                                                value={option}
-                                                onChange={handleOptionChange}
-                                                checked={selectedOption === option}
-                                                className="custom-radio-button"
-                                            />
-                                        ))}
+                                        currentQ.options.map((option, i) => {
+                                            // Determine the correct/incorrect styling
+                                            let optionClass = "custom-radio-button";
+                                            
+                                            if (isAnswered) {
+                                                if (option === currentQ.answer) {
+                                                    optionClass += " correct-answer"; // Green for correct
+                                                } else if (option === selectedOption) {
+                                                    optionClass += " incorrect-answer"; // Red for incorrect selection
+                                                }
+                                            }
+
+                                            return (
+                                                <Form.Check
+                                                    key={`${currentQuestion}-${i}`}
+                                                    type="radio"
+                                                    id={`question-${currentQuestion}-option-${i}`}
+                                                    label={option}
+                                                    name={`question-${currentQuestion}`}
+                                                    value={option}
+                                                    onChange={handleOptionChange}
+                                                    checked={selectedOption === option}
+                                                    className={optionClass}
+                                                />
+                                            );
+                                        })}
                                 </div>
 
                                 {isAnswered ? (
-                                    <div style={{ position: "relative" }}>
-                                        <div className={`answer-feedback ${isCorrect ? "correct" : "incorrect"}`}>
-                                            {isCorrect ? "Correct!" : "Incorrect"}
-                                        </div>
+                                    <div>
                                         <button
                                             className={`form-button ${isCorrect ? "correct" : "incorrect"}`}
                                             onClick={handleContinue}
                                         >
                                             Continue
                                         </button>
+                                        <div className={`answer-feedback ${isCorrect ? "correct" : "incorrect"}`}>
+                                            {isCorrect ? "Correct!" : "Incorrect"}
+                                        </div>
                                     </div>
                                 ) : (
                                     <button className="form-button submit-button" disabled={!selectedOption}>
-                                        Submit
+                                        Validate
                                     </button>
                                 )}
                             </Form>
+
                         </div>
                     ) : (
                         <p>Loading question...</p>

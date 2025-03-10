@@ -17,7 +17,7 @@ function Gallery () {
     const images = importAll(require.context("../assets/gallery", false, /\.(png|jpe?g|svg)$/));
 
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+        <div className="gallery-content">
             <div className="container row text-center">
                 <h2 className="mt-4 gallery-title-h2" id="gallery">Gallery</h2>
 

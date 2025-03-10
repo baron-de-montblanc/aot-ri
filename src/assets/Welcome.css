@@ -55,7 +55,7 @@
 }
 
 .arrow-div {
-    margin-top: 8em;
+    margin-top: 24vh;
 }
 
 .arrow-href {
@@ -85,4 +85,13 @@
     100% {
         transform: rotate(0deg);
     }
+}
+
+
+@media (max-width: 768px) {
+
+    .arrow-div {
+        margin-top: 10vh;
+    }
+
 }
