@@ -11,22 +11,44 @@
 }
 
 .quiz-box {
-    background-color: var(--light-violet);
-    color: var(--bg-color);
+    position: relative;
+    background-image: url('./trivia_bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--text-color);
     border-radius: 10px;
     width: 75%;
-    display: flex;
-    flex-direction: column;
+}
+
+.trivia-container:fullscreen .quiz-box {
+    width: 80%;
+    height: 80%;
 }
 
 .form-inner-div {
     width: 85%;
     margin: 0px auto;
-    height: 200px;
+    height: 250px;
 }
 
 .quiz-over-div {
-    height: 200px;
+    height: 250px;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: var(--text-color);
+    background-color: transparent;
+    border: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+.fullscreen-btn:hover {
+    color: white;
+    transform: scale(1.1);
 }
 
 .trivia-title-h2 {
@@ -47,9 +69,9 @@
 
 .quiz-question-h4 {
     font-weight: bold;
-    margin: 20px 0px;
+    padding: 40px 20px;
+    text-shadow: 1px 1px 4px rgba(240, 239, 246, 0.3);
 }
-
 
 .custom-radio-button {
     display: flex;
@@ -83,33 +105,39 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    border: 2px solid var(--bg-color-light); /* Bootstrap primary blue */
-    background-color: var(--light-violet);
-    transition: all 0.3s ease;
+    background-color: var(--text-color);
+    transition: all 0.1s ease;
 }
 
-/* The checked state */
 .custom-radio-button input[type="radio"]:checked + .form-check-label::before {
     background-color: var(--highlight);
-    border-color: var(--highlight);
 }
 
-/* Hover effect */
 .custom-radio-button:hover .form-check-label::before {
-    border-color: var(--bg-color);
+    background-color: white;
 }
+
+.correct-answer .form-check-label::before {
+    background-color: green !important;
+}
+
+.incorrect-answer .form-check-label::before {
+    background-color: red !important;
+}
+
 
 
 .form-button {
     margin-bottom: 20px;
     padding: 6px 10px;
     border-radius: 10px;
-    background-color: var(--light-violet);
+    background-color: var(--text-color);
     color: var(--bg-color);
-    border: 1px solid var(--bg-color);
+    font-weight: bold;
+    border: 2px solid var(--bg-color);
 }
 
 .form-button:hover, 
@@ -117,7 +145,7 @@
 .form-button:focus {
     background-color: var(--bg-color);
     color: var(--light-violet);
-    border: 1px solid var(--light-violet);
+    border: 2px solid var(--light-violet);
 }
 
 .form-button:disabled {
@@ -138,15 +166,18 @@
 
 
 .answer-feedback {
-    position: absolute;
-    left:50%;
-    transform: translateX(84px);
-    bottom:24px;
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-top: -10px;
+    margin-bottom: 20px;
     text-align: center;
+    font-weight: bold;
+    padding: 5px 10px;
 }
 
 .answer-feedback.correct {
-    color:green;
+    color: green;
 }
 
 .answer-feedback.incorrect {

@@ -33,6 +33,76 @@
                         "Radio",
                         "X-Ray"
                     ]
+                },
+                {
+                    "answer": "Sagittarius A*",
+                    "name": "What is the name of the Black Hole at the center of our Galaxy the Milky Way?",
+                    "options": [
+                        "Cygnus X-1",
+                        "Messier 87*" ,
+                        "Ton 618",
+                        "Sagittarius A*"
+                    ]
+                },
+                {
+                    "answer": "88",
+                    "name": "How many constellations are there?",
+                    "options": [
+                        "8",
+                        "88",
+                        "880",
+                        "8800"
+                    ]
+                },
+                {
+                    "answer": "Uranus",
+                    "name": "Out of all the planets in the Solar System only one spins on its side, which planet is it?",
+                    "options": [
+                        "Uranus",
+                        "Neptune",
+                        "Saturn",
+                        "Trick question, none!"
+                    ]
+                },
+                {
+                    "answer": "Proxima Centauri",
+                    "name": "What is the name of the closest start that is not our Sun?",
+                    "options": [
+                        "Sirius",
+                        "Alpha Centauri A",
+                        "Barnard's Star",
+                        "Proxima Centauri"
+                    ]
+                },
+                {
+                    "answer": "Sputnik",
+                    "name": "What is the name of the first satellite launched into space?",
+                    "options": [
+                        "Luna 2",
+                        "Vostok 1",
+                        "Sputnik",
+                        "Kosmos 1"
+                    ]
+                },
+                {
+                    "answer": "Michael Collins",
+                    "name": "What is the name of the pilot of the Apollo 11 Command Module?",
+                    "options": [
+                        "Michael Collins",
+                        "Buzz Aldrin",
+                        "Neil Armstrong",
+                        "Jim Lovell"
+                    ]
+                },
+                {
+                    "answer": "Red Supergiant",
+                    "name": "What type of star is Betelgeuse in the Orion Constellation?",
+                    "options": [
+                        "White Dwarf",
+                        "Red Supergiant",
+                        "Blue Giant",
+                        "Neutron Star"
+                    ]
                 }
             ]
         },
@@ -68,6 +138,262 @@
                         "Vostok 1, Yuri Gagarin",
                         "Apollo 11, Neil Armstrong",
                         "Mercury-Redstone 3, Alan Shepard"
+                    ]
+                },
+                {
+                    "answer": "James Webb Space Telescope",
+                    "name": "What is the name of this telescope?",
+                    "options": [
+                        "Hubble Space Telescope",
+                        "Chandra X-ray Observatory",
+                        "Spitzer Space Telescope",
+                        "James Webb Space Telescope"
+                    ]
+                },
+                {
+                    "answer": "Polaris, Ursa Minor",
+                    "name": "What is the name of the North Star, and which constellation contains it?",
+                    "options": [
+                        "Sirius, Canis Major",
+                        "Polaris, Ursa Minor",
+                        "Polaris, Ursa Major",
+                        "Vega, Lyra"
+                    ]
+                },
+                {
+                    "answer": "Object: Planetary Nebula; Name: Ring Nebula",
+                    "name": "What type of object is this? What is its name?",
+                    "options": [
+                        "Object: Supernova Remnant; Name: Crab Nebula",
+                        "Object: Planetary Nebula; Name: Ring Nebula",
+                        "Object: Spiral Galaxy; Name: Andromeda Galaxy",
+                        "Object: Planetary Nebula; Name: Helix Nebula"
+                    ]
+                },
+                {
+                    "answer": "Ophiuchus",
+                    "name": "What is the 13th zodiac constellation located between Scorpius and Sagittarius?",
+                    "options": [
+                        "Orion",
+                        "Cetus",
+                        "Serpens",
+                        "Ophiuchus"
+                    ]
+                },
+                {
+                    "answer": "White Dwarf",
+                    "name": "After burning all its fuel, the Sun will collapse and become what type of star?",
+                    "options": [
+                        "White Dwarf",
+                        "Neutron Star",
+                        "Black Hole",
+                        "Red Dwarf"
+                    ]
+                },
+                {
+                    "answer": "Edwin Hubble",
+                    "name": "Who discovered the redshift of distant galaxies, providing evidence for the expansion of the universe?",
+                    "options": [
+                        "Albert Einstein",
+                        "Georges Lemaître",
+                        "Edwin Hubble",
+                        "Henrietta Leavitt"
+                    ]
+                },
+                {
+                    "answer": "January 2, 2024, 19:38 UTC",
+                    "name": "When was the Earth closest to the Sun in 2024?",
+                    "options": [
+                        "January 2, 2024, 19:38 UTC",
+                        "March 19, 2024, 22:06 UTC",
+                        "June 20, 2024, 15:51 UTC",
+                        "September 22, 2024, 07:44 UTC"
+                    ]
+                },
+                {
+                    "answer": "A planet that orbits a star outside the Solar System",
+                    "name": "What is an exoplanet?",
+                    "options": [
+                        "A planet that orbits the Sun and has not been detected",
+                        "An asteroid that has been ejected from the Solar System",
+                        "A large body that orbits Jupiter or Saturn",
+                        "A planet that orbits a star outside the Solar System"
+                    ]
+                },
+                {
+                    "answer": "6000",
+                    "name": "Approximately how many confirmed exoplanets have we found?",
+                    "options": [
+                        "60",
+                        "600",
+                        "6000",
+                        "6000000"
+                    ]
+                },
+                {
+                    "answer": "1-10 days",
+                    "name": "About how long is a year on a hot Jupiter?",
+                    "options": [
+                        "1-10 hours",
+                        "1-10 days",
+                        "10-100 days",
+                        "1-10 Earth years"
+                    ]
+                },
+                {
+                    "answer": "A curve that describes the change in brightness  of an exoplanet-star system  as the exoplanet orbits its host star",
+                    "name": "What is an exoplanet phase curve?",
+                    "options": [
+                        "A curve that describes the change in brightness of an exoplanet-star system  as the exoplanet orbits its host star",
+                        "A curve that describes when an exoplanet's atmosphere changes from gas to liquid",
+                        "A curve that describes the gradual change in the shape of an exoplanet’s orbit",
+                        "A curve that describes the ionization and recombination rates  of dark matter inside the upper layer of an exoplanet’s atmosphere"
+                    ]
+                },
+                {
+                    "answer": "24 miles",
+                    "name": "About how high in the atmosphere can a scientific weather balloon fly?",
+                    "options": [
+                        "2 miles",
+                        "7 miles",
+                        "24 miles",
+                        "110 miles"
+                    ]
+                },
+                {
+                   "answer": "1-5 microns",
+                   "name": "Which wavelengths of light would be considered near-infrared?  (For reference, visible light is 0.4—0.7 microns and 1 micron = 10^-6 meters)",
+                   "options": [
+                    "1-5 microns",
+                    "5-100 microns",
+                    "100-200 microns",
+                    "Anything less than 0.4 microns"
+                   ] 
+                }
+            ]
+        },
+        {
+            "title":"AoT Rhode Island #3 Trivia",
+            "date": "2025-02-18T18:30:00-05:00",
+            "questions": [
+                {
+                    "answer": "Venus",
+                    "name": "What is the third brightest celestial object in our sky?",
+                    "options": [
+                        "Sun",
+                        "Moon",
+                        "Jupiter",
+                        "Venus",
+                        "Mars"
+                    ]
+                },
+                {
+                    "answer": "M87 (Supergiant Elliptical Galaxy)",
+                    "name": "Which astronomical object is the first black hole photographed in 2019 located in?",
+                    "options": [
+                        "M1 (Crab Nebula)",
+                        "M31 (Andromeda Galaxy)",
+                        "M87 (Supergiant Elliptical Galaxy)",
+                        "M33 (Triangulum Galaxy)",
+                        "M45 (Pleiades)"
+                    ]
+                },
+                {
+                    "answer": "Errai (Gamma Cephei)",
+                    "name": "What is the name of the next North Star around 4,000 CE?",
+                    "options": [
+                        "Polaris (Alpha Ursae Minor)",
+                        "Vega (Alpha Lyrae)",
+                        "Sirius A (Alpha Canis Majoris)",
+                        "Betelgeuse (Alpha Orionis)",
+                        "Errai (Gamma Cephei)"
+                    ]
+                },
+                {
+                    "answer": "Quasars",
+                    "name": "What are the supermassive black holes that shoot powerful jets of particles out from their poles called?",
+                    "options": [
+                        "Quasars",
+                        "Magnetars",
+                        "White Holes",
+                        "X-Ray Binaries",
+                        "Pulsars"
+                    ]
+                },
+                {
+                    "answer": "Crab Nebula (M1)",
+                    "name": "What is the name of this nebula?",
+                    "options": [
+                        "Crab Nebula (M1)",
+                        "Eagle Nebula (M16)",
+                        "Orion Nebula (M42)",
+                        "Dumbbell Nebula (M27)",
+                        "Ring Nebula (M57)"
+                    ]
+                },
+                {
+                    "answer": "Spiral",
+                    "name": "What is the most common type of galaxy in the universe?",
+                    "options": [
+                        "Spiral",
+                        "Elliptical",
+                        "Lenticular",
+                        "Irregular",
+                        "Dwarf"
+                    ]
+                },
+                {
+                    "answer": "2037",
+                    "name": "The last time there was no Full Moon in February was 2018. When will be the next?",
+                    "options": [
+                        "2025",
+                        "2033",
+                        "2037",
+                        "2043",
+                        "2045"
+                    ]
+                },
+                {
+                    "answer": "Neptune",
+                    "name": "Which planet was predicted first using Newton's law of universal gravitation?",
+                    "options": [
+                        "Neptune",
+                        "Uranus",
+                        "Mercury",
+                        "Pluto",
+                        "Saturn"
+                    ]
+                },
+                {
+                    "answer": "Mercury",
+                    "name": "Which planet's orbit was unable to be correctly calculated until after Einstein published general relativity?",
+                    "options": [
+                        "Uranus",
+                        "Saturn",
+                        "Pluto",
+                        "Neptune",
+                        "Mercury"
+                    ]
+                },
+                {
+                    "answer": "Eris",
+                    "name": "Discovered in 2005, which dwarf planet in our solar system is about the size of Pluto, has a day about as long as the Earth's (just over 25 hours), and one small moon?",
+                    "options": [
+                        "Europa",
+                        "Pluto",
+                        "Ceres",
+                        "Titan",
+                        "Eris"
+                    ]
+                },
+                {
+                    "answer": "3:29:15 PM EDT",
+                    "name": "What time did Providence experience a 90.9% eclipse in April of 2024?",
+                    "options": [
+                        "2:15:18 PM EDT",
+                        "3:29:15 PM EDT",
+                        "4:38:00 PM EDT",
+                        "5:00:00 PM EDT"
                     ]
                 }
             ]
