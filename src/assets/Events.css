@@ -1,4 +1,4 @@
-.past-event-top {
+.event-top {
     position: relative;
 }
 
@@ -12,6 +12,37 @@
     position: absolute;
     top: 6vh;
     left: 1em;
+}
+
+.next-event-floating {
+    font-size: 3em;
+    position: absolute;
+    top: 6vh;
+    right: 1em;
+    color: var(--bg-color);
+    background-color: var(--highlight);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 80vw;
+    z-index: 1000;
+    display: inline-block;
+    position: absolute;
+}
+
+.floating-map-div {
+    text-align: center;
+    color: var(--bg-color);
+    position: absolute;
+    top: 6vh;
+    left: 1em;
+    width: 25%;
+}
+
+.floating-next-event-map {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
 }
 
 .speaker-name {
@@ -126,7 +157,8 @@
 /********* No next event CSS handling *********/
 
 
-.no-next-event {
+.no-next-event,
+.next-event {
     background-color: var(--bg-color-med);
     min-height: 100vh;
     color: var(--bg-color-dark);

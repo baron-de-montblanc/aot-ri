@@ -65,107 +65,123 @@ function NoNextEvent() {
     );
   }
 
+const NextEvent = ({ event }) => {
+  const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
+  const { speaker, speakerTitle, institution, department, talkTitle, photoPath } = event;
 
-
-const NextEvent = ( {event} ) => {
+  const MobileSpeaker = ({ speakerIndex, position }) => {
+    const isLeft = position === "left";
+  
     return (
-        <div className="event-div" style={{position:'relative'}}>
-
-            <div>
-                <h2 className="upcoming-event-h2">UPCOMING EVENT!</h2>
-            </div>
-
-            <div className="row">
-                <div className="col-12">
-                    <h1 className="event-title">{event.title}</h1>
-                    <h3 className="event-date">
-                        {new Date(event.date).toLocaleString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: true, // Set to false for 24-hour format
-                        })}
-                    </h3>
-                </div>
-            </div>
-
-            <div className="row">
-
-                {/* Map section */}
-                <div className={`col-${event.speaker.speaker2 ? "2" : "6"}`}>
-                    <iframe 
-                        src={event.iframesrc}
-                        title={event.location}
-                        allowFullScreen="" 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className="location-map"
-                    >
-                    </iframe>
-                    <div>
-                        <h2 className="location-name">{event.location}</h2>
-                        <p className="location-address">{event.address.line1}</p>
-                        <p className="location-address">{event.address.line2}</p>
-                    </div>
-                </div>
-
-                {/* First speaker section */}
-                <div className={`col-${event.speaker.speaker2 ? "5" : "6"}` } style={{paddingRight: "10px"}}>
-                    <div className="speaker-div">
-                        <div className="row">
-                            <div className="col-12">
-                                <h1 className="speaker-name">{event.speakerTitle.title1} {event.speaker.speaker1}</h1>
-                                <p className="speaker-department">{event.department.dep1}, {event.institution.ins1}</p>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center align-items-center">
-                            <div className="col-6">
-                                <img
-                                    src={event.photoPath.photo1}
-                                    alt={event.speaker.speaker1}
-                                    className="speaker-photo"
-                                />
-                            </div>
-                            <div className="col-6">
-                                <h2 className="talk-title talk-title-left">{event.talkTitle.title1}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Second speaker section (if exists) */}
-                {event.speaker.speaker2 && (
-                    <div className="col-5" style={{paddingRight: "10px"}}>
-                        <div className="speaker-div">
-                            <div className="row">
-                                <div className="col-12">
-                                    <h1 className="speaker-name">{event.speakerTitle.title2} {event.speaker.speaker2}</h1>
-                                    <p className="speaker-department">{event.department.dep2}, {event.institution.ins2}</p>
-                                </div>
-                            </div>
-                            <div className="row justify-content-center align-items-center">
-                                <div className="col-6">
-                                    <h2 className="talk-title talk-title-right">{event.talkTitle.title2}</h2>
-                                </div>
-                                <div className="col-6">
-                                    <img
-                                        src={event.photoPath.photo2}
-                                        alt={event.speaker.speaker2}
-                                        className="speaker-photo"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
+        <div className="row text-center align-items-center">
+          <div className={`col-${isLeft ? "5" : "7"} d-flex flex-column align-items-center`}>
+            {isLeft && (
+              <img
+                src={photoPath[`photo${speakerIndex}`]}
+                alt={speaker[`speaker${speakerIndex}`]}
+                className="speaker-photo"
+              />
+            )}
+            {!isLeft && (
+              <div className="speaker-name-div right">
+                <h2 className="speaker-name">
+                  {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
+                </h2>
+                <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+              </div>
+            )}
+          </div>
+          <div className={`col-${isLeft ? "7" : "5"} d-flex flex-column align-items-center`}>
+            {isLeft ? (
+              <div className="speaker-name-div left">
+                <h2 className="speaker-name">
+                  {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
+                </h2>
+                <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+              </div>
+            ) : (
+              <img
+                src={photoPath[`photo${speakerIndex}`]}
+                alt={speaker[`speaker${speakerIndex}`]}
+                className="speaker-photo"
+              />
+            )}
+          </div>
+          <div className="col-12 text-center">
+            <h3 className="talk-title">{talkTitle[`title${speakerIndex}`]}</h3>
+          </div>
         </div>
-    )
+    );
+  };
+  
+
+  const MobileLayout = () => (
+    <div className="d-flex flex-column d-md-none align-items-center justify-content-center next-event">
+      <div className="row">
+        <div className="col-12 text-center">
+          <h2 className="event-title">{event.title}</h2>
+          <h3 className="event-date">{formattedDate}</h3>
+        </div>
+      </div>
+      <MobileSpeaker speakerIndex={1} position="left" />
+      {speaker.speaker2 && <MobileSpeaker speakerIndex={2} position="right"/>}
+    </div>
+  );
+  
+
+  const DesktopLayout = () => (
+    <div className="d-none d-md-flex align-items-center justify-content-center next-event">
+      <div className="container">
+        <div className="row text-center">
+          <div className="col-12">
+            <h2 className="event-title">{event.title}</h2>
+            <h3 className="event-date">{formattedDate}</h3>
+          </div>
+        </div>
+        {!speaker.speaker2 ? (
+          <div className="row align-items-center single-speaker-div">
+            <div className="col-5">
+              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
+            </div>
+            <div className="col-7 text-center">
+              <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
+              <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
+              <h3 className="talk-title">{talkTitle.title1}</h3>
+            </div>
+          </div>
+        ) : (
+          <div className="row align-items-center">
+            <div className="col-4 text-center">
+              <h3 className="talk-title top">{talkTitle.title1}</h3>
+              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
+            </div>
+            <div className="col-4">
+              <div className="speaker-name-div top text-end">
+                <h2 className="speaker-name">{speakerTitle.title2} {speaker.speaker2}</h2>
+                <p className="speaker-department">{department.dep2}, {institution.ins2}</p>
+              </div>
+              <div className="speaker-name-div bottom text-start">
+                <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
+                <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
+              </div>
+            </div>
+            <div className="col-4 text-center">
+              <img src={photoPath.photo2} alt={speaker.speaker2} className="speaker-photo" />
+              <h3 className="talk-title bottom">{talkTitle.title2}</h3>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      <MobileLayout />
+      <DesktopLayout />
+    </>
+  );
 };
-
-
 
 const PrevEvent = ({ event }) => {
   const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
@@ -314,14 +330,24 @@ const EventsList = () => {
         {events.filter(event => new Date(event.date) > new Date()).length > 0 ? (
             events
                 .filter(event => new Date(event.date) > new Date()) // Filter future events
-                .map(event => <NextEvent key={event.id} event={event} />)
+                .map(event => 
+                <div className="event-top">
+                  <h2 className="next-event-floating">Upcoming Event!</h2>
+                  <div className="floating-map-div">
+                    <iframe src={event.iframesrc} className="floating-next-event-map"></iframe>
+                    <h3> 
+                      {event.location}
+                    </h3>
+                  </div>
+                  <NextEvent key={event.id} event={event} />
+                </div>
+                )
         ) : (
             <NoNextEvent />
         )}
 
         <div>
-
-            <div className="container past-event-top">
+            <div className="container event-top">
               <h2 className="past-events-floating text-start">Past Events</h2>
               
               <Carousel 

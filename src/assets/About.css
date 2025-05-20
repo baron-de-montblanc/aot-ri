@@ -13,6 +13,11 @@
     border-radius: 20px;
 }
 
+.organizer-intro {
+    font-style: italic;
+    font-weight: normal;
+}
+
 .about-h2 {
     font-size: 3em;
     padding-top: 6vh;
