@@ -4,12 +4,31 @@ import '../assets/About.css';
 
 function Organizer() {
     const organizers = [
-        { id: 1, name: "Organizer 1", image: "/images/anon.jpg" },
-        { id: 2, name: "Organizer 2", image: "/images/anon.jpg" },
-        { id: 3, name: "Organizer 3", image: "/images/anon.jpg" },
-        { id: 4, name: "Organizer 4", image: "/images/anon.jpg" },
-        { id: 5, name: "Organizer 5", image: "/images/anon.jpg" },
-        { id: 6, name: "Organizer 6", image: "/images/anon.jpg" }
+        { id: 1, 
+            name: "Jade Ducharme", 
+            image: "/images/anon.jpg",
+            intro: "PhD Candidate, Brown Physics Department"
+        },
+        { id: 2, 
+            name: "Kanchita (Khing) Klangboonkrong", 
+            image: "/images/anon.jpg",
+            intro: "PhD Candidate, Brown Physics Department"
+        },
+        { id: 3, 
+            name: "Janette (Janie) Levin", 
+            image: "/images/anon.jpg",
+            intro: "PhD Candidate, Brown Department of Earth, Environmental & Planetary Sciences"
+        },
+        { id: 4, 
+            name: "Alexis Ortega", 
+            image: "/images/anon.jpg",
+            intro: "PhD Candidate, Brown Physics Department"
+        },
+        { id: 5, 
+            name: "Panupong (Pitt) Phoompuang", 
+            image: "/images/anon.jpg",
+            intro: "Masters Student, Brown Physics Department"
+        },
     ];
 
     return (
@@ -25,9 +44,11 @@ function Organizer() {
                             className="organizer-photo img-fluid rounded-circle"
                         />
                         <h5 className="organizer-name mt-2">{organizer.name}</h5>
+                        <h6 className="organizer-intro">
+                            {organizer.intro}
+                        </h6>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                            labore et dolore magna aliqua.
+                            Add your personal message?
                         </p>
                     </div>
                 ))}
