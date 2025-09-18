@@ -28,7 +28,7 @@ function Faq () {
 
                 <h3>Q: Do I need to register ahead of time?</h3>
                 <p>
-                A: Usually not — just show up! However, some venues may have limited seating, so check our social media or website for updates.
+                A: Nope! Just show up and grab a seat!
                 </p>
 
                 <h3>Q: Can I bring my kids?</h3>

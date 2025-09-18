@@ -14,7 +14,7 @@ function Gallery () {
         }, []);
 
     const importAll = (r) => r.keys().map(r);
-    const images = importAll(require.context("../assets/gallery", false, /\.(png|jpe?g|svg)$/));
+    const images = importAll(require.context("../assets/gallery", false, /\.(png|jpe?g|svg|JPG|HEIC)$/));
 
     return (
         <div className="gallery-content">
