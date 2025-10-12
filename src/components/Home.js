@@ -5,7 +5,6 @@ import Events from "./Events";
 import About from "./About";
 import Trivia from "./Trivia";
 import Gallery from "./Gallery";
-import Contact from "./Contact";
 import Faq from "./Faq";
 
 
@@ -109,8 +108,6 @@ function Home () {
             <Faq />
 
             <About />
-
-            <Contact />
 
             <Footer />
 

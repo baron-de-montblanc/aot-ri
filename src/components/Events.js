@@ -6,8 +6,6 @@ import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { format } from "date-fns";
 
 
-
-
 function NoNextEvent() {
     return (
       <div className="d-flex no-next-event">
@@ -65,29 +63,37 @@ function NoNextEvent() {
     );
   }
 
-const NextEvent = ({ event }) => {
-  const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
-  const { speaker, speakerTitle, institution, department, talkTitle, photoPath } = event;
 
-  const MobileSpeaker = ({ speakerIndex, position }) => {
-    const isLeft = position === "left";
+const Event = ({ event }) => {
+    const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
+    const { speaker, speakerTitle, institution, department, talkTitle, photoPath } = event;
   
-    return (
+    // Normalize speakers into an array of up to two entries
+    const speakers = [1, 2]
+      .filter((i) => speaker[`speaker${i}`])
+      .map((i) => ({
+        idx: i,
+        name: speaker[`speaker${i}`],
+        title: speakerTitle?.[`title${i}`],
+        institution: institution?.[`ins${i}`],
+        department: department?.[`dep${i}`],
+        talkTitle: talkTitle?.[`title${i}`],
+        photo: photoPath?.[`photo${i}`],
+      }));
+  
+    const MobileSpeaker = ({ spk, position }) => {
+      const isLeft = position === "left";
+      return (
         <div className="row text-center align-items-center">
           <div className={`col-${isLeft ? "5" : "7"} d-flex flex-column align-items-center`}>
-            {isLeft && (
-              <img
-                src={photoPath[`photo${speakerIndex}`]}
-                alt={speaker[`speaker${speakerIndex}`]}
-                className="speaker-photo"
-              />
-            )}
-            {!isLeft && (
+            {isLeft ? (
+              <img src={spk.photo} alt={spk.name} className="speaker-photo" />
+            ) : (
               <div className="speaker-name-div right">
                 <h2 className="speaker-name">
-                  {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
+                  {spk.title} {spk.name}
                 </h2>
-                <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+                <p className="speaker-department">{spk.institution}</p>
               </div>
             )}
           </div>
@@ -95,212 +101,105 @@ const NextEvent = ({ event }) => {
             {isLeft ? (
               <div className="speaker-name-div left">
                 <h2 className="speaker-name">
-                  {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
+                  {spk.title} {spk.name}
                 </h2>
-                <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+                <p className="speaker-department">{spk.institution}</p>
               </div>
             ) : (
-              <img
-                src={photoPath[`photo${speakerIndex}`]}
-                alt={speaker[`speaker${speakerIndex}`]}
-                className="speaker-photo"
-              />
+              <img src={spk.photo} alt={spk.name} className="speaker-photo" />
             )}
           </div>
           <div className="col-12 text-center">
-            <h3 className="talk-title">{talkTitle[`title${speakerIndex}`]}</h3>
+            <h3 className="talk-title">{spk.talkTitle}</h3>
           </div>
         </div>
-    );
-  };
+      );
+    };
   
-
-  const MobileLayout = () => (
-    <div className="d-flex flex-column d-md-none align-items-center justify-content-center next-event">
-      <div className="row">
-        <div className="col-12 text-center">
-          <h2 className="event-title">{event.title}</h2>
-          <h3 className="event-date">{formattedDate}</h3>
-        </div>
-      </div>
-      <MobileSpeaker speakerIndex={1} position="left" />
-      {speaker.speaker2 && <MobileSpeaker speakerIndex={2} position="right"/>}
-    </div>
-  );
-  
-
-  const DesktopLayout = () => (
-    <div className="d-none d-md-flex align-items-center justify-content-center next-event">
-      <div className="container">
-        <div className="row text-center">
-          <div className="col-12">
+    const MobileLayout = () => (
+      <div className={`d-flex flex-column d-md-none align-items-center justify-content-center event-container`}>
+        <div className="row">
+          <div className="col-12 text-center">
             <h2 className="event-title">{event.title}</h2>
             <h3 className="event-date">{formattedDate}</h3>
           </div>
         </div>
-        {!speaker.speaker2 ? (
-          <div className="row align-items-center single-speaker-div">
-            <div className="col-5">
-              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
-            </div>
-            <div className="col-7 text-center">
-              <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
-              <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
-              <h3 className="talk-title">{talkTitle.title1}</h3>
-            </div>
-          </div>
-        ) : (
-          <div className="row align-items-center">
-            <div className="col-4 text-center">
-              <h3 className="talk-title top">{talkTitle.title1}</h3>
-              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
-            </div>
-            <div className="col-4">
-              <div className="speaker-name-div top text-end">
-                <h2 className="speaker-name">{speakerTitle.title2} {speaker.speaker2}</h2>
-                <p className="speaker-department">{department.dep2}, {institution.ins2}</p>
-              </div>
-              <div className="speaker-name-div bottom text-start">
-                <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
-                <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
-              </div>
-            </div>
-            <div className="col-4 text-center">
-              <img src={photoPath.photo2} alt={speaker.speaker2} className="speaker-photo" />
-              <h3 className="talk-title bottom">{talkTitle.title2}</h3>
-            </div>
-          </div>
-        )}
+        {speakers[0] && <MobileSpeaker spk={speakers[0]} position="left" />}
+        {speakers[1] && <MobileSpeaker spk={speakers[1]} position="right" />}
       </div>
-    </div>
-  );
-
-  return (
-    <>
-      <MobileLayout />
-      <DesktopLayout />
-    </>
-  );
-};
-
-const PrevEvent = ({ event }) => {
-  const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
-  const { speaker, speakerTitle, institution, department, talkTitle, photoPath } = event;
-
-  const MobileSpeaker = ({ speakerIndex, position }) => {
-    const isLeft = position === "left";
+    );
   
-    return (
-      <div className="row text-center align-items-center">
-        <div className={`col-${isLeft ? "5" : "7"} d-flex flex-column align-items-center`}>
-          {isLeft && (
-            <img
-              src={photoPath[`photo${speakerIndex}`]}
-              alt={speaker[`speaker${speakerIndex}`]}
-              className="speaker-photo"
-            />
-          )}
-          {!isLeft && (
-            <div className="speaker-name-div right">
-              <h2 className="speaker-name">
-                {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
-              </h2>
-              <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+    const DesktopLayout = () => (
+      <div className={`d-none d-md-flex align-items-center justify-content-center event-container`}>
+        <div className="container">
+          <div className="row text-center">
+            <div className="col-12">
+              <h2 className="event-title">{event.title}</h2>
+              <h3 className="event-date">{formattedDate}</h3>
             </div>
-          )}
-        </div>
-        <div className={`col-${isLeft ? "7" : "5"} d-flex flex-column align-items-center`}>
-          {isLeft ? (
-            <div className="speaker-name-div left">
-              <h2 className="speaker-name">
-                {speakerTitle[`title${speakerIndex}`]} {speaker[`speaker${speakerIndex}`]}
-              </h2>
-              <p className="speaker-department">{institution[`ins${speakerIndex}`]}</p>
+          </div>
+  
+          {speakers.length === 1 ? (
+            // Single speaker
+            <div className="row align-items-center single-speaker-div">
+              <div className="col-5">
+                <img src={speakers[0].photo} alt={speakers[0].name} className="speaker-photo" />
+              </div>
+              <div className="col-7 text-center">
+                <h2 className="speaker-name">
+                  {speakers[0].title} {speakers[0].name}
+                </h2>
+                <p className="speaker-department">
+                  {speakers[0].department ? `${speakers[0].department}, ` : ""}
+                  {speakers[0].institution}
+                </p>
+                <h3 className="talk-title">{speakers[0].talkTitle}</h3>
+              </div>
             </div>
           ) : (
-            <img
-              src={photoPath[`photo${speakerIndex}`]}
-              alt={speaker[`speaker${speakerIndex}`]}
-              className="speaker-photo"
-            />
+            // Two speakers
+            <div className="row align-items-center">
+              <div className="col-4 text-center">
+                <h3 className="talk-title top">{speakers[0].talkTitle}</h3>
+                <img src={speakers[0].photo} alt={speakers[0].name} className="speaker-photo" />
+              </div>
+              <div className="col-4">
+                <div className="speaker-name-div top text-end">
+                  <h2 className="speaker-name">
+                    {speakers[1].title} {speakers[1].name}
+                  </h2>
+                  <p className="speaker-department">
+                    {speakers[1].department ? `${speakers[1].department}, ` : ""}
+                    {speakers[1].institution}
+                  </p>
+                </div>
+                <div className="speaker-name-div bottom text-start">
+                  <h2 className="speaker-name">
+                    {speakers[0].title} {speakers[0].name}
+                  </h2>
+                  <p className="speaker-department">
+                    {speakers[0].department ? `${speakers[0].department}, ` : ""}
+                    {speakers[0].institution}
+                  </p>
+                </div>
+              </div>
+              <div className="col-4 text-center">
+                <img src={speakers[1].photo} alt={speakers[1].name} className="speaker-photo" />
+                <h3 className="talk-title bottom">{speakers[1].talkTitle}</h3>
+              </div>
+            </div>
           )}
-        </div>
-        <div className="col-12 text-center">
-          <h3 className="talk-title">{talkTitle[`title${speakerIndex}`]}</h3>
         </div>
       </div>
     );
+  
+    return (
+      <>
+        <MobileLayout />
+        <DesktopLayout />
+      </>
+    );
   };
-  
-
-  const MobileLayout = () => (
-    <div className="d-flex flex-column d-md-none align-items-center justify-content-center past-event-container">
-      <div className="row">
-        <div className="col-12 text-center">
-          <h2 className="event-title">{event.title}</h2>
-          <h3 className="event-date">{formattedDate}</h3>
-        </div>
-      </div>
-      <MobileSpeaker speakerIndex={1} position="left" />
-      {speaker.speaker2 && <MobileSpeaker speakerIndex={2} position="right"/>}
-    </div>
-  );
-  
-
-  const DesktopLayout = () => (
-    <div className="d-none d-md-flex align-items-center justify-content-center past-event-container">
-      <div className="container">
-        <div className="row text-center">
-          <div className="col-12">
-            <h2 className="event-title">{event.title}</h2>
-            <h3 className="event-date">{formattedDate}</h3>
-          </div>
-        </div>
-        {!speaker.speaker2 ? (
-          <div className="row align-items-center single-speaker-div">
-            <div className="col-5">
-              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
-            </div>
-            <div className="col-7 text-center">
-              <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
-              <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
-              <h3 className="talk-title">{talkTitle.title1}</h3>
-            </div>
-          </div>
-        ) : (
-          <div className="row align-items-center">
-            <div className="col-4 text-center">
-              <h3 className="talk-title top">{talkTitle.title1}</h3>
-              <img src={photoPath.photo1} alt={speaker.speaker1} className="speaker-photo" />
-            </div>
-            <div className="col-4">
-              <div className="speaker-name-div top text-end">
-                <h2 className="speaker-name">{speakerTitle.title2} {speaker.speaker2}</h2>
-                <p className="speaker-department">{department.dep2}, {institution.ins2}</p>
-              </div>
-              <div className="speaker-name-div bottom text-start">
-                <h2 className="speaker-name">{speakerTitle.title1} {speaker.speaker1}</h2>
-                <p className="speaker-department">{department.dep1}, {institution.ins1}</p>
-              </div>
-            </div>
-            <div className="col-4 text-center">
-              <img src={photoPath.photo2} alt={speaker.speaker2} className="speaker-photo" />
-              <h3 className="talk-title bottom">{talkTitle.title2}</h3>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-
-  return (
-    <>
-      <MobileLayout />
-      <DesktopLayout />
-    </>
-  );
-};
-
 
 const EventsList = () => {
 
@@ -331,15 +230,14 @@ const EventsList = () => {
             events
                 .filter(event => new Date(event.date) > new Date()) // Filter future events
                 .map(event => 
-                <div className="event-top">
-                  <h2 className="next-event-floating">Upcoming Event!</h2>
-                  <div className="floating-map-div">
-                    <iframe src={event.iframesrc} className="floating-next-event-map"></iframe>
-                    <h3> 
-                      {event.location}
-                    </h3>
+                <div className="event-next">
+                  <div className="container">
+                    <div className="floating-map-div">
+                      <iframe src={event.iframesrc} className="floating-next-event-map"></iframe>
+                    </div>
+                    <h2 className="next-event-floating">Upcoming Event!</h2>
+                    <Event key={event.id} event={event} />
                   </div>
-                  <NextEvent key={event.id} event={event} />
                 </div>
                 )
         ) : (
@@ -360,8 +258,8 @@ const EventsList = () => {
                   .sort((a, b) => new Date(b.date) - new Date(a.date))
                   .map(event => (
                       <Carousel.Item key={event.id}>
-                      <div style={{padding:"100px 60px"}}>
-                          <PrevEvent event={event} />
+                      <div style={{padding:"100px 40px"}}>
+                          <Event event={event} />
                       </div>
                       </Carousel.Item>
                   ))}
