@@ -48,7 +48,7 @@ function Organizer() {
 
             <div className="row justify-content-center">
                 {organizers.map((organizer) => (
-                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 mb-4" key={organizer.id}>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 mb-4" key={organizer.id}>
                         <img 
                             src={organizer.image}
                             alt={organizer.name}
