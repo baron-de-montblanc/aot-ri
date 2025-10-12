@@ -199,6 +199,41 @@
                 "title1": "The Accelerating Expanding Universe: Dark Matter, Dark Energy, and Einstein's Cosmological Constant"
             },
             "title": "Aot Rhode Island #6"
+        },
+        {
+            "id":7,
+            "address":{
+                "line1": "271 Tockwotton St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2025-11-04T18:30:00-05:00",
+            "department": {
+                "dep1": "Department of Physics",
+                "dep2":"Department of Earth, Environmental & Planetary Sciences"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4542722837077!2d-71.39299742315036!3d41.818515271248394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4436a524a4711%3A0x9eb07a381109d4d2!2sNarragansett%20Brewery!5e0!3m2!1sen!2sus!4v1739309699669!5m2!1sen!2sus",
+            "institution": {
+                "ins1": "Brown University",
+                "ins2": "Brown University"
+            },
+            "location": "Narragansett Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/koushiappas.jpg",
+                "photo2": "/images/speakers/jones.png"
+            },
+            "speaker": {
+                "speaker1": "Savvas Koushiappas",
+                "speaker2": "Matt Jones"
+            },
+            "speakerTitle": {
+                "title1": "Prof.",
+                "title2": "Dr."
+            },
+            "talkTitle": {
+                "title1": "The Quantum Universe",
+                "title2": "Why is the Moon so Two-Faced? A Giant Impact Story"
+            },
+            "title": "Aot Rhode Island #7"
         }
     ] 
 }
