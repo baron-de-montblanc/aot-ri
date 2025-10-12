@@ -9,13 +9,27 @@
 }
 
 .organizer-photo {
-    width: 85%;
+    width: 50%;
     border-radius: 20px;
 }
 
 .organizer-intro {
     font-style: italic;
     font-weight: normal;
+}
+
+.organizer-link {
+    color: #dfdfdf;
+    text-decoration: none;
+}
+
+.organizer-message {
+  text-align: justify;
+}
+
+
+.organizer-link:hover {
+    color: white;
 }
 
 .about-h2 {
