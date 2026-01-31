@@ -233,7 +233,7 @@ const EventsList = () => {
                 <div className="event-next">
                   <div className="container">
                     <div className="floating-map-div">
-                      <iframe src={event.iframesrc} className="floating-next-event-map"></iframe>
+                      <iframe src={event.iframesrc} title="Events Map" className="floating-next-event-map"></iframe>
                     </div>
                     <h2 className="next-event-floating">Upcoming Event!</h2>
                     <Event key={event.id} event={event} />
