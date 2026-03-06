@@ -269,6 +269,41 @@
                 "title2": "Listening to the Universe"
             },
             "title": "Aot Rhode Island #8"
+        },
+        {
+            "id":9,
+            "address":{
+                "line1": "271 Tockwotton St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2026-04-21T18:30:00-04:00",
+            "department": {
+                "dep1": "Department of Physics",
+                "dep2":"Kavli Institute"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4542722837077!2d-71.39299742315036!3d41.818515271248394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4436a524a4711%3A0x9eb07a381109d4d2!2sNarragansett%20Brewery!5e0!3m2!1sen!2sus!4v1739309699669!5m2!1sen!2sus",
+            "institution": {
+                "ins1": "Brown University",
+                "ins2": "MIT"
+            },
+            "location": "Narragansett Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/paradiso.png",
+                "photo2": "/images/speakers/mackay.png"
+            },
+            "speaker": {
+                "speaker1": "Alexis Ortega",
+                "speaker2": "Vincent MacKay"
+            },
+            "speakerTitle": {
+                "title1": "",
+                "title2": "Dr."
+            },
+            "talkTitle": {
+                "title1": "Was Einstein Wrong? Modifying Gravity",
+                "title2": "The Blurriest Picture Ever Taken"
+            },
+            "title": "Aot Rhode Island #9"
         }
     ] 
 }

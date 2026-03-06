@@ -23,7 +23,7 @@
 
 
 .next-event-floating {
-    font-size: 3em;
+    font-size: 2.5em;
     position: absolute;
     top: 3vh;
     left: 1em;
@@ -35,6 +35,13 @@
     max-width: 80vw;
     z-index: 1000;
     display: inline-block;
+}
+
+.add-to-cal {
+    font-size: 0.5em;
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .floating-map-div {
@@ -212,7 +219,7 @@
 @media (max-width: 768px) {
 
     .next-event-floating {
-        font-size: 2em;
+        font-size: 1.5em;
         position: absolute;
         top: 3vh;
         left: 50%;
