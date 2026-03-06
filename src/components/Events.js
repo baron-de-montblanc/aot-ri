@@ -205,82 +205,6 @@ const Event = ({ event, isNextEvent = false }) => {
 
 
 
-function formatICSDate(dateInput) {
-  const date = new Date(dateInput);
-
-  const yyyy = date.getUTCFullYear();
-  const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
-  const dd = String(date.getUTCDate()).padStart(2, "0");
-  const hh = String(date.getUTCHours()).padStart(2, "0");
-  const min = String(date.getUTCMinutes()).padStart(2, "0");
-  const ss = String(date.getUTCSeconds()).padStart(2, "0");
-
-  return `${yyyy}${mm}${dd}T${hh}${min}${ss}Z`;
-}
-
-function escapeICS(text = "") {
-  return String(text)
-    .replace(/\\/g, "\\\\")
-    .replace(/\n/g, "\\n")
-    .replace(/,/g, "\\,")
-    .replace(/;/g, "\\;");
-}
-
-function downloadICS(event) {
-  const startDate = new Date(event.date);
-
-  // change this if you have a real end time in your JSON
-  const endDate = event.endDate
-    ? new Date(event.endDate)
-    : new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // default: 2 hours
-
-  const speakerNames = [1, 2]
-    .map((i) => event.speaker?.[`speaker${i}`])
-    .filter(Boolean)
-    .join(", ");
-
-  const talkTitles = [1, 2]
-    .map((i) => event.talkTitle?.[`title${i}`])
-    .filter(Boolean)
-    .join(" / ");
-
-  const description = [
-    speakerNames ? `Speakers: ${speakerNames}` : "",
-    talkTitles ? `Talks: ${talkTitles}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Astronomy on Tap Rhode Island//EN
-CALSCALE:GREGORIAN
-BEGIN:VEVENT
-UID:${event.id || Date.now()}@aotri.org
-DTSTAMP:${formatICSDate(new Date())}
-DTSTART:${formatICSDate(startDate)}
-DTEND:${formatICSDate(endDate)}
-SUMMARY:${escapeICS(event.title || "Astronomy on Tap Rhode Island")}
-DESCRIPTION:${escapeICS(description)}
-LOCATION:${escapeICS(event.location || "")}
-END:VEVENT
-END:VCALENDAR`;
-
-  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `${(event.title || "event").replace(/[^a-z0-9]/gi, "_").toLowerCase()}.ics`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-
-  URL.revokeObjectURL(url);
-}
-
-
-
 const EventsList = () => {
 
   const [events, setEvents] = useState([]);
@@ -317,12 +241,7 @@ const EventsList = () => {
                     </div>
                     <div className="next-event-floating">
                       <h2>Upcoming Event!</h2>
-                      <h3 className="add-to-cal"
-                        onClick={() => downloadICS(event)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        Add to calendar</h3>
-                      </div>
+                    </div>
                     <Event key={event.id} event={event} isNextEvent/>
                   </div>
                 </div>
