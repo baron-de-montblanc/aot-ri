@@ -37,11 +37,31 @@
     display: inline-block;
 }
 
-.add-to-cal {
-    font-size: 0.5em;
-    font-style: italic;
-    text-align: center;
-    text-decoration: underline;
+.past-events-swiper {
+  padding-top: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--text-color) !important;
+}
+
+.swiper-pagination-bullet {
+  transform: scale(1.4);
+  margin: 0 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--text-color) !important;
+}
+
+.swiper-button-next {
+  right: -10px !important;
+}
+
+.swiper-button-prev {
+  left: -10px !important;
 }
 
 .floating-map-div {
@@ -201,19 +221,6 @@
 .rocket-image {
     width: 75%;
 }
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: auto;
-    margin: -20px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 2.5rem; 
-    height: 2.5rem;
-}
-
 
 
 @media (max-width: 768px) {
