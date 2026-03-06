@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { Carousel } from "react-bootstrap";
-import "../assets/Gallery.css";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../assets/Gallery.css";
 
 
 function Gallery () {
@@ -28,20 +33,52 @@ function Gallery () {
                     Scroll through and relive the experience!
                 </p>
 
-                <Carousel 
-                    className="carousel-container"
-                    interval={null} 
-                    controls={showControls} 
-                    indicators={true} 
-                    keyboard={false}
+
+                {showControls ? (
+                <Swiper
+                    modules={[Navigation, Pagination]}
+                    navigation
+                    pagination={{ clickable: true }}
+                    slidesPerView={1}
+                    spaceBetween={24}
+                    speed={400}
+                    grabCursor={false}
+                    simulateTouch={false}
+                    followFinger={false}
+                    threshold={6}
+                    className="past-events-swiper desktop"
                 >
                     {images.map((image, index) => (
-                        <Carousel.Item key={index} className="gallery-carousel">
-                            <img src={image} alt={`Gallery ${index + 1}`} />
-                        </Carousel.Item>
+                        <SwiperSlide key={index} className="gallery-swiper-slide">
+                        <div className="gallery-image-frame">
+                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image-desktop" />
+                        </div>
+                        </SwiperSlide>
                     ))}
-                </Carousel>
-
+                </Swiper>
+                ) : (
+                <Swiper
+                    modules={[Pagination]}
+                    pagination={{ clickable: true }}
+                    slidesPerView={1}
+                    spaceBetween={16}
+                    speed={300}
+                    simulateTouch={true}
+                    followFinger={true}
+                    threshold={3}
+                    resistance={true}
+                    resistanceRatio={0.85}
+                    className="past-events-swiper mobile"
+                >
+                    {images.map((image, index) => (
+                        <SwiperSlide key={index} className="gallery-swiper-slide">
+                        <div className="gallery-image-frame">
+                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image-mobile" />
+                        </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                )}
             </div>
         </div>
     );

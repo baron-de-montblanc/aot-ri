@@ -19,6 +19,7 @@
     "react-dom": "^19.0.0",
     "react-scripts": "^5.0.1",
     "react-slideshow-image": "^4.3.2",
+    "swiper": "^12.1.2",
     "web-vitals": "^4.2.4"
   },
   "scripts": {

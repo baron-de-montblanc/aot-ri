@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "../assets/Events.css";
-import { Carousel } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { format } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../assets/Events.css";
 
 function NoNextEvent() {
     return (
@@ -209,6 +213,9 @@ const EventsList = () => {
 
   const [events, setEvents] = useState([]);
   const [showControls, setShowControls] = useState(window.innerWidth >= 992);
+  const pastEvents = events
+  .filter((event) => new Date(event.date) < new Date())
+  .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 
   useEffect(() => {
@@ -254,22 +261,51 @@ const EventsList = () => {
             <div className="container event-top">
               <h2 className="past-events-floating text-start">Past Events</h2>
               
-              <Carousel 
-                interval={null}
-                controls={showControls}
-                touch={true}
-              >
-                  {events
-                  .filter(event => new Date(event.date) < new Date()) // Filter past events
-                  .sort((a, b) => new Date(b.date) - new Date(a.date))
-                  .map(event => (
-                      <Carousel.Item key={event.id}>
-                      <div style={{padding:"100px 40px"}}>
-                          <Event event={event} />
+              {showControls ? (
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  navigation
+                  pagination={{ clickable: true }}
+                  slidesPerView={1}
+                  spaceBetween={24}
+                  speed={400}
+                  grabCursor={false}
+                  simulateTouch={false}
+                  followFinger={false}
+                  threshold={6}
+                  className="past-events-swiper desktop"
+                >
+                  {pastEvents.map((event) => (
+                    <SwiperSlide key={event.id}>
+                      <div style={{ padding: "0 40px" }}>
+                        <Event event={event} />
                       </div>
-                      </Carousel.Item>
+                    </SwiperSlide>
                   ))}
-              </Carousel>
+                </Swiper>
+              ) : (
+                <Swiper
+                  modules={[Pagination]}
+                  pagination={{ clickable: true }}
+                  slidesPerView={1}
+                  spaceBetween={16}
+                  speed={300}
+                  simulateTouch={true}
+                  followFinger={true}
+                  threshold={3}
+                  resistance={true}
+                  resistanceRatio={0.85}
+                  className="past-events-swiper mobile"
+                >
+                  {pastEvents.map((event) => (
+                    <SwiperSlide key={event.id}>
+                      <div style={{ padding: "0 40px" }}>
+                        <Event event={event} />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
             </div>
         </div>
     </>
