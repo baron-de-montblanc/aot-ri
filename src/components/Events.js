@@ -124,12 +124,27 @@ const Event = ({ event, isNextEvent = false }) => {
   
     const MobileLayout = () => (
       <div className={`d-flex flex-column d-md-none align-items-center justify-content-center event-container`}>
+
         <div className="row">
-          <div className="col-12 text-center">
-            <h2 className="event-title">{event.title}</h2>
-            <h3 className="event-date">{formattedDate}</h3>
+          <div className="col-12 title-and-map-container-mobile">
+
+            <h2 className="event-title">
+              {isNextEvent && <span>[Upcoming!]</span>} {event.title}
+            </h2>
+            <h3 className="event-date">
+              {formattedDate} {isNextEvent && `@ ${event.location}`}
+            </h3>
+
+            {isNextEvent && (
+              <iframe
+                src={event.iframesrc}
+                title="Events Map"
+                className="next-event-map-mobile"
+              />
+            )}
           </div>
         </div>
+
         {speakers[0] && <MobileSpeaker spk={speakers[0]} position="left" />}
         {speakers[1] && <MobileSpeaker spk={speakers[1]} position="right" />}
       </div>
@@ -139,9 +154,24 @@ const Event = ({ event, isNextEvent = false }) => {
       <div className={`d-none d-md-flex align-items-center justify-content-center event-container`}>
         <div className="container">
           <div className="row text-center">
-            <div className="col-12">
-              <h2 className="event-title">{event.title}</h2>
-              <h3 className="event-date">{formattedDate}</h3>
+            <div className="col-12 title-and-map-container">
+
+              <div className="title-container">
+                <h2 className="event-title">
+                  {isNextEvent && <span>[Upcoming!]</span>} {event.title}
+                </h2>
+                <h3 className="event-date">
+                  {formattedDate} {isNextEvent && `@ ${event.location}`}
+                </h3>
+              </div>
+
+              {isNextEvent && (
+                <iframe
+                  src={event.iframesrc}
+                  title="Events Map"
+                  className="col-12 next-event-map"
+                />
+              )}
             </div>
           </div>
   
@@ -243,12 +273,6 @@ const EventsList = () => {
                 .map(event => 
                 <div className="event-next">
                   <div className="container">
-                    <div className="floating-map-div">
-                      <iframe src={event.iframesrc} title="Events Map" className="floating-next-event-map"></iframe>
-                    </div>
-                    <div className="next-event-floating">
-                      <h2>Upcoming Event!</h2>
-                    </div>
                     <Event key={event.id} event={event} isNextEvent/>
                   </div>
                 </div>

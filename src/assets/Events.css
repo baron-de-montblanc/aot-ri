@@ -22,21 +22,6 @@
 }
 
 
-.next-event-floating {
-    font-size: 2.5em;
-    position: absolute;
-    top: 3vh;
-    left: 1em;
-    color: var(--bg-color);
-    background-color: var(--highlight);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 80vw;
-    z-index: 1000;
-    display: inline-block;
-}
-
 .past-events-swiper {
   padding-top: 100px !important;
   margin-bottom: 100px !important;
@@ -64,18 +49,51 @@
   left: -10px !important;
 }
 
-.floating-map-div {
-    position: absolute;
-    top: 3vh;
-    right: 1em;
-    width: 25%;
+.title-and-map-container {
+    margin-bottom: 3em;
+    position: relative;
+    height: 150px;              /* choose the height you want */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* vertical center */
+    align-items: center;        /* horizontal center */
+    text-align: center;
+    overflow: hidden;
 }
 
-.floating-next-event-map {
-    width: 100%;
-    height: 200px;
-    border-radius: 20px;
+.title-and-map-container-mobile {
+    background-color: var(--highlight);
+    border-radius: 1em;
+    padding: 10px;
+    margin: 1.5em 0em;
 }
+
+.next-event-map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0.5;
+    z-index: 0;
+    border-radius: 2em;
+}
+
+.next-event-map-mobile {
+    border-radius: 1em;
+    width: 100%;
+    height: 100px;
+}
+
+
+.title-container {
+    background-color: var(--highlight);
+    padding: 10px;
+    z-index: 1;
+    border-radius: 10px;
+    color: var(--bg-color);
+}
+
 
 .speaker-name {
     font-size: 1.8em;
@@ -107,13 +125,24 @@
 .event-title {
     font-family: 'Orbitron';
     font-size: 2.2em;
+    position: relative;
+    z-index: 1;
+}
+
+.event-title span {
+    color: white;
+    margin-right: 8px;
+    text-transform: uppercase;
+    /* letter-spacing: 0.5px; */
 }
 
 .event-date {
     font-size: 1.2em;
     font-style: italic;
     text-align: center;
-    margin-bottom: 4vh;
+    /* margin-bottom: 4vh; */
+    position: relative;
+    z-index: 1;
 }
 
 .location-map {
