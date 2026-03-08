@@ -130,7 +130,6 @@
 }
 
 .event-title span {
-    color: white;
     margin-right: 8px;
     text-transform: uppercase;
     /* letter-spacing: 0.5px; */
@@ -143,6 +142,10 @@
     /* margin-bottom: 4vh; */
     position: relative;
     z-index: 1;
+}
+
+.event-date.mobile {
+    font-size: 1em;
 }
 
 .location-map {
@@ -168,6 +171,15 @@
     font-size: 2.0em;
     font-family: 'Orbitron';
     font-weight: normal;
+}
+
+.picture-name-container {
+    margin-bottom: 1em;
+}
+
+.talk-title.mobile {
+    margin-bottom: 0.5em;
+    margin-top: 1em;
 }
 
 .talk-title.top {
@@ -253,22 +265,6 @@
 
 
 @media (max-width: 768px) {
-
-    .next-event-floating {
-        font-size: 1.5em;
-        position: absolute;
-        top: 3vh;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--bg-color);
-        background-color: var(--highlight);
-        border-radius: 1em;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        max-width: 80vw;
-        min-width: 80vw;
-        z-index: 1000;
-        display: inline-block;
-    }
 
     .floating-map-div {
         position: absolute;

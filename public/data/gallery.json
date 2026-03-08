@@ -1,0 +1,148 @@
+{
+    "captions": [
+        {
+            "id": 1,
+            "img": "../images/gallery/AOT2_01.jpg",
+            "caption": "AoT #2 \u2014 Dr. Tim Rehm on observing exoplanet atmospheres with a balloon-borne telescope.",
+            "display": true
+        },
+        {
+            "id": 2,
+            "img": "../images/gallery/AOT5_01.jpg",
+            "caption": "AoT #5 \u2014 Dr. Nicholas Wagner on probing the inside of the Moon via tides.",
+            "display": true
+        },
+        {
+            "id": 3,
+            "img": "../images/gallery/AOT6_01.jpg",
+            "caption": "AoT #6 \u2014 Prof. Bharat Ratra takes a question from the audience.",
+            "display": true
+        },
+        {
+            "id": 4,
+            "img": "../images/gallery/AOT6_02.jpg",
+            "caption": "AoT #6 \u2014 Prof. Bharat Ratra performs a live demo of the expansion of the Universe.",
+            "display": true
+        },
+        {
+            "id": 5,
+            "img": "../images/gallery/AOT3_01.JPG",
+            "caption": "AoT #3 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 6,
+            "img": "../images/gallery/AOT3_02.JPG",
+            "caption": "AoT #3 \u2014 Dr. Abhinav Jindal on comets.",
+            "display": true
+        },
+        {
+            "id": 7,
+            "img": "../images/gallery/AOT3_03.JPG",
+            "caption": "AoT #3 \u2014 Questions from the audience are always welcome!",
+            "display": true
+        },
+        {
+            "id": 8,
+            "img": "../images/gallery/AOT3_04.JPG",
+            "caption": "AoT #3 \u2014 Dr. Jindal and Dr. Gilmer taking questions from the audience.",
+            "display": true
+        },
+        {
+            "id": 9,
+            "img": "../images/gallery/AOT3_05.JPG",
+            "caption": "AoT #3 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 10,
+            "img": "../images/gallery/AOT3_06.JPG",
+            "caption": "AoT #3 \u2014 Trivia grand prize winners!",
+            "display": true
+        },
+        {
+            "id": 11,
+            "img": "../images/gallery/AOT3_07.JPG",
+            "caption": "AoT #3 \u2014 Trivia prize winners!",
+            "display": true
+        },
+        {
+            "id": 12,
+            "img": "../images/gallery/AOT4_01.JPG",
+            "caption": "AoT #4 \u2014 Dr. Adomas Valantinas on why Mars is red.",
+            "display": true
+        },
+        {
+            "id": 13,
+            "img": "../images/gallery/AOT4_02.JPG",
+            "caption": "AoT #4 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 14,
+            "img": "../images/gallery/AOT4_03.JPG",
+            "caption": "AoT #4 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 15,
+            "img": "../images/gallery/AOT4_04.JPG",
+            "caption": "AoT #4 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 16,
+            "img": "../images/gallery/AOT4_05.JPG",
+            "caption": "AoT #4 \u2014 Mahmoud Hallak presents an introduction to astrophotography.",
+            "display": true
+        },
+        {
+            "id": 17,
+            "img": "../images/gallery/AOT4_06.JPG",
+            "caption": "AoT #4 \u2014 Attendees are enjoying the event!",
+            "display": false
+        },
+        {
+            "id": 18,
+            "img": "../images/gallery/AOT7_01.JPG",
+            "caption": "AoT #7 \u2014 Organizers Pitt and Alexis hosting the trivia session.",
+            "display": true
+        },
+        {
+            "id": 19,
+            "img": "../images/gallery/AOT7_02.JPG",
+            "caption": "AoT #7 \u2014 Prof. Savvas Koushiappas on the quantum universe.",
+            "display": true
+        },
+        {
+            "id": 20,
+            "img": "../images/gallery/AOT7_03.JPG",
+            "caption": "AoT #7 \u2014 Full house!",
+            "display": true
+        },
+        {
+            "id": 21,
+            "img": "../images/gallery/AOT7_04.JPG",
+            "caption": "AoT #7 \u2014 Dr. Matt Jones on the craters of the Moon.",
+            "display": true
+        },
+        {
+            "id": 22,
+            "img": "../images/gallery/AOT7_05.JPG",
+            "caption": "Meet the AoT organizers! Alexis, Janie, Khing, Pitt, and Jade work hard behind the scenes to make each event possible.",
+            "display": true
+        },
+        {
+            "id": 23,
+            "img": "../images/gallery/AOT8_01.jpg",
+            "caption": "AoT #8 \u2014 Prof. Robert Coyne and Albert Einstein.",
+            "display": true
+        },
+        {
+            "id": 24,
+            "img": "../images/gallery/AOT8_02.jpg",
+            "caption": "AoT #8 \u2014 Daniel Paradiso on tidal disruption events.",
+            "display": true
+        }
+    ] 
+}

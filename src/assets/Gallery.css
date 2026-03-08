@@ -4,26 +4,36 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding-bottom: 10px;
+    padding-bottom: 2em;
 }
 
+.gallery-swiper {
+    margin-top: 2em;
+}
 
-.gallery-image-desktop {
+.gallery-image {
     display: block;
     margin: 0 auto;
     max-height: 60vh;
     max-width: 75%;
     width: auto;
     height: auto;
+    border-radius: 3em;
 }
 
-.gallery-image-mobile {
-    display: block;
-    margin: 0 auto;
-    max-height: 60vh;
+.gallery-image-caption {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-style: italic;
+
+}
+
+.gallery-image.mobile {
     max-width: 100%;
-    width: auto;
-    height: auto;
+    border-radius: 1.5em;
 }
 
 .gallery-title-h2 {

@@ -10,6 +10,10 @@
     min-height: 50vh;
 }
 
+.trivia-swiper {
+    margin-top: 3em;
+}
+
 .quiz-box {
     position: relative;
     background-image: url('./trivia_bg.jpeg');
@@ -19,6 +23,7 @@
     color: var(--text-color);
     border-radius: 10px;
     width: 75%;
+    opacity: 0.75;
 }
 
 .trivia-container:fullscreen .quiz-box {

@@ -1,10 +1,13 @@
 import React, {useState, useEffect, useRef} from "react";
-import "../assets/Trivia.css";
 import { Form } from "react-bootstrap";
-import { Carousel } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExpand } from "@fortawesome/free-solid-svg-icons";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../assets/Trivia.css";
 
 
 function TriviaQuiz({ qna = [], title }) {
@@ -181,29 +184,66 @@ function Trivia () {
                     knowledge by trying out our previous trivia quizzes below!
                 </p>
 
-                <Carousel 
-                    interval={null} 
-                    controls={showControls} 
-                    indicators={true} 
-                    keyboard={false}
-                    touch={true}
-                >
-                    {trivia
-                    .filter(event => new Date(event.date) < new Date()) // Filter past events
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .map(event => {
-                            const { date,title, ...eventQuestions } = event;
-                            const questionsArray = Object.values(eventQuestions)[0]; // Convert object to array
+                {showControls ? (
+                    <Swiper
+                        modules={[Navigation, Pagination]}
+                        navigation
+                        pagination={{ clickable: true }}
+                        slidesPerView={1}
+                        spaceBetween={24}
+                        speed={400}
+                        grabCursor={false}
+                        simulateTouch={false}
+                        followFinger={false}
+                        threshold={6}
+                        className="trivia-swiper desktop"
+                    >
 
-                            return (
-                                <Carousel.Item key={`trivia-${event.title}`}>
-                                    <div style={{paddingBottom:"50px"}}>
-                                        <TriviaQuiz qna={questionsArray} title={event.title} />
-                                    </div>
-                                </Carousel.Item>
-                            );
-                    })}
-                </Carousel>
+                        {trivia
+                            .filter(event => new Date(event.date) < new Date()) // Filter past events
+                            .sort((a, b) => new Date(b.date) - new Date(a.date))
+                            .map(event => {
+                                const { date,title, ...eventQuestions } = event;
+                                const questionsArray = Object.values(eventQuestions)[0]; // Convert object to array
+                                return (
+                                    <SwiperSlide key={`trivia-${event.title}`}>
+                                        <div style={{paddingBottom:"50px"}}>
+                                            <TriviaQuiz qna={questionsArray} title={event.title} />
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                        })}
+                    </Swiper>
+                    ) : (
+                    <Swiper
+                        modules={[Pagination]}
+                        pagination={{ clickable: true }}
+                        slidesPerView={1}
+                        spaceBetween={16}
+                        speed={300}
+                        simulateTouch={true}
+                        followFinger={true}
+                        threshold={3}
+                        resistance={true}
+                        resistanceRatio={0.85}
+                        className="trivia-swiper mobile"
+                    >
+                        {trivia
+                            .filter(event => new Date(event.date) < new Date()) // Filter past events
+                            .sort((a, b) => new Date(b.date) - new Date(a.date))
+                            .map(event => {
+                                const { date,title, ...eventQuestions } = event;
+                                const questionsArray = Object.values(eventQuestions)[0]; // Convert object to array
+                                return (
+                                    <SwiperSlide key={`trivia-${event.title}`}>
+                                        <div style={{paddingBottom:"50px"}}>
+                                            <TriviaQuiz qna={questionsArray} title={event.title} />
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                        })}
+                    </Swiper>
+                )}
             </div>
         </div>
     );
