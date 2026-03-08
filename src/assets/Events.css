@@ -3,6 +3,10 @@
     align-items: center;
 }
 
+.past-events-container {
+    position: relative;
+}
+
 .past-events-floating {
     font-size: 3em;
     position: absolute;
@@ -118,14 +122,10 @@
     border-radius: 30px;
 }
 
-.event-top{
-    position: relative;
-}
 
 .event-title {
     font-family: 'Orbitron';
     font-size: 2.2em;
-    position: relative;
     z-index: 1;
 }
 
@@ -139,8 +139,6 @@
     font-size: 1.2em;
     font-style: italic;
     text-align: center;
-    /* margin-bottom: 4vh; */
-    position: relative;
     z-index: 1;
 }
 
@@ -266,6 +264,10 @@
 
 @media (max-width: 768px) {
 
+    .past-events-floating {
+        font-size: 2.5em;
+    }
+
     .floating-map-div {
         position: absolute;
         top: auto;
@@ -280,8 +282,10 @@
         height: 150px;
     }
 
-    .past-events-floating {
-        font-size: 2.5em;
+
+    .past-event-mobile {
+        padding: 0px 30px;
+        margin-bottom: 0px;
     }
 
     .no-next-event h2 {

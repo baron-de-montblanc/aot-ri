@@ -282,7 +282,7 @@ const EventsList = () => {
         )}
 
         <div>
-            <div className="container event-top">
+            <div className="container past-events-container">
               <h2 className="past-events-floating text-start">Past Events</h2>
               
               {showControls ? (
@@ -323,7 +323,7 @@ const EventsList = () => {
                 >
                   {pastEvents.map((event) => (
                     <SwiperSlide key={event.id}>
-                      <div style={{ padding: "0 40px" }}>
+                      <div className="past-event-mobile">
                         <Event event={event} />
                       </div>
                     </SwiperSlide>

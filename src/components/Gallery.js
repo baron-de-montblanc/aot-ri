@@ -84,10 +84,10 @@ function Gallery () {
                 >
                     {images.map((image, index) => (
                         <SwiperSlide key={index} className="gallery-swiper-slide">
-                        <div className="gallery-image-frame">
-                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image mobile" />
+                        <div className="gallery-image-frame" style={{paddingBottom:"50px"}}>
+                            <img src={image.img} alt={image.caption} className="gallery-image mobile" />
                             <h1 className="gallery-image-caption">
-                                Caption
+                                {image.caption}
                             </h1>
                         </div>
                         </SwiperSlide>
