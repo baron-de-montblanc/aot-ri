@@ -91,7 +91,10 @@ const Event = ({ event, isNextEvent = false }) => {
       const isLeft = position === "left";
       return (
         <div className="row text-center align-items-center">
-          <div className={`col-${isLeft ? "5" : "7"} d-flex flex-column align-items-center`}>
+          <div className="col-12 text-center">
+            <h3 className="talk-title mobile">{spk.talkTitle}</h3>
+          </div>
+          <div className={`col-6 d-flex flex-column align-items-center picture-name-container`}>
             {isLeft ? (
               <img src={spk.photo} alt={spk.name} className="speaker-photo" />
             ) : (
@@ -103,7 +106,7 @@ const Event = ({ event, isNextEvent = false }) => {
               </div>
             )}
           </div>
-          <div className={`col-${isLeft ? "7" : "5"} d-flex flex-column align-items-center`}>
+          <div className={`col-6 d-flex flex-column align-items-center`}>
             {isLeft ? (
               <div className="speaker-name-div left">
                 <h2 className="speaker-name">
@@ -114,9 +117,6 @@ const Event = ({ event, isNextEvent = false }) => {
             ) : (
               <img src={spk.photo} alt={spk.name} className="speaker-photo" />
             )}
-          </div>
-          <div className="col-12 text-center">
-            <h3 className="talk-title">{spk.talkTitle}</h3>
           </div>
         </div>
       );
@@ -131,7 +131,7 @@ const Event = ({ event, isNextEvent = false }) => {
             <h2 className="event-title">
               {isNextEvent && <span>[Upcoming!]</span>} {event.title}
             </h2>
-            <h3 className="event-date">
+            <h3 className="event-date mobile">
               {formattedDate} {isNextEvent && `@ ${event.location}`}
             </h3>
 

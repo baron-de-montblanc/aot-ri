@@ -8,9 +8,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../assets/Gallery.css";
 
-
 function Gallery () {
     const [showControls, setShowControls] = useState(window.innerWidth >= 992);
+    const [images, setImages] = useState([]);
         
     useEffect(() => {
         const handleResize = () => setShowControls(window.innerWidth >= 992);
@@ -18,9 +18,18 @@ function Gallery () {
         return () => window.removeEventListener("resize", handleResize);
         }, []);
 
-    const importAll = (r) => r.keys().map(r);
-    const images = importAll(require.context("../assets/gallery", false, /\.(png|jpe?g|svg|JPG|HEIC)$/));
+    useEffect(() => {
+        fetch("/data/gallery.json")
+            .then(res => res.json())
+            .then(data => {
+            const sorted = data.captions
+                .filter(item => item.display)
+                .sort((a, b) => b.img.localeCompare(a.img)); // reverse alphabetical
 
+            setImages(sorted);
+            });
+        }, []);
+        
     return (
         <div className="gallery-content">
             <div className="container row text-center">
@@ -46,12 +55,15 @@ function Gallery () {
                     simulateTouch={false}
                     followFinger={false}
                     threshold={6}
-                    className="past-events-swiper desktop"
+                    className="gallery-swiper desktop"
                 >
-                    {images.map((image, index) => (
-                        <SwiperSlide key={index} className="gallery-swiper-slide">
-                        <div className="gallery-image-frame">
-                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image-desktop" />
+                    {images.map((image) => (
+                        <SwiperSlide key={image.id} className="gallery-swiper-slide">
+                        <div className="gallery-image-frame" style={{paddingBottom:"50px"}}>
+                            <img src={image.img} alt={image.caption} className="gallery-image desktop" />
+                            <h1 className="gallery-image-caption">
+                                {image.caption}
+                            </h1>
                         </div>
                         </SwiperSlide>
                     ))}
@@ -68,12 +80,15 @@ function Gallery () {
                     threshold={3}
                     resistance={true}
                     resistanceRatio={0.85}
-                    className="past-events-swiper mobile"
+                    className="gallery-swiper mobile"
                 >
                     {images.map((image, index) => (
                         <SwiperSlide key={index} className="gallery-swiper-slide">
                         <div className="gallery-image-frame">
-                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image-mobile" />
+                            <img src={image} alt={`Gallery ${index + 1}`} className="gallery-image mobile" />
+                            <h1 className="gallery-image-caption">
+                                Caption
+                            </h1>
                         </div>
                         </SwiperSlide>
                     ))}
