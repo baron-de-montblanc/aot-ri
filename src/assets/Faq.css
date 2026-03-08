@@ -4,6 +4,7 @@
     color: var(--bg-color-dark);
     align-items: center;
     justify-content: center;
+    padding-bottom: 1.5em;
 }
 
 .faq-h2 {
