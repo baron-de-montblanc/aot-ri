@@ -304,6 +304,35 @@
                 "title2": "The Blurriest Picture Ever Taken"
             },
             "title": "Aot Rhode Island #9"
+        },
+        {
+            "id":10,
+            "address":{
+                "line1": "432 W Fountain St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2026-07-29T18:30:00-04:00",
+            "department": {
+                "dep1": "Department of Earth, Environmental & Planetary Sciences"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4600204435114!2d-71.42650072365474!3d41.818391471248425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445bb817e2809%3A0x8805fa7edd21a7eb!2sMoniker%20Brewery!5e0!3m2!1sen!2sca!4v1739062423141!5m2!1sen!2sca",
+            "institution": {
+                "ins1": "Brown University"
+            },
+            "location": "Moniker Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/head.jpg"
+            },
+            "speaker": {
+                "speaker1": "Jim Head"
+            },
+            "speakerTitle": {
+                "title1": "Prof. Research"
+            },
+            "talkTitle": {
+                "title1": "Apollo to Artemis II and Beyond: Exploring and Living on the Moon"
+            },
+            "title": "Aot Rhode Island #10"
         }
     ] 
 }
