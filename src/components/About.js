@@ -8,7 +8,7 @@ function Organizer() {
         { id: 1, 
             name: "Jade Ducharme", 
             linkedin: "https://www.linkedin.com/in/jade-ducharme-00013a220/",
-            image: "/images/organizers/jade.jpg",
+            image: "/images/organizers/jade.png",
             intro: "PhD Candidate, Brown Physics Department",
             message: 'A 4th year physics PhD student from Canada, working with Prof. Jonathan Pober on 21-cm cosmology. 21-cm cosmology aims to map out the mysterious Dark Ages of the Universe by detecting the ultrafaint signal emitted by neutral hydrogen at that epoch. Large radio interferometers were built in remote areas all over the world for this purpose, but the 21-cm signal remains elusive. Jade hopes that her work on mitigating radio frequency interference will help bring us one step closer to detecting it.'
         },
