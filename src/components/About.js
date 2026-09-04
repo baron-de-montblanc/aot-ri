@@ -8,38 +8,37 @@ function Organizer() {
         { id: 1, 
             name: "Jade Ducharme", 
             linkedin: "https://www.linkedin.com/in/jade-ducharme-00013a220/",
-            image: "/images/organizers/jade.jpg",
+            image: "/images/organizers/jade.png",
             intro: "PhD Candidate, Brown Physics Department",
             message: 'A 4th year physics PhD student from Canada, working with Prof. Jonathan Pober on 21-cm cosmology. 21-cm cosmology aims to map out the mysterious Dark Ages of the Universe by detecting the ultrafaint signal emitted by neutral hydrogen at that epoch. Large radio interferometers were built in remote areas all over the world for this purpose, but the 21-cm signal remains elusive. Jade hopes that her work on mitigating radio frequency interference will help bring us one step closer to detecting it.'
         },
-        { id: 2, 
-            name: "Kanchita (Khing) Klangboonkrong", 
+        { id: 2,
+            name: "Kanchita (Khing) Klangboonkrong",
             linkedin: "https://www.linkedin.com/in/kanchita-klangboonkrong-87991817a/",
             image: "/images/organizers/khing.jpg",
             intro: "PhD Candidate, Brown Physics Department",
             message: "A fourth year physics PhD student from Thailand, working with Prof. Greg Tucker on EXCITE (Exoplanet Climate Infrared TElescope). EXCITE is a balloon telescope for phase-resolved spectroscopy of hot Jupiters (0.8–4 µm), studying their atmospheres’ composition, structure, and brightness. She is a co-leader of the Women in Physics organization (WiP) at Brown University. In her free time, she loves hiking, gardening, and traveling."
         },
-        { id: 3, 
-            name: "Janette (Janie) Levin", 
+        { id: 3,
+            name: "Lauren Roussel",
             linkedin: "",
             image: "/images/anon.jpg",
-            intro: "PhD Candidate, Brown Department of Earth, Environmental & Planetary Sciences",
+            intro: "Brown Physics Department",
             message: ""
         },
-        { id: 4, 
-            name: "Alexis Ortega", 
+        { id: 4,
+            name: "Chompoonek (Chicha) Nimitpornsuko",
             linkedin: "",
             image: "/images/anon.jpg",
-            intro: "PhD Candidate, Brown Physics Department",
+            intro: "Brown Physics Department",
             message: ""
         },
-        { id: 5, 
-            name: "Panupong (Pitt) Phoompuang", 
-            linkedin: "",
-            image: "/images/anon.jpg",
-            intro: "Masters Student, Brown Physics Department",
-            message: ""
-        },
+    ];
+
+    const alumniOrganizers = [
+        { id: 1, name: "Janette (Janie) Levin", affiliation: "Brown Department of Earth, Environmental & Planetary Sciences" },
+        { id: 2, name: "Dr. Alexis Ortega", affiliation: "Brown Physics Department" },
+        { id: 3, name: "Panupong (Pitt) Phoompuang", affiliation: "Brown Physics Department" },
     ];
 
     return (
@@ -75,6 +74,17 @@ function Organizer() {
                         <p className="organizer-message">
                             {organizer.message}
                         </p>
+                    </div>
+                ))}
+            </div>
+
+            <h3 className="alumni-organizers-title mt-4 mb-3">Alumni Organizers</h3>
+
+            <div className="row justify-content-center">
+                {alumniOrganizers.map((organizer) => (
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 mb-3" key={organizer.id}>
+                        <h5 className="organizer-name mt-2">{organizer.name}</h5>
+                        <h6 className="organizer-intro">{organizer.affiliation}</h6>
                     </div>
                 ))}
             </div>

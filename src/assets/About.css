@@ -27,6 +27,11 @@
   text-align: justify;
 }
 
+.alumni-organizers-title {
+    font-size: 1.5em;
+    opacity: 0.85;
+}
+
 
 .organizer-link:hover {
     color: white;

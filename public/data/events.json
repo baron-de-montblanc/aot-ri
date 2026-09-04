@@ -44,7 +44,7 @@
             },
             "date": "2024-12-11T19:00:00-05:00",
             "department": {
-                "dep1": "Department of Earth, Environmental & Planetary Sciences"
+                "dep1": "Department of Physics"
             },
             "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4600204435114!2d-71.42650072365474!3d41.818391471248425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445bb817e2809%3A0x8805fa7edd21a7eb!2sMoniker%20Brewery!5e0!3m2!1sen!2sca!4v1739062423141!5m2!1sen!2sca",
             "institution": {
@@ -333,6 +333,41 @@
                 "title1": "Apollo to Artemis II and Beyond: Exploring and Living on the Moon"
             },
             "title": "Aot Rhode Island #10"
+        },
+        {
+            "id":11,
+            "address":{
+                "line1": "432 W Fountain St",
+                "line2": "Providence, RI 02903"
+            },
+            "date": "2026-09-16T18:30:00-04:00",
+            "department": {
+                "dep1": "Department of Earth, Environmental & Planetary Sciences",
+                "dep2": "Department of Physics"
+            },
+            "iframesrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.4600204435114!2d-71.42650072365474!3d41.818391471248425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e445bb817e2809%3A0x8805fa7edd21a7eb!2sMoniker%20Brewery!5e0!3m2!1sen!2sca!4v1739062423141!5m2!1sen!2sca",
+            "institution": {
+                "ins1": "Brown University",
+                "ins2": "Brown University"
+            },
+            "location": "Moniker Brewery",
+            "photoPath": {
+                "photo1": "/images/speakers/bryant.jpg",
+                "photo2": "/images/speakers/ducharme.png"
+            },
+            "speaker": {
+                "speaker1": "Andrea Bryant",
+                "speaker2": "Jade Ducharme"
+            },
+            "speakerTitle": {
+                "title1": "Dr.",
+                "title2": ""
+            },
+            "talkTitle": {
+                "title1": "Rock(, Ice) & Roll: Using Quakes to Map Water in the Solar System",
+                "title2": "Can Radio Astronomy Survive the Modern World?"
+            },
+            "title": "Aot Rhode Island #11"
         }
-    ] 
+    ]
 }
