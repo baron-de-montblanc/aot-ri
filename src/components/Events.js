@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { format } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -58,6 +58,14 @@ function NoNextEvent() {
                   className="social-icons"
                 >
                   <FontAwesomeIcon icon={faInstagram} className="fa-icon" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/astronomy-on-tap-rhode-island/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icons"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
                 </a>
               </div>
             </div>

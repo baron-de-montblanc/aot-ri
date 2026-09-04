@@ -1,6 +1,6 @@
 import '../assets/Welcome.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 
 
@@ -34,8 +34,18 @@ function Welcome () {
                 rel="noreferrer"
                 className='social-icons'
               >
-                <FontAwesomeIcon 
-                  icon={faInstagram} 
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  className='fa-icon'
+                />
+              </a>
+              <a href='https://www.linkedin.com/company/astronomy-on-tap-rhode-island/'
+                target="_blank"
+                rel="noreferrer"
+                className='social-icons'
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
                   className='fa-icon'
                 />
               </a>

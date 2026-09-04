@@ -1,6 +1,6 @@
 import "../assets/Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 
 function Footer () {
@@ -35,8 +35,21 @@ function Footer () {
                             className='social-icons'
                             style={{margin:5}}
                         >
-                            <FontAwesomeIcon 
-                            icon={faInstagram} 
+                            <FontAwesomeIcon
+                            icon={faInstagram}
+                            className='fa-icon'
+                            style={{height:"1em"}}
+                            />
+                        </a>
+
+                        <a href='https://www.linkedin.com/company/astronomy-on-tap-rhode-island/'
+                            target="_blank"
+                            rel="noreferrer"
+                            className='social-icons'
+                            style={{margin:5}}
+                        >
+                            <FontAwesomeIcon
+                            icon={faLinkedin}
                             className='fa-icon'
                             style={{height:"1em"}}
                             />
