@@ -8,26 +8,13 @@ function Footer () {
         <div style={{ backgroundColor: "var(--bg-color-dark)"}}>
             <div className="footer-container">
                 <div className="row text-center justify-content-center align-items-center">
-                    <div className="col-4">
+                    <div className="col-3">
                         <div>Astronomy on Tap</div>
                         <div style={{fontSize: "0.75em", fontStyle: "italic"}}>Rhode Island</div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-3">
                         Follow us on social media!
                         <div>
-
-                        <a href='https://www.facebook.com/profile.php?id=61564387694241' 
-                            target='_blank'
-                            rel="noreferrer"
-                            className='social-icons'
-                            style={{margin:5}}
-                        >
-                            <FontAwesomeIcon 
-                            icon={faFacebook} 
-                            className='fa-icon'
-                            style={{height:"1em"}}
-                            />
-                        </a>
 
                         <a href='https://www.instagram.com/aotri24/'
                             target="_blank"
@@ -54,9 +41,34 @@ function Footer () {
                             style={{height:"1em"}}
                             />
                         </a>
+
+                        <a href='https://www.facebook.com/profile.php?id=61564387694241'
+                            target='_blank'
+                            rel="noreferrer"
+                            className='social-icons'
+                            style={{margin:5}}
+                        >
+                            <FontAwesomeIcon
+                            icon={faFacebook}
+                            className='fa-icon'
+                            style={{height:"1em"}}
+                            />
+                        </a>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-3">
+                        Subscribe to our newsletter!
+                        <div style={{fontSize: "0.75em"}}>
+                            <a href="https://buttondown.com/AoT-RI"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="email-href"
+                            >
+                                buttondown.com/AoT-RI
+                            </a>
+                        </div>
+                    </div>
+                    <div className="col-3">
                         Contact us!
                         <div style={{fontSize: "0.75em"}}>
                             <a href="mailto:aotri24@gmail.com"

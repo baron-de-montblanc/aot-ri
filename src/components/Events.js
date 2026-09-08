@@ -44,14 +44,6 @@ function NoNextEvent() {
             <div className="col-12 col-lg-6 text-center">
               <div className="social-container">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61564387694241"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icons"
-                >
-                  <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
-                </a>
-                <a
                   href="https://www.instagram.com/aotri24/"
                   target="_blank"
                   rel="noreferrer"
@@ -66,6 +58,14 @@ function NoNextEvent() {
                   className="social-icons"
                 >
                   <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61564387694241"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icons"
+                >
+                  <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
                 </a>
               </div>
             </div>
