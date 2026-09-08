@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { format } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,20 +44,28 @@ function NoNextEvent() {
             <div className="col-12 col-lg-6 text-center">
               <div className="social-container">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61564387694241"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icons"
-                >
-                  <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
-                </a>
-                <a
                   href="https://www.instagram.com/aotri24/"
                   target="_blank"
                   rel="noreferrer"
                   className="social-icons"
                 >
                   <FontAwesomeIcon icon={faInstagram} className="fa-icon" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/astronomy-on-tap-rhode-island/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icons"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61564387694241"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icons"
+                >
+                  <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
                 </a>
               </div>
             </div>
