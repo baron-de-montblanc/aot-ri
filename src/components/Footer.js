@@ -8,11 +8,7 @@ function Footer () {
         <div style={{ backgroundColor: "var(--bg-color-dark)"}}>
             <div className="footer-container">
                 <div className="row text-center justify-content-center align-items-center">
-                    <div className="col-3">
-                        <div>Astronomy on Tap</div>
-                        <div style={{fontSize: "0.75em", fontStyle: "italic"}}>Rhode Island</div>
-                    </div>
-                    <div className="col-3">
+                    <div className="col-4">
                         Follow us on social media!
                         <div>
 
@@ -56,7 +52,7 @@ function Footer () {
                         </a>
                         </div>
                     </div>
-                    <div className="col-3">
+                    <div className="col-4">
                         Subscribe to our newsletter!
                         <div style={{fontSize: "0.75em"}}>
                             <a href="https://buttondown.com/AoT-RI"
@@ -68,7 +64,7 @@ function Footer () {
                             </a>
                         </div>
                     </div>
-                    <div className="col-3">
+                    <div className="col-4">
                         Contact us!
                         <div style={{fontSize: "0.75em"}}>
                             <a href="mailto:aotri24@gmail.com"

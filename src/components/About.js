@@ -46,49 +46,18 @@ function Organizer() {
     ];
 
     return (
-        <div className="container text-center">
-            <h2 className="mt-4 mb-4">Meet the Organizers</h2>
+        <>
+            <h3 className="organizers-title">Meet the organizers</h3>
 
-            <div className="row justify-content-center">
+            <div className="organizer-grid">
                 {organizers.map((organizer) => (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 mb-4" key={organizer.id}>
+                    <div className="organizer" key={organizer.id}>
                         <img 
                             src={organizer.image}
                             alt={organizer.name}
-                            className="organizer-photo img-fluid rounded-circle"
+                            className="organizer-photo"
                         />
-                        <h5 className="organizer-name mt-2">
-                            <a
-                                href={organizer.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="organizer-link"
-                            >
-                                {organizer.name}
-                                <FontAwesomeIcon
-                                    icon={faLinkedin}
-                                    className="ms-2"
-                                    aria-label="LinkedIn profile"
-                                />
-                            </a>
-                        </h5>
-                        <h6 className="organizer-intro">
-                            {organizer.title && <>{organizer.title}<br /></>}
-                            {organizer.department}
-                        </h6>
-                        <p className="organizer-message">
-                            {organizer.message}
-                        </p>
-                    </div>
-                ))}
-            </div>
-
-            <h3 className="alumni-organizers-title mt-4 mb-3">Alumni Organizers</h3>
-
-            <div className="row justify-content-center">
-                {alumniOrganizers.map((organizer) => (
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-4 mb-3" key={organizer.id}>
-                        <h5 className="organizer-name mt-2">
+                        <h4 className="organizer-name">
                             {organizer.linkedin ? (
                                 <a
                                     href={organizer.linkedin}
@@ -99,19 +68,54 @@ function Organizer() {
                                     {organizer.name}
                                     <FontAwesomeIcon
                                         icon={faLinkedin}
-                                        className="ms-2"
+                                        className="organizer-linkedin"
                                         aria-label="LinkedIn profile"
                                     />
                                 </a>
                             ) : (
                                 organizer.name
                             )}
-                        </h5>
-                        <h6 className="organizer-intro">{organizer.affiliation}</h6>
+                        </h4>
+                        <p className="organizer-intro">
+                            {organizer.title && <>{organizer.title}<br /></>}
+                            {organizer.department}
+                        </p>
+                        <p className="organizer-message">
+                            {organizer.message}
+                        </p>
                     </div>
                 ))}
             </div>
-        </div>
+
+            <h3 className="alumni-organizers-title">Alumni organizers</h3>
+
+            <div className="alumni-grid">
+                {alumniOrganizers.map((organizer) => (
+                    <div className="alumnus" key={organizer.id}>
+                        <h4 className="organizer-name">
+                            {organizer.linkedin ? (
+                                <a
+                                    href={organizer.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="organizer-link"
+                                >
+                                    {organizer.name}
+                                    <FontAwesomeIcon
+                                        icon={faLinkedin}
+                                        className="organizer-linkedin"
+                                        aria-label="LinkedIn profile"
+                                    />
+                                </a>
+                            ) : (
+                                organizer.name
+                            )}
+                        </h4>
+                        <p className="organizer-intro">{organizer.affiliation}</p>
+                    </div>
+                ))}
+            </div>
+        </>
     );
 }
 
@@ -119,16 +123,16 @@ function Organizer() {
 
 function About () {
     return (
-        <div className="about-content">
-            <div className="container">
-                <h2 className="about-h2" id="about">About</h2>
-                <p className="about-p">
-                    Astronomy on Tap Rhode Island is organized by a small team of 
-                    graduate students at Brown University.  
+        <section className="band band-light about-band" id="about">
+            <div className="band-inner">
+                <h2 className="section-title">About</h2>
+                <p className="section-lead">
+                    Astronomy on Tap Rhode Island is run by a small team of students at
+                    Brown University, on their own time, for anyone who wants to come.
                 </p>
                 <Organizer/>
             </div>
-        </div>
+        </section>
     )
 }
 

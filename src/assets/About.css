@@ -1,63 +1,105 @@
-.about-content {
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+.organizers-title,
+.alumni-organizers-title {
+    font-family: 'Orbitron';
+    font-size: var(--step-heading);
+    font-weight: normal;
+    margin: 0 0 var(--space-lg);
 }
 
-.organizer-div {
-    width: 85%;
+.alumni-organizers-title {
+    margin-top: var(--space-xl);
+    opacity: 0.85;
 }
 
+.organizer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl) var(--space-lg);
+}
+
+.organizer {
+    text-align: center;
+}
+
+/* Square print in a raised frame: a light mount around the photo, then two
+   solid offsets in the darker theme tones stacked behind it. */
 .organizer-photo {
-    width: 50%;
-    border-radius: 20px;
+    display: block;
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    margin: 0 auto var(--space-md);
+    padding: 0;
+    border: 7px solid var(--light-violet);
+    border-radius: var(--radius-sm);
+    box-shadow:
+        7px 7px 0 var(--bg-color-light),
+        14px 14px 0 var(--bg-color),
+        18px 18px 26px rgba(32, 28, 48, 0.35);
+    transform: translate(-4px, -4px);
+}
+
+.organizer-name {
+    font-size: var(--step-lead);
+    font-weight: 600;
+    margin: 0 0 0.15em;
+}
+
+.organizer-link {
+    color: var(--bg-color);
+    transition: color 0.15s ease;
+}
+
+.organizer-link:hover,
+.organizer-link:focus-visible,
+.organizer-link:active {
+    color: var(--light-violet);
+}
+
+.organizer-linkedin {
+    margin-left: 0.45em;
+    font-size: 0.9em;
 }
 
 .organizer-intro {
     font-style: italic;
-    font-weight: normal;
-}
-
-.organizer-link {
-    color: #dfdfdf;
-    text-decoration: none;
-}
-
-.organizer-message {
-  text-align: justify;
-}
-
-.alumni-organizers-title {
-    font-size: 1.5em;
+    font-size: var(--step-small);
+    line-height: 1.45;
+    margin: 0 0 var(--space-sm);
     opacity: 0.85;
 }
 
-
-.organizer-link:hover {
-    color: white;
+/* Left, not justified: these columns are ~30 characters wide and justifying
+   them opens rivers of white space between the words. */
+.organizer-message {
+    font-size: var(--step-body);
+    line-height: 1.65;
+    margin: 0;
+    text-align: left;
 }
 
-.about-h2 {
-    font-size: 3em;
-    padding-top: 6vh;
-    padding-bottom: 4vh;
+.alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
 }
 
-.about-p {
+.alumnus {
     text-align: center;
-    font-size: 1.4em;
-    padding-bottom: 4vh;
 }
 
+.alumnus .organizer-intro {
+    margin-bottom: 0;
+}
 
-@media (max-width: 768px) {
-
-    .about-h2 {
-        font-size: 2.5em;
+@media (max-width: 599px) {
+    .organizer-grid,
+    .alumni-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .about-p {
-        font-size: 1.2em;
+    .organizer-photo {
+        width: 165px;
+        height: 165px;
     }
-
 }

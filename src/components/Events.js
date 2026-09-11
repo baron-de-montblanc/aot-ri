@@ -1,85 +1,212 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { format } from "date-fns";
+import {
+  faCalendarDay,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
+  faLocationDot,
+  faMapLocationDot,
+  faRoute,
+} from "@fortawesome/free-solid-svg-icons";
 import { formatInTimeZone } from "date-fns-tz";
+import AddToCalendar from "./AddToCalendar";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "../assets/Events.css";
 
 function NoNextEvent() {
-    return (
-      <div className="d-flex no-next-event">
-        <div className="container">
-          <div className="row text-center">
-            {/* Mobile layout */}
-            <div className="col-12 d-flex d-lg-none flex-column align-items-center">
-              <h2>Upcoming Event</h2>
-              <img alt="rocket" src="/images/rocket.png" className="rocket-image" />
-              <p>
-                No upcoming events yet—but stay tuned! Follow us on social media to be the first to
-                know when the next Astronomy on Tap Rhode Island event is announced.
-              </p>
-            </div>
-  
-            {/* Desktop layout */}
-            <div className="d-none d-lg-flex col-12 align-items-center">
-              <div className="col-6 text-center">
-                <img alt="rocket" src="/images/rocket.png" className="rocket-image" />
-              </div>
-              <div className="col-6">
-                <h2>Upcoming Event</h2>
-                <p>
-                  No upcoming events yet—but stay tuned! Follow us on social media to be the first to
-                  know when the next Astronomy on Tap Rhode Island event is announced.
-                </p>
-              </div>
-            </div>
-  
-            {/* Social media links (shared across both layouts) */}
-            <div className="d-none d-lg-flex col-lg-6"></div>
-            <div className="col-12 col-lg-6 text-center">
-              <div className="social-container">
-                <a
-                  href="https://www.instagram.com/aotri24/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icons"
-                >
-                  <FontAwesomeIcon icon={faInstagram} className="fa-icon" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/astronomy-on-tap-rhode-island/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icons"
-                >
-                  <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61564387694241"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-icons"
-                >
-                  <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
-                </a>
-              </div>
-            </div>
+  return (
+    <div className="event-header">
+      <h2 className="event-badge">Upcoming event</h2>
+
+      <div className="event-card event-card-upcoming no-next-event">
+        <div className="event-card-body">
+          <h3 className="event-title">Nothing on the calendar yet</h3>
+          <p className="no-next-event-copy">
+            The next Astronomy on Tap Rhode Island night has not been announced. Follow along and
+            you will hear about it first.
+          </p>
+
+          <div className="social-container">
+            <a
+              href="https://www.instagram.com/aotri24/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icons"
+              aria-label="Instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} className="fa-icon" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/astronomy-on-tap-rhode-island/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icons"
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61564387694241"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icons"
+              aria-label="Facebook"
+            >
+              <FontAwesomeIcon icon={faFacebook} className="fa-icon" />
+            </a>
           </div>
         </div>
+
+        <div className="no-next-event-art">
+          <img alt="" src="/images/rocket.png" className="rocket-image" />
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
+
+const TIME_ZONE = "America/New_York";
+
+/**
+ * Header for the upcoming event: details on one side, a clickable map card on
+ * the other. The whole map is a single link to Google Maps (the embed itself is
+ * not interactive) so it is easy to hit on both desktop and touch screens.
+ */
+const NextEventHeader = ({ event }) => {
+  const start = new Date(event.date);
+  const address = [event.address?.line1, event.address?.line2].filter(Boolean).join(", ");
+  const destination = [event.location, address].filter(Boolean).join(", ");
+  const query = encodeURIComponent(destination);
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+  // Built from the address rather than the stored `iframesrc`: a query-based
+  // embed keeps the venue pin centered at any card size, while the saved embed
+  // has a fixed center that crops the pin out on narrow screens.
+  const embedUrl = `https://maps.google.com/maps?q=${query}&z=15&output=embed`;
+
+  const lineup = [1, 2]
+    .filter((i) => event.speaker?.[`speaker${i}`])
+    .map((i) => `${event.talkTitle?.[`title${i}`]} — ${event.speaker[`speaker${i}`]}`)
+    .join("\n");
+  const calendarDescription = [
+    `Astronomy on Tap Rhode Island at ${event.location}.`,
+    lineup,
+    "Free talks, trivia and drinks — all ages welcome.",
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+
+  return (
+    <div className="event-header">
+      <h2 className="event-badge">Upcoming event</h2>
+
+      <div className="event-card event-card-upcoming">
+        <div className="event-card-body">
+          <h3 className="event-title">{event.title}</h3>
+
+          <ul className="event-meta">
+            <li>
+              <FontAwesomeIcon icon={faCalendarDay} className="event-meta-icon" />
+              <span className="event-meta-primary">
+                {formatInTimeZone(start, TIME_ZONE, "EEEE, MMMM d, yyyy")}
+              </span>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faClock} className="event-meta-icon" />
+              <span className="event-meta-primary">
+                {formatInTimeZone(start, TIME_ZONE, "h:mm a zzz")}
+              </span>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faLocationDot} className="event-meta-icon" />
+              <span>
+                <span className="event-meta-primary">{event.location}</span>
+                {address && <span className="event-meta-secondary">{address}</span>}
+              </span>
+            </li>
+          </ul>
+
+          <div className="event-actions">
+            <AddToCalendar
+              title={`${event.title} — Astronomy on Tap Rhode Island`}
+              description={calendarDescription}
+              location={destination}
+              start={start}
+            />
+            <a className="directions-link" href={directionsUrl} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faRoute} />
+              Get directions
+            </a>
+          </div>
+        </div>
+
+        <a
+          className="map-card"
+          href={mapsUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${event.location} in Google Maps`}
+        >
+          <span className="map-frame-wrap">
+            <iframe
+              src={embedUrl}
+              title={`Map to ${event.location}`}
+              className="map-frame"
+              loading="lazy"
+              tabIndex={-1}
+            />
+          </span>
+          <span className="map-cta">
+            <FontAwesomeIcon icon={faMapLocationDot} />
+            Open in Google Maps
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+};
+
+
+/**
+ * Header for a past event. Same badge/card vocabulary as the upcoming event so
+ * the two bands read as siblings; it carries a date and venue instead of a map
+ * and calendar actions, which a finished event has no use for.
+ */
+const PastEventHeader = ({ event }) => {
+  const start = new Date(event.date);
+  const address = [event.address?.line1, event.address?.line2].filter(Boolean).join(", ");
+
+  return (
+    <div className="event-card event-card-past">
+      <div className="event-card-body">
+        <h3 className="event-title">{event.title}</h3>
+      </div>
+
+      <ul className="event-meta event-meta-inline">
+        <li>
+          <FontAwesomeIcon icon={faCalendarDay} className="event-meta-icon" />
+          <span className="event-meta-primary">
+            {formatInTimeZone(start, TIME_ZONE, "MMMM d, yyyy")}
+          </span>
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faLocationDot} className="event-meta-icon" />
+          <span>
+            <span className="event-meta-primary">{event.location}</span>
+            {address && <span className="event-meta-secondary">{address}</span>}
+          </span>
+        </li>
+      </ul>
+    </div>
+  );
+};
 
 
 const Event = ({ event, isNextEvent = false }) => {
-    const formattedDate = isNextEvent
-    ? formatInTimeZone(new Date(event.date), "America/New_York", "MMMM d, yyyy '•' h:mm a zzz")
-    : format(new Date(event.date), "MMMM d, yyyy");
     const { speaker, speakerTitle, institution, department, talkTitle, photoPath } = event;
   
     // Normalize speakers into an array of up to two entries
@@ -95,94 +222,30 @@ const Event = ({ event, isNextEvent = false }) => {
         photo: photoPath?.[`photo${i}`],
       }));
   
-    const MobileSpeaker = ({ spk, position }) => {
-      const isLeft = position === "left";
-      return (
-        <div className="row text-center align-items-center">
-          <div className="col-12 text-center">
-            <h3 className="talk-title mobile">{spk.talkTitle}</h3>
-          </div>
-          <div className={`col-6 d-flex flex-column align-items-center picture-name-container`}>
-            {isLeft ? (
-              <img src={spk.photo} alt={spk.name} className="speaker-photo" />
-            ) : (
-              <div className="speaker-name-div right">
-                <h2 className="speaker-name">
-                  {spk.title} {spk.name}
-                </h2>
-                <p className="speaker-department">{spk.institution}</p>
-              </div>
-            )}
-          </div>
-          <div className={`col-6 d-flex flex-column align-items-center`}>
-            {isLeft ? (
-              <div className="speaker-name-div left">
-                <h2 className="speaker-name">
-                  {spk.title} {spk.name}
-                </h2>
-                <p className="speaker-department">{spk.institution}</p>
-              </div>
-            ) : (
-              <img src={spk.photo} alt={spk.name} className="speaker-photo" />
-            )}
-          </div>
-        </div>
-      );
-    };
-  
+    const MobileSpeaker = ({ spk }) => (
+      <div className="mobile-speaker">
+        <h3 className="talk-title mobile">{spk.talkTitle}</h3>
+        <img src={spk.photo} alt={spk.name} className="speaker-photo" />
+        <h4 className="speaker-name">
+          {spk.title} {spk.name}
+        </h4>
+        <p className="speaker-department">{spk.institution}</p>
+      </div>
+    );
+
     const MobileLayout = () => (
-      <div className={`d-flex flex-column d-md-none align-items-center justify-content-center event-container`}>
+      <div className={`d-flex flex-column d-md-none align-items-center event-container event-speakers`}>
 
-        <div className="row">
-          <div className="col-12 title-and-map-container-mobile">
 
-            <h2 className="event-title">
-              {isNextEvent && <span>[Upcoming!]</span>} {event.title}
-            </h2>
-            <h3 className="event-date mobile">
-              {formattedDate} {isNextEvent && `@ ${event.location}`}
-            </h3>
-
-            {isNextEvent && (
-              <iframe
-                src={event.iframesrc}
-                title="Events Map"
-                className="next-event-map-mobile"
-              />
-            )}
-          </div>
-        </div>
-
-        {speakers[0] && <MobileSpeaker spk={speakers[0]} position="left" />}
-        {speakers[1] && <MobileSpeaker spk={speakers[1]} position="right" />}
+        {speakers.map((spk) => (
+          <MobileSpeaker key={spk.idx} spk={spk} />
+        ))}
       </div>
     );
   
     const DesktopLayout = () => (
-      <div className={`d-none d-md-flex align-items-center justify-content-center event-container`}>
-        <div className="container">
-          <div className="row text-center">
-            <div className="col-12 title-and-map-container">
-
-              <div className="title-container">
-                <h2 className="event-title">
-                  {isNextEvent && <span>[Upcoming!]</span>} {event.title}
-                </h2>
-                <h3 className="event-date">
-                  {formattedDate} {isNextEvent && `@ ${event.location}`}
-                </h3>
-              </div>
-
-              {isNextEvent && (
-                <iframe
-                  src={event.iframesrc}
-                  title="Events Map"
-                  className="col-12 next-event-map"
-                />
-              )}
-            </div>
-          </div>
-  
+      <div className={`d-none d-md-block event-container`}>
+        <div className="event-speakers">
           {speakers.length === 1 ? (
             // Single speaker
             <div className="row align-items-center single-speaker-div">
@@ -190,9 +253,9 @@ const Event = ({ event, isNextEvent = false }) => {
                 <img src={speakers[0].photo} alt={speakers[0].name} className="speaker-photo" />
               </div>
               <div className="col-7 text-center">
-                <h2 className="speaker-name">
+                <h4 className="speaker-name">
                   {speakers[0].title} {speakers[0].name}
-                </h2>
+                </h4>
                 <p className="speaker-department">
                   {speakers[0].department ? `${speakers[0].department}, ` : ""}
                   {speakers[0].institution}
@@ -209,18 +272,18 @@ const Event = ({ event, isNextEvent = false }) => {
               </div>
               <div className="col-4">
                 <div className="speaker-name-div top text-end">
-                  <h2 className="speaker-name">
+                  <h4 className="speaker-name">
                     {speakers[1].title} {speakers[1].name}
-                  </h2>
+                  </h4>
                   <p className="speaker-department">
                     {speakers[1].department ? `${speakers[1].department}, ` : ""}
                     {speakers[1].institution}
                   </p>
                 </div>
                 <div className="speaker-name-div bottom text-start">
-                  <h2 className="speaker-name">
+                  <h4 className="speaker-name">
                     {speakers[0].title} {speakers[0].name}
-                  </h2>
+                  </h4>
                   <p className="speaker-department">
                     {speakers[0].department ? `${speakers[0].department}, ` : ""}
                     {speakers[0].institution}
@@ -239,6 +302,9 @@ const Event = ({ event, isNextEvent = false }) => {
   
     return (
       <>
+        {/* The header is responsive on its own, so — unlike the speaker
+            layouts — it is rendered once rather than per breakpoint. */}
+        {isNextEvent && <NextEventHeader event={event} />}
         <MobileLayout />
         <DesktopLayout />
       </>
@@ -251,9 +317,14 @@ const EventsList = () => {
 
   const [events, setEvents] = useState([]);
   const [showControls, setShowControls] = useState(window.innerWidth >= 992);
+  const [swiper, setSwiper] = useState(null);
+  const [position, setPosition] = useState({ isBeginning: true, isEnd: false });
   const pastEvents = events
-  .filter((event) => new Date(event.date) < new Date())
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .filter((event) => new Date(event.date) < new Date())
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const upcomingEvents = events
+    .filter((event) => new Date(event.date) > new Date())
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
 
   useEffect(() => {
@@ -273,73 +344,70 @@ const EventsList = () => {
 
   return (
     <>
+        <section className="band band-light events-band" id="events">
+          <div className="band-inner">
+            {upcomingEvents.length > 0 ? (
+              upcomingEvents.map((event) => (
+                <React.Fragment key={event.id}>
+                  <Event event={event} isNextEvent />
+                </React.Fragment>
+              ))
+            ) : (
+              <NoNextEvent />
+            )}
+          </div>
+        </section>
 
-        <div id="events"></div>
-        {events.filter(event => new Date(event.date) > new Date()).length > 0 ? (
-            events
-                .filter(event => new Date(event.date) > new Date()) // Filter future events
-                .map(event => 
-                <div className="event-next">
-                  <div className="container">
-                    <Event key={event.id} event={event} isNextEvent/>
-                  </div>
-                </div>
-                )
-        ) : (
-            <NoNextEvent />
-        )}
+        <section className="band events-band">
+          <div className="band-inner">
+            <div className="section-head">
+              <h2 className="event-badge event-badge-past">Past events</h2>
 
-        <div>
-            <div className="container past-events-container">
-              <h2 className="past-events-floating text-start">Past Events</h2>
-              
-              {showControls ? (
-                <Swiper
-                  modules={[Navigation, Pagination]}
-                  navigation
-                  pagination={{ clickable: true }}
-                  slidesPerView={1}
-                  spaceBetween={24}
-                  speed={400}
-                  grabCursor={false}
-                  simulateTouch={false}
-                  followFinger={false}
-                  threshold={6}
-                  className="past-events-swiper desktop"
+              <div className="carousel-nav">
+                <button
+                  type="button"
+                  className="carousel-nav-btn"
+                  onClick={() => swiper?.slidePrev()}
+                  disabled={position.isBeginning}
+                  aria-label="Previous event"
                 >
-                  {pastEvents.map((event) => (
-                    <SwiperSlide key={event.id}>
-                      <div style={{ padding: "0 40px" }}>
-                        <Event event={event} />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              ) : (
-                <Swiper
-                  modules={[Pagination]}
-                  pagination={{ clickable: true }}
-                  slidesPerView={1}
-                  spaceBetween={16}
-                  speed={300}
-                  simulateTouch={true}
-                  followFinger={true}
-                  threshold={3}
-                  resistance={true}
-                  resistanceRatio={0.85}
-                  className="past-events-swiper mobile"
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+                <button
+                  type="button"
+                  className="carousel-nav-btn"
+                  onClick={() => swiper?.slideNext()}
+                  disabled={position.isEnd}
+                  aria-label="Next event"
                 >
-                  {pastEvents.map((event) => (
-                    <SwiperSlide key={event.id}>
-                      <div className="past-event-mobile">
-                        <Event event={event} />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              )}
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
             </div>
-        </div>
+
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={showControls ? 24 : 16}
+              speed={showControls ? 400 : 300}
+              grabCursor={!showControls}
+              simulateTouch={!showControls}
+              followFinger={!showControls}
+              threshold={showControls ? 6 : 3}
+              onSwiper={setSwiper}
+              onSlideChange={(sw) => setPosition({ isBeginning: sw.isBeginning, isEnd: sw.isEnd })}
+              className="past-events-swiper"
+            >
+              {pastEvents.map((event) => (
+                <SwiperSlide key={event.id}>
+                  <div className="past-event-slide">
+                    <PastEventHeader event={event} />
+                    <Event event={event} />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </section>
     </>
   );
 };

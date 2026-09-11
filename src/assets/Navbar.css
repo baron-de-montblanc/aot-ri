@@ -1,3 +1,7 @@
+.site-nav {
+    padding-block: var(--space-md);
+}
+
 .custom-toggler {
     border: none;
 }
@@ -7,7 +11,7 @@
     outline: none !important;
     box-shadow: none !important;
 }
-  
+
 .custom-toggler .navbar-toggler-icon {
     filter: invert(86%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(94%) contrast(91%);
 }
@@ -15,20 +19,29 @@
 .custom-toggler .navbar-toggler-icon:hover {
     filter: invert(1);
 }
-  
+
 .custom-toggler .navbar-toggler-icon:active {
     filter: invert(1);
     border: none;
 }
 
 .nav-logo {
-    height: 4em;
+    height: 3.5em;
+}
+
+.navbar-nav {
+    gap: var(--space-xs);
 }
 
 .nav-item a {
-    color: #dfdfdf;
+    color: var(--text-color);
+    opacity: 0.8;
+    padding-inline: var(--space-sm) !important;
+    transition: opacity 0.15s ease, color 0.15s ease;
 }
 
-.nav-item a:hover {
-    color: white;
+.nav-item a:hover,
+.nav-item a:focus-visible {
+    color: var(--link-hover);
+    opacity: 1;
 }

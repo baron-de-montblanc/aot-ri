@@ -4,7 +4,7 @@ function NavBar () {
     return (
         <div>
             <div id="top" className="container">
-                <nav className="navbar navbar-expand-lg">
+                <nav className="navbar navbar-expand-lg site-nav">
 
                     <a className="navbar-brand" href="/">
                         <img 
@@ -29,9 +29,6 @@ function NavBar () {
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
                                 <a className="nav-link" href="#events">Events</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#trivia">Trivia</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#gallery">Gallery</a>

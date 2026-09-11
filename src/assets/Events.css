@@ -1,107 +1,247 @@
+/* The two event bands — upcoming and past — share one geometry and one set of
+   surface styles. Only the palette flips with the band they sit on. */
+
+.events-band {
+    scroll-margin-top: var(--space-lg);
+}
+
 .event-container {
-    min-height: 80vh;
     align-items: center;
 }
 
-.past-events-container {
-    position: relative;
+/* Speakers sit in the same column as the card above them — the nested Bootstrap
+   .container used to pull them to a different width. */
+.event-speakers {
+    margin-top: var(--space-xl);
 }
 
-.past-events-floating {
-    font-size: 3em;
-    position: absolute;
-    top: 6vh;
-    left: 1em;
+
+/********* Section badge *********/
+
+.event-badge {
+    display: inline-block;
+    margin: 0;
+    padding: 0.5em 1.3em;
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-color);
+    color: var(--highlight);
+    font-family: 'Orbitron';
+    font-size: var(--step-small);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
-.event-next {
-    color: var(--bg-color);
-    background-color: var(--bg-color-med);
-    position: relative;
+.event-badge-past {
+    background-color: var(--bg-color-light);
+}
+
+
+/********* Event card *********/
+
+.event-header {
+    width: 100%;
+}
+
+.event-header .event-badge {
+    margin-bottom: var(--space-md);
+}
+
+.event-card {
     display: flex;
+    align-items: stretch;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    text-align: left;
+}
+
+.event-card-upcoming {
+    background-color: var(--light-violet);
+    color: var(--bg-color);
+}
+
+.event-card-past {
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 0px 40px;
+    justify-content: space-between;
+    background-color: var(--bg-color-light);
+    color: var(--text-color);
+    margin-bottom: var(--space-xl);
 }
 
-
-.past-events-swiper {
-  padding-top: 100px !important;
-  margin-bottom: 100px !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--text-color) !important;
-}
-
-.swiper-pagination-bullet {
-  transform: scale(1.4);
-  margin: 0 6px !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: var(--text-color) !important;
-}
-
-.swiper-button-next {
-  right: -10px !important;
-}
-
-.swiper-button-prev {
-  left: -10px !important;
-}
-
-.title-and-map-container {
-    margin-bottom: 3em;
-    position: relative;
-    height: 150px;              /* choose the height you want */
+.event-card-body {
+    flex: 1 1 55%;
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* vertical center */
-    align-items: center;        /* horizontal center */
-    text-align: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.event-card-past .event-card-body {
+    flex: 1 1 auto;
+}
+
+.event-card .event-title {
+    margin: 0 0 var(--space-md);
+    text-align: left;
+}
+
+.event-card-past .event-title {
+    margin-bottom: 0;
+}
+
+
+/********* Event metadata *********/
+
+.event-meta {
+    list-style: none;
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+}
+
+.event-meta li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85em;
+    margin-bottom: var(--space-sm);
+    line-height: 1.35;
+}
+
+.event-meta li:last-child {
+    margin-bottom: 0;
+}
+
+/* The past-event card lays its metadata out along the card instead of down it */
+.event-meta-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-xl);
+    margin: 0;
+    flex: 0 1 auto;
+}
+
+.event-meta-icon {
+    flex-shrink: 0;
+    width: 1.1em;
+    margin-top: 0.15em;
+    color: var(--highlight2);
+}
+
+.event-card-past .event-meta-icon {
+    color: var(--highlight);
+}
+
+.event-meta-primary {
+    display: block;
+    font-size: var(--step-lead);
+    font-weight: 600;
+}
+
+.event-meta-secondary {
+    display: block;
+    font-size: var(--step-small);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+
+/********* Upcoming-event actions *********/
+
+.event-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+}
+
+.directions-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-weight: 600;
+    color: var(--bg-color);
+    transition: color 0.15s ease;
+}
+
+.directions-link:hover,
+.directions-link:focus-visible {
+    color: var(--link-hover-light);
+}
+
+
+/********* Map *********/
+
+/* The whole map is one big link: the embed itself is click-through so that a
+   tap anywhere on it opens Google Maps. */
+.map-card {
+    position: relative;
+    flex: 1 1 45%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 3px solid var(--bg-color-light);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.title-and-map-container-mobile {
-    background-color: var(--highlight);
-    border-radius: 1em;
-    padding: 10px;
-    margin: 1.5em 0em;
+.map-card:hover,
+.map-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--bg-color);
+    box-shadow: var(--shadow-lift);
 }
 
-.next-event-map {
+.map-frame-wrap {
+    position: relative;
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* Absolutely positioned so the embed always fills the card, whatever height
+   the flex row gives it. */
+.map-frame {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: none;
-    opacity: 0.5;
-    z-index: 0;
-    border-radius: 2em;
+    display: block;
+    pointer-events: none;
+    filter: saturate(0.9);
 }
 
-.next-event-map-mobile {
-    border-radius: 1em;
-    width: 100%;
-    height: 100px;
+/* Sits below the embed rather than over it, so Google's own attribution and
+   controls stay visible. */
+.map-cta {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55em;
+    padding: 0.75em 1em;
+    background-color: var(--bg-color-dark);
+    color: var(--text-color);
+    font-size: var(--step-body);
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.map-card:hover .map-cta,
+.map-card:focus-visible .map-cta {
+    background-color: var(--bg-color-light);
+    color: var(--link-hover);
 }
 
 
-.title-container {
-    background-color: var(--highlight);
-    padding: 10px;
-    z-index: 1;
-    border-radius: 10px;
-    color: var(--bg-color);
-}
-
+/********* Speakers *********/
 
 .speaker-name {
-    font-size: 1.8em;
+    font-size: var(--step-subtitle);
     font-family: 'Montserrat';
+    font-weight: normal;
 }
 
 .speaker-name-div.left {
@@ -113,214 +253,191 @@
 }
 
 .speaker-department {
-    font-size: 1.2em;
+    font-size: var(--step-body);
     font-style: italic;
 }
 
-.speaker-photo{
+.speaker-photo {
     width: 85%;
-    border-radius: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
 }
-
 
 .event-title {
     font-family: 'Orbitron';
-    font-size: 2.2em;
-    z-index: 1;
-}
-
-.event-title span {
-    margin-right: 8px;
-    text-transform: uppercase;
-    /* letter-spacing: 0.5px; */
-}
-
-.event-date {
-    font-size: 1.2em;
-    font-style: italic;
-    text-align: center;
-    z-index: 1;
-}
-
-.event-date.mobile {
-    font-size: 1em;
-}
-
-.location-map {
-    width: 75%;
-    height: 60%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.location-name {
-    margin-top: 8px;
-    font-family: "Montserrat";
-    font-size: 1.4em;
-}
-
-.location-address {
-    font-size: 0.8em;
-    font-style: italic;
-    margin: 0px;
+    font-size: var(--step-title);
+    font-weight: normal;
+    line-height: 1.2;
 }
 
 .talk-title {
-    font-size: 2.0em;
+    font-size: var(--step-subtitle);
     font-family: 'Orbitron';
     font-weight: normal;
 }
 
-.picture-name-container {
-    margin-bottom: 1em;
-}
-
 .talk-title.mobile {
-    margin-bottom: 0.5em;
-    margin-top: 1em;
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
 }
 
 .talk-title.top {
-    margin-bottom: 4vh;
+    margin-bottom: var(--space-xl);
 }
 
 .talk-title.bottom {
-    margin-top: 4vh;
+    margin-top: var(--space-xl);
 }
 
 .speaker-name-div.top {
-    margin-bottom: 8vh;
+    margin-bottom: var(--space-xl);
     margin-right: -1em;
 }
 
-.speaker-name-div.top h2,  
-.speaker-name-div.top p {  
-    text-align: end;  
+.speaker-name-div.top h4,
+.speaker-name-div.top p {
+    text-align: end;
 }
 
 .speaker-name-div.bottom {
-    margin-top: 8vh;
+    margin-top: var(--space-xl);
     margin-left: -1em;
 }
 
-.speaker-name-div.bottom h2,  
-.speaker-name-div.bottom p {  
-    text-align: start;  
-}
-
-.speaker-name-div.single-speaker {
-    margin-left: -2em;
+.speaker-name-div.bottom h4,
+.speaker-name-div.bottom p {
+    text-align: start;
 }
 
 .single-speaker-div {
-    margin-top: 8vh;
+    margin-top: var(--space-lg);
 }
 
 
-.upcoming-event-h2 {
-    font-weight: bold;
-    position: absolute;
-    top:12px;
-    left:0px;
-    font-family: "Fascinate Inline";
-    font-size: 1.8em;
-    color:var(--highlight);
+/********* Past-events carousel *********/
+
+.past-events-swiper {
+    padding-top: var(--space-md) !important;
 }
 
+.past-event-slide {
+    padding: 0;
+}
 
-
-/********* No next event CSS handling *********/
-
+/********* No upcoming event *********/
 
 .no-next-event {
-    background-color: var(--bg-color-med);
-    min-height: 100vh;
-    color: var(--bg-color-dark);
+    align-items: center;
+}
+
+.no-next-event-copy {
+    font-size: var(--step-lead);
+    line-height: 1.6;
+    max-width: var(--measure);
+    margin-bottom: var(--space-lg);
+}
+
+.no-next-event-art {
+    flex: 0 1 32%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.no-next-event h2 {
-    margin-bottom: 10vh;
-    font-size: 3em;
-}
-
-.no-next-event p {
-    font-size: 1.4em;
-}
-
-.no-next-event a {
-    color: var(--bg-color);
-}
-
-.no-next-event a:hover {
-    color: var(--bg-color-dark);
-}
-
 .rocket-image {
-    width: 75%;
+    width: 100%;
+    max-width: 240px;
+}
+
+.no-next-event .social-container {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.no-next-event .social-icons {
+    color: var(--bg-color);
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.no-next-event .social-icons:hover,
+.no-next-event .social-icons:focus-visible {
+    color: var(--link-hover-light);
+    transform: translateY(-2px);
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
-    .past-events-floating {
-        font-size: 2.5em;
+    .event-card {
+        flex-direction: column;
+        gap: var(--space-md);
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
     }
 
-    .floating-map-div {
-        position: absolute;
-        top: auto;
-        bottom: 3vh;
-        left: 50%;
-        transform: translateX(-50%);
-        min-width: 80vw;
-        max-width: 80vw;
+    .event-card .event-title {
+        text-align: center;
     }
 
-    .floating-next-event-map {
-        height: 150px;
+    .event-card-past .event-title {
+        margin-bottom: var(--space-md);
     }
 
-
-    .past-event-mobile {
-        padding: 0px 30px;
-        margin-bottom: 0px;
+    .event-meta-inline {
+        flex-direction: column;
+        gap: var(--space-sm);
     }
 
-    .no-next-event h2 {
-        font-size: 2.5em;
+    .event-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-sm);
     }
 
-    .rocket-image {
-        width: 50%;
+    .directions-link {
+        justify-content: center;
+    }
+
+    .map-card {
+        flex: 0 0 auto;
+        height: 240px;
+        min-height: 240px;
+    }
+
+    .mobile-speaker {
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--space-xl);
+    }
+
+    .mobile-speaker:last-child {
+        margin-bottom: 0;
     }
 
     .speaker-photo {
-        width: 120%;
-        border-radius: 10px;
-        margin-bottom: 12px;
-    }
-
-    .speaker-name {
-        font-size: 1.2em;
-        margin: 0;
+        width: 100%;
+        max-width: 320px;
+        border-radius: var(--radius-md);
+        margin-bottom: var(--space-sm);
     }
 
     .speaker-department {
-        font-size: 0.9em;
+        margin-bottom: 0;
+    }
+
+    .speaker-name {
+        margin: 0;
     }
 
     .talk-title {
-        font-size: 1.3em;
-        margin-bottom: 4vh;
+        margin-bottom: var(--space-lg);
     }
 
-    .event-title {
-        font-size: 1.6em;
+    .no-next-event-art {
+        order: -1;
     }
 
-    .no-next-event p {
-        font-size: 1.2em;
+    .rocket-image {
+        max-width: 160px;
     }
 }

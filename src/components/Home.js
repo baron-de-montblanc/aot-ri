@@ -3,7 +3,6 @@ import NavBar from "./Navbar";
 import Footer from "./Footer";
 import Events from "./Events";
 import About from "./About";
-import Trivia from "./Trivia";
 import Gallery from "./Gallery";
 import Faq from "./Faq";
 
@@ -100,8 +99,6 @@ function Home () {
             <div className="home-content">
                 <Events />
             </div>
-
-            <Trivia />
 
             <Gallery />
 

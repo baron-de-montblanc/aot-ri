@@ -14,6 +14,42 @@
   --text-color: #f0eff6;
   --highlight: #F29D4A;
   --highlight2: #a7580c;
+
+  /* Spacing — one scale for every band, replacing per-section vh guesses */
+  --space-xs: 0.5rem;
+  --space-sm: 0.85rem;
+  --space-md: 1.35rem;
+  --space-lg: 2.25rem;
+  --space-xl: 3.5rem;
+  --band-padding: clamp(3.5rem, 9vh, 6.5rem);
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 68ch;
+
+  /* Corners */
+  --radius-sm: 0.6rem;
+  --radius-md: 1.1rem;
+  --radius-lg: 1.75rem;
+  --radius-pill: 999px;
+
+  /* Elevation, tinted to the indigo ground rather than neutral grey */
+  --shadow-soft: 0 10px 30px rgba(32, 28, 48, 0.22);
+  --shadow-lift: 0 18px 44px rgba(32, 28, 48, 0.36);
+
+  /* Links. The amber highlight is reserved for buttons and section badges —
+     links brighten toward white on the dark bands and deepen to violet on the
+     light ones, and are never underlined. */
+  --link-color: var(--bg-color-med);
+  --link-hover: #ffffff;
+  --link-hover-light: var(--bg-color-light);
+
+  /* Type scale — every font-size on the site comes from this ladder */
+  --step-display: clamp(2.1rem, 4.6vw, 3.2rem);   /* site title */
+  --step-title: clamp(1.85rem, 3.4vw, 2.6rem);    /* section and event titles */
+  --step-heading: clamp(1.5rem, 2.6vw, 1.95rem);  /* sub-section headings */
+  --step-subtitle: clamp(1.3rem, 2.1vw, 1.7rem);  /* talk titles, speaker names */
+  --step-lead: clamp(1.05rem, 1.15vw, 1.2rem);    /* lead copy, questions, key detail */
+  --step-body: 1rem;                              /* body copy */
+  --step-small: 0.9rem;                           /* captions, affiliations, meta */
 }
 
 html, body {
@@ -46,4 +82,156 @@ code {
   background-color: var(--bg-color);
   min-height: 100vh; /* Ensures full height coverage */
   color: var(--text-color);
+}
+
+
+/* ---------- Shared band geometry ----------
+   Every full-width section is a "band": same vertical padding, same gutter,
+   same container. Sections differ in content, not in geometry. */
+
+/* h2 inherited `font-weight: normal` from the leaked rule above; keep that,
+   and leave the other heading levels at their browser defaults. */
+h2 {
+  font-weight: normal;
+}
+
+.band {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--band-padding);
+  padding-inline: var(--gutter);
+}
+
+.band-light {
+  background-color: var(--bg-color-med);
+  color: var(--bg-color-dark);
+}
+
+.band-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.section-title {
+  font-family: 'Orbitron';
+  font-size: var(--step-title);
+  font-weight: normal;
+  line-height: 1.15;
+  margin: 0 0 var(--space-md);
+}
+
+.section-lead {
+  font-size: var(--step-lead);
+  line-height: 1.6;
+  max-width: var(--measure);
+  margin: 0 0 var(--space-xl);
+}
+
+/* Bootstrap is imported after this file and underlines every anchor, so this
+   needs the extra specificity to win rather than a load-order change. */
+/* A section header: heading on the left, carousel controls on the right. Shared
+   by the past-events band and the gallery so both carousels are driven the
+   same way. */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.section-head .section-title {
+  margin-bottom: 0;
+}
+
+.carousel-nav {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.carousel-nav-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--bg-color-light);
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.band-light .carousel-nav-btn {
+  color: var(--bg-color-dark);
+}
+
+.carousel-nav-btn:hover:not(:disabled),
+.carousel-nav-btn:focus-visible:not(:disabled) {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+  color: var(--bg-color-dark);
+}
+
+.carousel-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+/* Links and controls had no visible keyboard affordance anywhere on the site. */
+:focus-visible {
+  outline: 3px solid var(--light-violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.band-light :focus-visible {
+  outline-color: var(--bg-color-dark);
+}
+
+/* An in-text link: weight carries it, no rule underneath, brightening to pure
+   white when pointed at or pressed. */
+.text-link {
+  color: var(--text-color);
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible,
+.text-link:active {
+  color: #ffffff;
+}
+
+.band-light .text-link {
+  color: var(--bg-color-dark);
+}
+
+.band-light .text-link:hover,
+.band-light .text-link:focus-visible,
+.band-light .text-link:active {
+  color: var(--bg-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
