@@ -1,25 +1,26 @@
-.home-title h1,h2{
+.home-title h1,
+.home-title h2 {
     font-family: "Orbitron";
     text-align: center;
     justify-content: center;
     font-weight: normal;
 }
 
-.home-title h1{
-    font-size: 3em;
-    font-family: 'Orbitron';
+.home-title h1 {
+    font-size: var(--step-display);
     margin-top: 2em;
     margin-bottom: 0.2em;
 }
 
-.home-title h2{
-    font-size: 2em;
+.home-title h2 {
+    font-size: var(--step-subtitle);
     margin-bottom: 2vh;
 }
 
 .promo-image {
     width: 90%;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
     margin: 6vh 0px;
 }
 
@@ -30,22 +31,20 @@
     min-height: 90vh;
 }
 
-
 .intro-p {
     width: 85%;
     margin: 0 auto;
     margin-top: 2vh;
-    font-size: 1.4em;
+    font-size: var(--step-lead);
+    line-height: 1.7;
 }
 
 @media (max-width: 768px) { /* Applies to md screens and smaller */
     .home-title h1 {
-        font-size: 2.5em; /* Slightly smaller */
-        margin-top:0.5em;
+        margin-top: 0.5em;
     }
 
     .home-title h2 {
-        font-size: 1.75em;
         margin-bottom: 0;
     }
 
@@ -55,7 +54,6 @@
     }
 
     .intro-p {
-        font-size: 1.2em;
         margin-bottom: 2em;
     }
 }

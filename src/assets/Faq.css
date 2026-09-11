@@ -1,22 +1,37 @@
-.faq-content {
-    background-color: var(--bg-color-med);
-    min-height: 100vh;
-    color: var(--bg-color-dark);
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1.5em;
+/* The questions sit close to one another, so the section title needs a clear
+   step above them. */
+.faq-band .section-title {
+    margin-bottom: var(--space-xl);
 }
 
-.faq-h2 {
-    font-size: 3em;
-    padding-top: 6vh;
-    text-align: start;
+.faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-xl);
 }
 
-@media (max-width: 768px) {
+.faq-item {
+    max-width: 48ch;
+}
 
-    .faq-h2 {
-        font-size: 2.5em;
+.faq-question {
+    font-size: var(--step-subtitle);
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 var(--space-sm);
+}
+
+/* No opacity here: it would multiply into the link inside and stop it ever
+   reaching pure white. The bold question above carries the hierarchy. */
+.faq-answer {
+    margin: 0;
+    font-size: var(--step-lead);
+    line-height: 1.65;
+}
+
+@media (max-width: 767px) {
+    .faq-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-lg);
     }
-
 }

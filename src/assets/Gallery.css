@@ -1,60 +1,182 @@
-.gallery-content {
+/* The gallery is a wall of prints rather than a grid: photos flow down columns
+   of uneven length, each one tilted, nudged sideways and lifted over the print
+   above it. Hovering straightens a print out so you can read it. */
+
+.gallery-band {
+    overflow: hidden; /* tilted prints at the edges must not widen the page */
+}
+
+.gallery-wall {
+    display: flex;
+    align-items: flex-start;
+    /* Columns abut: the varied print widths supply the breathing room, and the
+       sideways lean lets neighbours cross into each other. */
+    gap: 0;
+    padding-top: var(--space-xl);
+}
+
+.gallery-column {
+    flex: 1 1 0;
+    min-width: 0;
+    margin-top: var(--column-offset, 0);
+}
+
+.print {
+    position: relative;
+    width: var(--width, 100%);
+    margin: 0 0 var(--space-lg) var(--pull, 0);
+    padding: 0.85rem 0.85rem 0;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    box-shadow: var(--shadow-soft);
+    transform: rotate(var(--tilt, 0deg)) translateX(var(--nudge, 0));
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.print:hover,
+.print:focus-within {
+    transform: rotate(0deg) translateX(var(--nudge, 0)) scale(1.03);
+    box-shadow: var(--shadow-lift);
+    z-index: 3;
+}
+
+.print-btn {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: zoom-in;
+}
+
+.print img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+}
+
+.print figcaption {
+    padding: 0.8rem 0.25rem 1rem;
+    font-size: var(--step-body);
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--bg-color);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/********* Full-size view *********/
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background-color: rgba(32, 28, 48, 0.94);
+}
+
+.lightbox-figure {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding-bottom: 2em;
+    margin: 0;
+    min-width: 0;
 }
 
-.gallery-swiper {
-    margin-top: 2em;
-}
-
-.gallery-image {
-    display: block;
-    margin: 0 auto;
-    max-height: 60vh;
-    max-width: 75%;
+.lightbox-figure img {
+    max-width: min(1100px, 100%);
+    max-height: 72vh;
     width: auto;
     height: auto;
-    border-radius: 3em;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lift);
 }
 
-.gallery-image-caption {
+.lightbox-figure figcaption {
+    margin-top: var(--space-md);
+    max-width: 60ch;
     text-align: center;
-    margin-top: 1.5em;
-    margin-bottom: 0;
-    font-size: 1rem;
-    color: var(--text-color);
+    font-size: var(--step-lead);
     font-style: italic;
-
+    color: var(--text-color);
 }
 
-.gallery-image.mobile {
-    max-width: 100%;
-    border-radius: 1.5em;
+.lightbox-close,
+.lightbox-step {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--bg-color-light);
+    border-radius: var(--radius-pill);
+    background: none;
+    color: var(--text-color);
+    font-size: var(--step-lead);
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-.gallery-title-h2 {
-    font-size: 3em;
-    padding-top: 4vh;
-    margin-bottom: 4vh;
+.lightbox-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
 }
 
-.gallery-p {
-    font-size: 1.4em;
+.lightbox-close:hover,
+.lightbox-close:focus-visible,
+.lightbox-step:hover,
+.lightbox-step:focus-visible {
+    background-color: var(--highlight);
+    border-color: var(--highlight);
+    color: var(--bg-color-dark);
 }
 
 
-@media (max-width: 768px) {
+/* Carousel mode (phones): one print per slide, barely tilted so it does not
+   clip against the slide edges. */
+.gallery-swiper {
+    padding: var(--space-md) 4px var(--space-xs) !important;
+}
 
-    .gallery-title-h2 {
-        font-size: 2.5em;
+.print-single {
+    width: 100%;
+    margin: 0;
+}
+
+.print-single:hover,
+.print-single:focus-within {
+    transform: rotate(0deg) scale(1);
+}
+
+@media (max-width: 599px) {
+    .lightbox {
+        flex-wrap: wrap;
+        padding: var(--space-md);
     }
 
-    .gallery-p {
-        font-size: 1.2em;
+    .lightbox-figure {
+        order: -1;
+        flex-basis: 100%;
     }
 
+    .lightbox-figure img {
+        max-height: 62vh;
+    }
 }

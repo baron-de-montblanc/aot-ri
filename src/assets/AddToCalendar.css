@@ -1,0 +1,103 @@
+.add-to-calendar {
+    position: relative;
+    display: inline-block;
+}
+
+.calendar-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: 'Montserrat';
+    font-size: var(--step-body);
+    font-weight: 600;
+    padding: 0.7em 1.4em;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--highlight);
+    color: var(--bg-color-dark);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(32, 28, 48, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.calendar-trigger:hover,
+.calendar-trigger:focus-visible {
+    background-color: var(--highlight2);
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(32, 28, 48, 0.3);
+}
+
+.calendar-menu {
+    position: absolute;
+    top: calc(100% + 0.6em);
+    left: 0;
+    z-index: 5;
+    min-width: 15em;
+    display: flex;
+    flex-direction: column;
+    padding: 0.4em;
+    border-radius: 1em;
+    background-color: var(--bg-color-dark);
+    box-shadow: 0 12px 30px rgba(32, 28, 48, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.calendar-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.calendar-option {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    width: 100%;
+    padding: 0.7em 1em;
+    border: none;
+    border-radius: 0.7em;
+    background: none;
+    font-family: 'Montserrat';
+    font-size: var(--step-body);
+    text-align: left;
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.calendar-option:hover,
+.calendar-option:focus-visible {
+    background-color: var(--bg-color-light);
+    color: var(--link-hover);
+}
+
+.calendar-option svg {
+    width: 1.1em;
+    opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+    .add-to-calendar {
+        display: block;
+    }
+
+    .calendar-trigger {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .calendar-menu {
+        left: 50%;
+        transform: translate(-50%, -6px);
+        width: 100%;
+    }
+
+    .calendar-menu.open {
+        transform: translate(-50%, 0);
+    }
+}

@@ -38,6 +38,8 @@
     }
 }
 
+/* The splash scales as one block: the clamp below drives every em inside it,
+   which is why these sizes stay in em rather than the shared rem ladder. */
 .welcome-header-row {
     display: flex;
     flex-wrap: wrap;
@@ -70,8 +72,9 @@
     margin: 0px 20px;
 }
 
-.social-icons:hover {
-    color: white;
+.social-icons:hover,
+.social-icons:focus-visible {
+    color: var(--link-hover);
 }
 
 .fa-icon {
@@ -112,8 +115,9 @@
     opacity: 0.5;
 }
 
-.arrow-href:hover {
-    color:white;
+.arrow-href:hover,
+.arrow-href:focus-visible {
+    color: var(--link-hover);
     opacity: 1.0;
 }
 
